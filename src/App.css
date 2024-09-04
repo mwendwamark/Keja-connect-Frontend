@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+:root {
+  /* Colors */
+  --background-color: #f4f4f4;
+  --pink-color: #F2DDE3;
+  --green-color: #063231;
+  --text-color: #1e1e1e;
+  --faint-text-color: #666666;
+  --dark-pink: #F1BFCD;
+  --light-green: #96D5D3;
+  --blue-link-color: #3328FE;
+  --orange-color: #EA5024;
+
+  /* Font sizes */
+  --h1-fs: 48px;
+  --h2-fs: 30px;
+  --text-size: 16px;
+
+  /* Font families */
+  --h1-ff: 'Source Serif 4', 'Outfit', serif;
+  --text-ff: 'Outfit', serif;
+
+  /* Font weights */
+  --h1-fw: 700;
+  --text-fw: 400;
+  --text-bold: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  font-family: var(--text-ff);
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+.container {
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
+}
+
+.section {
+  margin-top: 4rem;
+}
