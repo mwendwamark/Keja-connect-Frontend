@@ -1,0 +1,150 @@
+.home-page {
+    width: 100%;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+.home-hero-section {
+    height: 80vh;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-images,
+.hero-title {
+    width: 48%;
+    padding: 5px;
+}
+
+.hero-title h2 {
+    font-weight: 500;
+    font-family: var(--h1-ff);
+    letter-spacing: -0.5px;
+    font-size: var(--h2-fs);
+    background: linear-gradient(90deg, var(--green-color), var(--light-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    margin-bottom: -10px;
+}
+
+
+.hero-title h1 {
+    font-weight: 600;
+    font-size: var(--h1-fs);
+    color: var(--text-color);
+    font-family: var(--h1-ff);
+    letter-spacing: -.1px;
+}
+
+.hero-title p {
+    color: var(--faint-text-color);
+    margin-bottom: 30px;
+}
+
+.hero-title a {
+    margin-bottom: 200px;
+    padding: 15px 30px 15px;
+    background-color: var(--light-green);
+    border-radius: 40px;
+    color: var(--text-color);
+}
+
+.hero-images {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.hero-image-landlord,
+.hero-image-student {
+    width: 42%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.hero-image-student {
+    height: 70vh;
+    background-color: var(--green-color);
+    border-top-left-radius: 170px;
+    border-top-right-radius: 170px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hero-student-contents {
+    text-align: center;
+    color: var(--background-color);
+}
+
+.hero-welcome {
+    color: var(--faint-text-color);
+}
+
+.hero-role {
+    margin-bottom: 20px;
+}
+
+.hero-register {
+    color: var(--background-color);
+    margin-top: 100px;
+    padding: 8px 18px 8px;
+    background-color:  var(--faint-text-color);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.5s ease;
+}
+
+.hero-register.active,
+.hero-register:hover {
+    border:1px solid var(--faint-text-color);
+    color: var(--faint-text-color);
+    background-color: transparent;
+}
+
+.hero-image-landlord {
+    height: 80vh;
+    background-color: var(--pink-color);
+    border-top-left-radius: 170px;
+    border-top-right-radius: 170px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hero-landlord-contents {
+    text-align: center;
+}
+
+.student-img,
+.landlord-img {
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.student-img img,
+.landlord-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.8s ease-in-out;
+}
+
+.student-img img:hover,
+.landlord-img img:hover {
+    transform: scale(1.2);
+}
