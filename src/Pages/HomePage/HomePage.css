@@ -6,7 +6,7 @@
 
 .home-hero-section {
     height: 80vh;
-    width: 90%;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
     display: flex;
@@ -40,7 +40,7 @@
     font-size: var(--h1-fs);
     color: var(--text-color);
     font-family: var(--h1-ff);
-    letter-spacing: -.1px;
+    letter-spacing: -1px;
 }
 
 .hero-title p {
@@ -98,7 +98,7 @@
     color: var(--background-color);
     margin-top: 100px;
     padding: 8px 18px 8px;
-    background-color:  var(--faint-text-color);
+    background-color: var(--faint-text-color);
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -108,7 +108,7 @@
 
 .hero-register.active,
 .hero-register:hover {
-    border:1px solid var(--faint-text-color);
+    border: 1px solid var(--faint-text-color);
     color: var(--faint-text-color);
     background-color: transparent;
 }
@@ -147,4 +147,106 @@
 .student-img img:hover,
 .landlord-img img:hover {
     transform: scale(1.2);
+}
+
+/*===================== Home introduction section =====================*/
+
+.home-introduction-section {
+    background-color: var(--green-color);
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.intro-image-contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.intro-image,
+.intro-contents {
+    width: 49%;
+}
+
+
+.intro-image img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+}
+
+.intro-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.intro-contents h1 {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--background-color);
+    font-family: var(--h1-ff);
+    letter-spacing: .5px;
+}
+
+.intro-contents h2 {
+    font-weight: 500;
+    color: var(--faint-text-color);
+    font-size: 30px;
+}
+
+.intro-contents p {
+    /* color: var(--faint-text-color); */
+    color: var(--background-color);
+}
+
+.intro-section-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0px 20px;
+    background-color: transparent;
+}
+
+.data-item {
+    text-align: center;
+    margin: 0 20px;
+}
+
+.data-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.data-label {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.data-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.data-number {
+    animation: countUp 0.6s ease-in;
 }
