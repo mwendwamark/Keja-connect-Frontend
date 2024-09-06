@@ -4,9 +4,7 @@
     background-color: var(--background-color);
 }
 
-.navbar a.active {
-    color: var(--faint-text-color);
-}
+
 
 .navbar-container {
     width: 100%;
@@ -55,6 +53,21 @@
 }
 
 .nav-elements ul li a:hover {
+    color: var(--faint-text-color);
+}
+
+.nav-elements ul li a.active::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: var(--green-color);
+    left: 15%;
+    bottom: -2px;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.nav-elements ul li a.active {
     color: var(--faint-text-color);
 }
 

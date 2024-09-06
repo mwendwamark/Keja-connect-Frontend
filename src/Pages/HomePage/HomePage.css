@@ -163,7 +163,7 @@
 .intro-image-contents {
     display: flex;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;
 }
 
 .intro-image,
@@ -250,3 +250,77 @@
 .data-number {
     animation: countUp 0.6s ease-in;
 }
+
+/* ===========================Why choose us=========================== */
+.why-choose-us-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.why-choose-us-title {
+    width: 100%;
+    align-items: center;
+}
+
+.why-choose-us-title h1 {
+    font-weight: 600;
+    font-size: var(--h1-fs);
+    color: var(--text-color);
+    font-family: var(--h1-ff);
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+.why-choose-us-landlords,
+.why-choose-us-students {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.why-choose-us-landlord-image,
+.why-choose-us-student-image,
+.why-choose-us-student-contents,
+.why-choose-us-landlord-contents {
+    width: 45%;
+}
+
+.why-choose-us-student-contents h2,
+.why-choose-us-landlord-contents h2 {
+    font-weight: 500;
+}
+
+.why-choose-us-student-contents h3,
+.why-choose-us-landlord-contents h3,
+.why-choose-us-student-contents p,
+.why-choose-us-landlord-contents p {
+    font-weight: 400;
+    color: var(--faint-text-color);
+}
+
+.why-choose-us-student-contents h3::before,
+.why-choose-us-landlord-contents h3::before {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--text-color);
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.why-choose-us-landlord-image,
+.why-choose-us-student-image {
+    height: 300px;
+}
+
+.why-choose-us-landlord-image img,
+.why-choose-us-student-image img {
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.3);
+}
+
+@media screen and (max-width: 768px) {}

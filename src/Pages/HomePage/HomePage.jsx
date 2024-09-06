@@ -1,9 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./HomePage.css";
+import Testimonials from "../../assets/Testimonial/Testimonials";
 import landlordimg from "../../assets/Hero-landlord.png";
 import studentimg from "../../assets/Hero-student.png";
 import introImg from "../../assets/Home-intro-img.png";
+import chooseUs1 from "../../assets/choose1.png";
+import chooseUs2 from "../../assets/choose2.png";
 
 const HomePage = () => {
   return (
@@ -79,6 +82,54 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="why-choose-us-section container section">
+          <div className="why-choose-us-title">
+            <h1>Why choose us?</h1>
+          </div>
+          <div className="why-choose-us-students container">
+            <div className="why-choose-us-student-contents">
+              <h3>FOR STUDENTS</h3>
+              <h2>Reduce the hassle for hostel hunting</h2>
+              <p>
+                Discover a wide range of hostels with detailed information,
+                including location, price, amenities, and images. Easily book
+                your preferred hostel, manage your bookings, and view your
+                booking history. Your home away from home is just a few clicks
+                away!
+              </p>
+            </div>
+            <div className="why-choose-us-student-image">
+              <img src={chooseUs1} alt="" />
+            </div>
+          </div>
+
+          <div className="why-choose-us-landlords container">
+            {" "}
+            <div className="why-choose-us-landlord-image">
+              <img src={chooseUs2} alt="" />
+            </div>
+            <div className="why-choose-us-landlord-contents">
+              <h3>FOR LANDLORDS</h3>
+              <h2>Scale up your rental business effortlessly</h2>
+              <p>
+                List your hostels and reach thousands of potential student
+                tenants. Manage your listings, track bookings, and calculate
+                your earnings effortlessly through your personalized dashboard.
+                Jamii Hostels makes it simple to fill your rooms and grow your
+                business.
+              </p>
+            </div>{" "}
+          </div>
+        </div>
+
+        <div className="featured-hostels-section"></div>
+
+        <div className="testimonial-section">
+          <div className="testimonial-items">
+            <Testimonials />
           </div>
         </div>
       </div>
