@@ -96,7 +96,6 @@
 
 .hero-register {
     color: var(--background-color);
-    margin-top: 100px;
     padding: 8px 18px 8px;
     background-color: var(--faint-text-color);
     border-radius: 20px;
@@ -130,7 +129,7 @@
 .student-img,
 .landlord-img {
     width: 90%;
-    height: auto;
+    height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,8 +137,8 @@
 
 .student-img img,
 .landlord-img img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     transition: transform 0.8s ease-in-out;
 }
@@ -154,6 +153,7 @@
 .home-introduction-section {
     background-color: var(--green-color);
     width: 100%;
+    padding: 30px 0 30px;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -169,6 +169,7 @@
 .intro-image,
 .intro-contents {
     width: 49%;
+    height: 80%;
 }
 
 
@@ -186,30 +187,40 @@
     margin-bottom: auto;
 }
 
-.intro-contents h1 {
-    font-weight: 600;
-    font-size: 20px;
+.intro-contents h3 {
+    font-weight: 400;
     color: var(--background-color);
-    font-family: var(--h1-ff);
+    font-family: var(--text-ff);
     letter-spacing: .5px;
+    text-transform: uppercase;
+
+}
+
+.intro-contents h3::before {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--background-color);
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .intro-contents h2 {
     font-weight: 500;
     color: var(--faint-text-color);
-    font-size: 30px;
 }
 
 .intro-contents p {
-    /* color: var(--faint-text-color); */
     color: var(--background-color);
 }
 
 .intro-section-data {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
     align-items: center;
-    padding: 40px 0px 20px;
+    padding: 10px 0px 20px;
     background-color: transparent;
 }
 
@@ -219,9 +230,9 @@
 }
 
 .data-number {
-    font-size: 2.5rem;
+    font-size: var(--h1-fs);
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--light-green);
     margin-bottom: 10px;
 }
 
@@ -256,53 +267,25 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 20px;
+    padding: 40px 0;
 }
 
 .why-choose-us-title {
-    width: 100%;
-    align-items: center;
-}
-
-.why-choose-us-title h1 {
-    font-weight: 600;
-    font-size: var(--h1-fs);
-    color: var(--text-color);
-    font-family: var(--h1-ff);
-    letter-spacing: -1px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.why-choose-us-landlords,
-.why-choose-us-students {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.why-choose-us-title h2 {
+    color: var(--text-color);
 }
 
-.why-choose-us-landlord-image,
-.why-choose-us-student-image,
-.why-choose-us-student-contents,
-.why-choose-us-landlord-contents {
-    width: 45%;
-}
-
-.why-choose-us-student-contents h2,
-.why-choose-us-landlord-contents h2 {
-    font-weight: 500;
-}
-
-.why-choose-us-student-contents h3,
-.why-choose-us-landlord-contents h3,
-.why-choose-us-student-contents p,
-.why-choose-us-landlord-contents p {
-    font-weight: 400;
+.why-choose-us-title h3 {
     color: var(--faint-text-color);
+    font-weight: 400;
 }
 
-.why-choose-us-student-contents h3::before,
-.why-choose-us-landlord-contents h3::before {
+.why-choose-us-title h3::before {
     content: "";
     display: inline-block;
     width: 50px;
@@ -311,16 +294,268 @@
     margin-right: 10px;
     vertical-align: middle;
 }
+
+.why-choose-us-students,
+.why-choose-us-landlords {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.why-choose-us-students {
+    background-color: var(--student-bg-color);
+}
+
+.why-choose-us-landlords {
+    background-color: var(--landlord-bg-color);
+}
+
+.why-choose-us-student-image,
 .why-choose-us-landlord-image,
-.why-choose-us-student-image {
-    height: 300px;
-}
-
-.why-choose-us-landlord-image img,
-.why-choose-us-student-image img {
+.why-choose-us-student-contents,
+.why-choose-us-landlord-contents {
+    flex: 1;
     height: 100%;
-    object-fit: cover;
-    transform: scale(1.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-@media screen and (max-width: 768px) {}
+.why-choose-us-student-image img,
+.why-choose-us-landlord-image img {
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.why-choose-us-student-contents h3,
+.why-choose-us-landlord-contents h3 {
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--faint-text-color);
+}
+
+.why-choose-us-student-contents h3::before,
+.why-choose-us-landlord-contents h3::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 2px;
+    background-color: var(--text-color);
+    margin-right: 10px;
+    vertical-align: baseline;
+}
+
+.why-choose-us-student-contents h2,
+.why-choose-us-landlord-contents h2 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.why-choose-us-student-contents p,
+.why-choose-us-landlord-contents p {
+    font-weight: 400;
+    color: var(--faint-text-color);
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 1023px) {
+
+    .hero-images,
+    .hero-title {
+        width: 49%;
+        padding: 3px;
+    }
+
+    .hero-title h1 {
+        font-size: 40px;
+    }
+
+    .hero-image-landlord,
+    .hero-image-student {
+        width: 43%;
+
+
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    .hero-image-landlord,
+    .hero-image-student {
+        width: 48%;
+    }
+
+    .hero-title h1 {
+        letter-spacing: -2.2px;
+        word-spacing: -1px;
+    }
+
+    .hero-images {
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home-hero-section {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    .hero-images {
+        width: 75%;
+    }
+
+    .hero-title {
+        width: 95%;
+        padding: 5px;
+    }
+
+    .hero-image-student,
+    .hero-image-landlord {
+        margin: 20px 0 -3px;
+    }
+
+    .hero-title {
+        align-items: center;
+        text-align: center;
+    }
+
+    .home-introduction-section {
+        padding: 70px 0 30px;
+    }
+
+    .intro-image-contents {
+        flex-direction: column-reverse;
+    }
+
+    .intro-image,
+    .intro-contents {
+        width: 90%;
+        height: 80%;
+    }
+
+    .intro-image {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+
+    .intro-image img {
+        width: 70%;
+        height: 70%;
+        object-fit: cover;
+    }
+
+    .data-number {
+        font-size: 30px;
+        font-weight: bold;
+        color: var(--light-green);
+        margin-bottom: 10px;
+    }
+
+    .why-choose-us-landlords {
+        flex-direction: column-reverse;
+    }
+
+    .why-choose-us-students {
+        flex-direction: column;
+    }
+
+    .why-choose-us-landlord-image,
+    .why-choose-us-student-image,
+    .why-choose-us-student-contents,
+    .why-choose-us-landlord-contents {
+        width: 90%;
+    }
+
+    .why-choose-us-student-image img,
+    .why-choose-us-landlord-image img {
+        width: 70%;
+        height: 70%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .hero-images {
+        width: 90%;
+    }
+
+    .hero-image-landlord {
+        height: 70vh;
+    }
+
+    .hero-image-student {
+        height: 60vh;
+    }
+
+    .intro-section-data {
+        gap: 0px;
+        justify-content: space-around;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    .intro-section-data {
+        width: 100%;
+    }
+
+    .data-number {
+        font-size: 24px;
+    }
+
+    .hero-title h1 {
+        line-height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .intro-image,
+    .intro-contents {
+        width: 100%;
+    }
+
+    .hero-image-landlord,
+    .hero-image-student {
+        width: 49%;
+    }
+
+    .hero-image-landlord {
+        height: 60vh;
+    }
+
+    .hero-image-student {
+        height: 50vh;
+    }
+
+    .hero-register {
+        padding: 5px 12px 5px;
+    }
+
+    .why-choose-us-students,
+    .why-choose-us-landlords {
+        padding: 5px;
+    }
+
+    .why-choose-us-student-contents h2,
+    .why-choose-us-landlord-contents h2 {
+        font-weight: 500;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .why-choose-us-student-image img,
+    .why-choose-us-landlord-image img {
+        width: 90%;
+        height: 90%;
+    }
+
+}

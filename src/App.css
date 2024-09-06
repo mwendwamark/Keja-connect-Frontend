@@ -50,6 +50,13 @@ ul {
   list-style: none;
 }
 
+.h2-heading {
+  font-size: 36px;
+  font-weight: 500;
+  font-family: var(--h1-ff);
+  letter-spacing: -1px;
+}
+
 .container {
   padding: 0;
   margin-left: auto;
@@ -59,4 +66,13 @@ ul {
 
 .section {
   margin-top: 4rem;
+}
+
+
+@media screen and (max-width: 900px) {
+  .h2-heading {
+    letter-spacing: -2px;
+    font-size: 32px;
+    word-spacing: -0.5px;
+  }
 }

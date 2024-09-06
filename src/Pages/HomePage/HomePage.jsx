@@ -59,35 +59,38 @@ const HomePage = () => {
               <img src={introImg} alt="" />
             </div>
             <div className="intro-contents">
-              <h1>Introducing Jamii hostels</h1>
-              <h2>Find your perfect home away from home</h2>
+              <h3>Introduction</h3>
+              <h2 className="h2-heading">
+                Find your perfect home away from home
+              </h2>
               <p>
                 Jamii Hostels is the ultimate platform for students seeking
                 comfortable and affordable accommodation near their
                 universities. We bridge the gap between students and hostel
                 owners, providing a seamless and efficient booking experience.
               </p>
-              <div className="intro-section-data">
-                <div className="data-item">
-                  <h2 className="data-number">8475+</h2>
-                  <p className="data-label">Students</p>
-                </div>
-                <div className="data-item">
-                  <h2 className="data-number">594+</h2>
-                  <p className="data-label">Landlords hosted</p>
-                </div>
-                <div className="data-item">
-                  <h2 className="data-number">12065+</h2>
-                  <p className="data-label">Hostels listed</p>
-                </div>
-              </div>
+            </div>{" "}
+          </div>{" "}
+          <div className="intro-section-data">
+            <div className="data-item">
+              <h2 className="data-number">8475+</h2>
+              <p className="data-label">Students</p>
+            </div>
+            <div className="data-item">
+              <h2 className="data-number">594+</h2>
+              <p className="data-label">Landlords</p>
+            </div>
+            <div className="data-item">
+              <h2 className="data-number">12065+</h2>
+              <p className="data-label">Hostels</p>
             </div>
           </div>
         </div>
 
         <div className="why-choose-us-section container section">
           <div className="why-choose-us-title">
-            <h1>Why choose us?</h1>
+            <h3>DISCOVER & GROW</h3>
+            <h2 className="h2-heading">Why choose us?</h2>
           </div>
           <div className="why-choose-us-students container">
             <div className="why-choose-us-student-contents">
@@ -107,7 +110,6 @@ const HomePage = () => {
           </div>
 
           <div className="why-choose-us-landlords container">
-            {" "}
             <div className="why-choose-us-landlord-image">
               <img src={chooseUs2} alt="" />
             </div>
@@ -125,7 +127,8 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="featured-hostels-section"></div>
+        <div className="featured-hostels-section">
+        </div>
 
         <div className="testimonial-section">
           <div className="testimonial-items">

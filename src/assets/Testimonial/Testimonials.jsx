@@ -12,7 +12,7 @@ const Testimonial = () => {
     <section className="testimonial section">
       <div className="testimonial-contents container">
         <h3 className="section-subtitle">TESTIMONIALS</h3>
-        <h2 className="section-title">What Others Have To Say About Us</h2>
+        <h2 className="section-title h2-heading">What Others Have To Say About Us</h2>
 
         <Swiper
           className="testimonial-container"
@@ -37,7 +37,7 @@ const Testimonial = () => {
               spaceBetween: 10,
             },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 10,
             },
           }}
