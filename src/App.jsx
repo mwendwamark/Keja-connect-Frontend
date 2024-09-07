@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // Import files
 import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
@@ -12,17 +12,15 @@ import LandlordSignup from "./Landlords/Signup/LandlordSignup";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/role-selection" element={<RoleSelection/>}></Route>
-          <Route path="/student-signup" element={<StudentSignup/>}></Route>
-          <Route path= "/student-login" element={<StudentLogin/>}></Route>
-          <Route path= "/landlord-signup" element={<LandlordSignup/>}></Route>
-          <Route path= "/landlord-login" element={<LandlordLogin/>}></Route>
-        </Routes>
-      </BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/role-selection" element={<RoleSelection />}></Route>
+        <Route path="/student-signup" element={<StudentSignup />}></Route>
+        <Route path="/student-login" element={<StudentLogin />}></Route>
+        <Route path="/landlord-signup" element={<LandlordSignup />}></Route>
+        <Route path="/landlord-login" element={<LandlordLogin />}></Route>
+      </Routes>
     </>
   );
 }
