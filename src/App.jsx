@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
 import Navbar from "./Components/Navbar/Navbar";
+import RoleSelection from "./Pages/RoleSelection/RoleSelection";
 function App() {
   return (
     <>
@@ -11,6 +12,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/role-selection" element={<RoleSelection/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

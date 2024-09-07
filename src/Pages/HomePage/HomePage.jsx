@@ -20,7 +20,7 @@ const HomePage = () => {
               Students can find and reserve the perfect hostels, while landlords
               list and manage their properties—all in one place.
             </p>
-            <NavLink to="/choose-role">Get started </NavLink>
+            <NavLink to="/role-selection">Get started </NavLink>
           </div>
 
           <div className="hero-images">
