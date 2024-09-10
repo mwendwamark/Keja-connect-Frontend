@@ -9,6 +9,8 @@ import StudentSignup from "./Students/Signup/StudentSignup";
 import StudentLogin from "./Students/Login/StudentLogin";
 import LandlordLogin from "./Landlords/Login/LandlordLogin";
 import LandlordSignup from "./Landlords/Signup/LandlordSignup";
+import LandlordNavbar from "./Landlords/LandlordNavbar/LandlordNavbar";
+
 function App() {
   return (
     <>

@@ -50,6 +50,15 @@ ul {
   list-style: none;
 }
 
+button {
+  outline: none;
+  border: none;
+}
+
+input {
+  outline: none;
+}
+
 .h2-heading {
   font-size: 36px;
   font-weight: 500;

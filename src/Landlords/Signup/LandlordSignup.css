@@ -1,0 +1,245 @@
+.landlord-signup-page {
+    width: 100%;
+    padding: 10px;
+    height: 100vh;
+}
+
+.landlord-signup-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--faint-text-color);
+    height: 100%;
+    align-items: center;
+}
+
+.landlord-signup-image {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+.landlord-signup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+}
+
+.landlord-overlay-text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.landlord-overlay-text h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: var(--green-color);
+}
+
+.landlord-overlay-text p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: var(--text-color);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landlord-signup-form {
+    width: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 5px;
+
+}
+
+.landlord-signup-form label {
+    color: var(--faint-text-color);
+}
+
+.landlord-signup-title {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 20px;
+}
+
+.landlord-signup-title h1::before {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--text-color);
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.landlord-names-input {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.landlord-first-name,
+.landlord-last-name {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.landlord-email-input,
+.landlord-phone-number-input {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.landlord-password-input,
+.landlord-password-confirmation-input {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.landlord-password-field {
+    position: relative;
+    width: 100%;
+}
+
+.landlord-password-field input {
+    padding: 12px;
+    width: 100%;
+    background-color: var(--background-color);
+    border: 0.2px solid var(--faint-text-color);
+}
+
+.landlord-eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.landlord-signup-form input {
+    padding: 12px;
+    background-color: var(--background-color);
+    border: 0.2px solid var(--faint-text-color);
+}
+
+.landlord-first-name label,
+.landlord-last-name label {
+    color: var(--faint-text-color);
+}
+
+.landlord-signup-button {
+    width: 70%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.landlord-signup-button button {
+    padding: 12px;
+    width: 100%;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.landlord-signup-button button:hover {
+    opacity: .8;
+}
+
+.landlord-signup-google-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 0.2px solid var(--faint-text-color);
+    padding: 10px;
+    width: 70%;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.landlord-signup-google-button:hover {
+    background-color: var(--faint-text-color);
+    color: var(--background-color);
+
+}
+
+.landlord-have-an-account span a {
+    color: var(--blue-link-color);
+    transition: 0.3s linear;
+}
+
+.landlord-have-an-account span a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .landlord-email-input,
+    .landlord-phone-number-input,
+    .landlord-password-input,
+    .landlord-password-confirmation-input,
+    .landlord-names-input,
+    .landlord-signup-google-button,
+    .landlord-signup-button {
+        width: 90%;
+    }
+
+    .landlord-signup-page {
+        margin-top: 40px;
+    }
+
+}
+
+@media screen and (max-width: 870px) {
+
+    .landlord-signup-page {
+        padding: 0px;
+        margin-top: 0px;
+    }
+
+    .landlord-signup-image {
+        display: none;
+    }
+
+    .landlord-signup-container {
+        border: none;
+    }
+
+    .landlord-signup-form {
+        border: 1px solid var(--faint-text-color);
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .landlord-signup-form {
+        border: 1px solid var(--faint-text-color);
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .landlord-signup-form {
+        border: 1px solid var(--faint-text-color);
+        width: 110%;
+    }
+}
