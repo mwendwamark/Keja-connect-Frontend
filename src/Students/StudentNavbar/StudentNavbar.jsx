@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const LandlordNavbar = () => {
+const StudentNavbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
@@ -20,4 +20,4 @@ const LandlordNavbar = () => {
   );
 };
 
-export default LandlordNavbar;
+export default StudentNavbar;
