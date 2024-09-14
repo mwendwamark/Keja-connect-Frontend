@@ -7,10 +7,11 @@ import studentimg from "../../assets/Hero-student.png";
 import introImg from "../../assets/Home-intro-img.png";
 import chooseUs1 from "../../assets/choose1.png";
 import chooseUs2 from "../../assets/choose2.png";
-
+import Navbar from "../../Components/Navbar/Navbar";
 const HomePage = () => {
   return (
     <>
+      <Navbar />
       <div className="home-page">
         <div className="home-hero-section container">
           <div className="hero-title">
@@ -127,8 +128,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="featured-hostels-section">
-        </div>
+        <div className="featured-hostels-section"></div>
 
         <div className="testimonial-section">
           <div className="testimonial-items">

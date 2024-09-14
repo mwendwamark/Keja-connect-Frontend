@@ -4,6 +4,7 @@ import img from "../../assets/LandlordSignup.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { NavLink } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const LandlordSignup = () => {
   const [first_name, setFirstName] = useState("");
@@ -60,6 +61,7 @@ const LandlordSignup = () => {
 
   return (
     <>
+      <Navbar />
       <div className="landlord-signup-page container">
         <div className="landlord-signup-container container">
           <div className="landlord-signup-image">

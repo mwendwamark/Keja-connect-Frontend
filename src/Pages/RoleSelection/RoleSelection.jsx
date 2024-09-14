@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import landlordImg from "../../assets/role-landlord.png"; // Your image path
 import studentImg from "../../assets/role-student.png"; // Your image path
 import "./RoleSelection.css";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const RoleSelection = () => {
   const [selectedRole, setSelectedRole] = useState(null);
@@ -25,37 +26,40 @@ const RoleSelection = () => {
   };
 
   return (
-    <div className="role-selection-page container">
-      <h3>What brings you here?</h3>
-      <h2 className="h2-heading">
-        Join Jamii Hostels today by creating an account
-      </h2>
-      <div className="role-selection-container">
-        <div
-          className={`role-card ${
-            selectedRole === "landlord" ? "selected-landlord" : ""
-          }`}
-          onClick={() => handleRoleSelection("landlord")}
-        >
-          <h4>Landlord</h4>
-          <img src={landlordImg} alt="Landlord" />
+    <>
+      <Navbar />
+      <div className="role-selection-page container">
+        <h3>What brings you here?</h3>
+        <h2 className="h2-heading">
+          Join Jamii Hostels today by creating an account
+        </h2>
+        <div className="role-selection-container">
+          <div
+            className={`role-card ${
+              selectedRole === "landlord" ? "selected-landlord" : ""
+            }`}
+            onClick={() => handleRoleSelection("landlord")}
+          >
+            <h4>Landlord</h4>
+            <img src={landlordImg} alt="Landlord" />
+          </div>
+          <div
+            className={`role-card ${
+              selectedRole === "student" ? "selected-student" : ""
+            }`}
+            onClick={() => handleRoleSelection("student")}
+          >
+            <h4>Student</h4>
+            <img src={studentImg} alt="Student" />
+          </div>
         </div>
-        <div
-          className={`role-card ${
-            selectedRole === "student" ? "selected-student" : ""
-          }`}
-          onClick={() => handleRoleSelection("student")}
-        >
-          <h4>Student</h4>
-          <img src={studentImg} alt="Student" />
-        </div>
+        <p>Select your role above</p>
+        <button className="continue-btn" onClick={handleContinue}>
+          Continue to Signup
+        </button>
+        <ToastContainer />
       </div>
-      <p>Select your role above</p>
-      <button className="continue-btn" onClick={handleContinue}>
-        Continue to Signup
-      </button>
-      <ToastContainer />
-    </div>
+    </>
   );
 };
 

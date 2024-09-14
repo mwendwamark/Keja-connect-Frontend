@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 // Import files
 import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
-import Navbar from "./Components/Navbar/Navbar";
+// import Navbar from "./Components/Navbar/Navbar";
 import RoleSelection from "./Pages/RoleSelection/RoleSelection";
 import StudentSignup from "./Students/Signup/StudentSignup";
 import StudentLogin from "./Students/Login/StudentLogin";
@@ -15,7 +15,7 @@ import HostelsPage from "./Students/HostelsPage/HostelsPage";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/role-selection" element={<RoleSelection />}></Route>

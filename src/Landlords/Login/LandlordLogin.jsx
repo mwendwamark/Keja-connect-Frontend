@@ -3,6 +3,7 @@ import "./LandlordLogin.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate, NavLink } from "react-router-dom";
 import img from "../../assets/landlordlogin.png";
+import Navbar from "../../Components/Navbar/Navbar";
 
 function LandlordLogin() {
   const [email, setEmail] = useState("");
@@ -41,70 +42,73 @@ function LandlordLogin() {
   }
 
   return (
-    <div className="landlord-login-page container">
-      <div className="landlord-login-container container">
-        <div className="landlord-login-image">
-          <img src={img} alt="landlord" />
-        </div>
+    <>
+      <Navbar />
+      <div className="landlord-login-page container">
+        <div className="landlord-login-container container">
+          <div className="landlord-login-image">
+            <img src={img} alt="landlord" />
+          </div>
 
-        <form className="landlord-login-form" onSubmit={handleSubmit}>
-          <div className="landlord-login-form-title">
-            <h1 className="h2-heading">Welcome back!</h1>
-            <p>Login</p>
-          </div>
-          <div className="landlord-login-input">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="landlord-login-password">
-            <label htmlFor="password">Password</label>
-            <div className="landlord-login-password-field">
+          <form className="landlord-login-form" onSubmit={handleSubmit}>
+            <div className="landlord-login-form-title">
+              <h1 className="h2-heading">Welcome back!</h1>
+              <p>Login</p>
+            </div>
+            <div className="landlord-login-input">
+              <label htmlFor="email">Email</label>
               <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="landlord-login-eye-icon"
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
             </div>
-          </div>
-          <div className="landlord-forgot-pass">
-            <NavLink to="/forgot-password">Forgot password?</NavLink>
-          </div>
+            <div className="landlord-login-password">
+              <label htmlFor="password">Password</label>
+              <div className="landlord-login-password-field">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="landlord-login-eye-icon"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+            </div>
+            <div className="landlord-forgot-pass">
+              <NavLink to="/forgot-password">Forgot password?</NavLink>
+            </div>
 
-          <div className="error-messages">
-            {errors.map((error, index) => (
-              <p key={index} style={{ color: "red" }}>
-                {error}
+            <div className="error-messages">
+              {errors.map((error, index) => (
+                <p key={index} style={{ color: "red" }}>
+                  {error}
+                </p>
+              ))}
+            </div>
+
+            <button type="submit" className="landlord-login-btn">
+              Login
+            </button>
+            <div className="landlord-dont-have-account">
+              <p>
+                Don't have an account?
+                <NavLink to="/landlord-signup">Signup</NavLink>
               </p>
-            ))}
-          </div>
-
-          <button type="submit" className="landlord-login-btn">
-            Login
-          </button>
-          <div className="landlord-dont-have-account">
-            <p>
-              Don't have an account?
-              <NavLink to="/landlord-signup">Signup</NavLink>
-            </p>
-          </div>
-        </form>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

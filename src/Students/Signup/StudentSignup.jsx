@@ -4,6 +4,7 @@ import img from "../../assets/StudentSignup.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { NavLink } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const StudentSignup = () => {
   const [first_name, setFirstName] = useState("");
@@ -60,6 +61,7 @@ const StudentSignup = () => {
 
   return (
     <>
+      <Navbar />
       <div className="signup-page container">
         <div className="signup-container container">
           <div className="signup-image">

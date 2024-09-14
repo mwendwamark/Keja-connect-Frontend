@@ -77,6 +77,11 @@
     padding: 12px;
     width: 100%;
     box-sizing: border-box;
+    border: 0.2px solid var(--faint-text-color);
+}
+.landlord-login-password label,
+.landlord-login-input label{
+    color: var(--faint-text-color);
 }
 
 .landlord-forgot-pass {

@@ -3,6 +3,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import "./StudentLogin.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import img from "../../assets/studentlogin.jpg";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const StudentLogin = () => {
   const [email, setEmail] = useState("");
@@ -41,68 +42,71 @@ const StudentLogin = () => {
   }
 
   return (
-    <div className="student-login-page container">
-      <div className="student-login-container container">
-        <div className="student-login-image">
-          <img src={img} alt="student" />
-        </div>
-        <form className="student-login-form" onSubmit={handleSubmit}>
-          <div className="student-login-form-title">
-            <h1 className="h2-heading">Welcome back!</h1>
-            <p>Login</p>
+    <>
+    <Navbar/>
+      <div className="student-login-page container">
+        <div className="student-login-container container">
+          <div className="student-login-image">
+            <img src={img} alt="student" />
           </div>
-          <div className="student-login-input">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="student-login-password">
-            <label htmlFor="password">Password</label>
-            <div className="student-login-password-field">
+          <form className="student-login-form" onSubmit={handleSubmit}>
+            <div className="student-login-form-title">
+              <h1 className="h2-heading">Welcome back!</h1>
+              <p>Login</p>
+            </div>
+            <div className="student-login-input">
+              <label htmlFor="email">Email</label>
               <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="student-login-eye-icon"
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
             </div>
-          </div>
-          <div className="student-forgot-pass">
-            <NavLink to="/forgot-password">Forgot password?</NavLink>
-          </div>
+            <div className="student-login-password">
+              <label htmlFor="password">Password</label>
+              <div className="student-login-password-field">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="student-login-eye-icon"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+            </div>
+            <div className="student-forgot-pass">
+              <NavLink to="/forgot-password">Forgot password?</NavLink>
+            </div>
 
-          <div className="error-messages">
-            {errors.map((error, index) => (
-              <p key={index}>{error}</p>
-            ))}
-          </div>
+            <div className="error-messages">
+              {errors.map((error, index) => (
+                <p key={index}>{error}</p>
+              ))}
+            </div>
 
-          <button type="submit" className="student-login-btn">
-            Login
-          </button>
+            <button type="submit" className="student-login-btn">
+              Login
+            </button>
 
-          <div className="student-dont-have-account">
-            <p>
-              Don't have an account?
-              <NavLink to="/student-signup">Signup</NavLink>
-            </p>
-          </div>
-        </form>
+            <div className="student-dont-have-account">
+              <p>
+                Don't have an account?
+                <NavLink to="/student-signup">Signup</NavLink>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
