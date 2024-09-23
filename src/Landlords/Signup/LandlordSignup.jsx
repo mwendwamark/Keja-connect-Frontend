@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./LandlordSignup.css";
 import img from "../../assets/LandlordSignup.jpg";
 import { FcGoogle } from "react-icons/fc";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Navbar from "../../Components/Navbar/Navbar";
 
@@ -16,6 +16,7 @@ const LandlordSignup = () => {
   const [errors, setErrors] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (errors.length > 0) {
@@ -51,7 +52,7 @@ const LandlordSignup = () => {
           setPasswordConfirmation("");
           setErrors([]);
 
-          window.location.href = "/landlord-login";
+          navigate("/landlord-login");
         });
       } else {
         r.json().then((e) => setErrors(e.errors));

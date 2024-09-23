@@ -12,7 +12,10 @@ const StudentNavbar = () => {
         </NavLink>
         <ul className="navbar-links">
           {user && (
-            <li className="navbar-username">Welcome, {user.first_name}!</li>
+            <li className="navbar-username">
+              Welcome,{" "}
+              <NavLink to="/student-profile">{user.first_name}!</NavLink>
+            </li>
           )}
         </ul>
       </div>

@@ -11,6 +11,8 @@ import LandlordLogin from "./Landlords/Login/LandlordLogin";
 import LandlordSignup from "./Landlords/Signup/LandlordSignup";
 import LandlordDashboard from "./Landlords/Dashboard/LandlordDashboard";
 import HostelsPage from "./Students/HostelsPage/HostelsPage";
+import StudentProfile from "./Students/Profile/StudentProfile";
+import LandlordProfile from "./Landlords/Profile/LandlordProfle";
 
 function App() {
   return (
@@ -23,10 +25,14 @@ function App() {
         <Route path="/landlord-signup" element={<LandlordSignup />}></Route>
         <Route path="/student-login" element={<StudentLogin />}></Route>
         <Route path="/landlord-login" element={<LandlordLogin />}></Route>
-        <Route path= "/landlord-dashboard" element= {<LandlordDashboard/>}></Route>       
-        <Route path="/hostels" element={<HostelsPage/>}></Route>
+        <Route
+          path="/landlord-dashboard"
+          element={<LandlordDashboard />}
+        ></Route>
+        <Route path="/hostels" element={<HostelsPage />}></Route>
+        <Route path="/landlord-profile" element={<LandlordProfile />}></Route>
+        <Route path="/student-profile" element={<StudentProfile />}></Route>
       </Routes>
-
     </>
   );
 }
