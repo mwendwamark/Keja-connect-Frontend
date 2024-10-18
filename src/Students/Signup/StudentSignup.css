@@ -1,133 +1,136 @@
-.signup-page {
+:root {
+    --primary-font-size: 15px;
+    --input-padding: 10px;
+    --input-border: 1px solid var(--faint-text-color);
+    --container-width: 100%;
+}
+
+.student-signup-page {
     width: 100%;
-    padding: 10px;
     height: 100vh;
-}
-
-.signup-container {
-    width: 100%;
     display: flex;
-    justify-content: center;
-    border: 1px solid var(--faint-text-color);
-    height: 100%;
     align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
-.signup-image {
+.student-signup-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: var(--input-border);
+    background-color: white;
+    height: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.student-signup-image {
     position: relative;
     width: 50%;
     height: 100%;
 }
 
-.signup-image img {
+.student-signup-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: grayscale(30%);
 }
 
-.overlay-text {
+.student-overlay-text {
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
     padding: 20px;
     border-radius: 10px;
     width: 100%;
 }
 
-.overlay-text h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    color: var(--background-color);
-
+.student-overlay-text h1 {
+    color: var(--green-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-.overlay-text p {
+.student-overlay-text p {
     font-size: 1.2rem;
-    margin-top: 10px;
-    color: var(--faint-text-color);
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    color: var(--background-color);
 }
 
-
-.signup-form {
+.student-signup-form {
     width: 50%;
-    align-items: center;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 5px;
-
+    justify-content: center;
+    align-items: center;
 }
 
-.signup-form label {
-    color: var(--faint-text-color);
-}
-
-.signup-title {
-    width: 100%;
+.student-signup-title {
     text-align: center;
-    padding: 20px 0 20px;
+    margin-bottom: 50px;
 }
 
-.signup-title h1::before {
-    content: "";
-    display: inline-block;
-    width: 50px;
-    height: 2px;
-    background-color: var(--text-color);
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-.names-input {
-    width: 70%;
+.student-names,
+.student-phone-number-input,
+.student-email-input,
+.student-password-input,
+.student-password-confirmation {
     display: flex;
+    flex-direction: column;
+    width: var(--container-width);
+    margin: 10px auto 0;
+}
+
+.student-names {
+    flex-direction: row;
     justify-content: space-between;
 }
 
-.first-name,
-.last-name {
-    display: flex;
-    flex-direction: column;
+.student-first-name,
+.student-last-name {
     width: 48%;
 }
 
-.email-input,
-.phone-number-input {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
+.student-first-name input,
+.student-last-name input,
+.student-phone-number-input input,
+.student-email-input input,
+.student-password-input input,
+.student-password-confirmation input {
+    padding: var(--input-padding);
+    margin-top: 5px;
+    border-radius: 0;
+    border: var(--input-border);
+    width: 100%;
 }
 
-.password-input,
-.password-confirmation-input {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
+.student-phone-number-input label,
+.student-email-input label,
+.student-password-input label,
+.student-password-confirmation label,
+.student-first-name label,
+.student-last-name label {
+    font-size: var(--primary-font-size);
+    margin-bottom: 5px;
 }
 
-.password-field {
+.student-password-field {
     position: relative;
+}
+
+.student-password-field input {
     width: 100%;
 }
 
-.password-field input {
-    padding: 12px;
-    width: 100%;
-    background-color: var(--background-color);
-    border: 0.2px solid var(--faint-text-color);
-}
-
-.eye-icon {
+.student-eye-icon {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -135,113 +138,30 @@
     font-size: 16px;
 }
 
-.signup-form input {
-    padding: 12px;
-    background-color: var(--background-color);
-    border: 0.2px solid var(--faint-text-color);
-}
-
-.first-name label,
-.last-name label {
-    color: var(--faint-text-color);
-}
-
-.signup-button {
-    width: 70%;
-    align-items: center;
+.student-signup-btn {
+    margin: 20px auto 0;
     display: flex;
     justify-content: center;
-}
-
-.signup-button button {
     padding: 12px;
-    width: 100%;
+    width: var(--container-width);
+    text-align: center;
+    color: var(--background-color);
     background-color: var(--text-color);
-    color: var(--background-color);
-    cursor: pointer;
-    transition: 0.4s ease;
 }
 
-.signup-button button:hover {
-    opacity: .8;
+.student-have-an-account {
+    text-align: center;
+    margin-top: 10px;
 }
 
-.signup-google-button {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    border: 0.2px solid var(--faint-text-color);
-    padding: 10px;
-    width: 70%;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.4s ease;
-}
-
-.signup-google-button:hover {
-    background-color: var(--faint-text-color);
-    color: var(--background-color);
-
-}
-
-.have-an-account span a {
+.student-have-an-account p span a {
     color: var(--blue-link-color);
-    transition: 0.3s linear;
 }
 
-.have-an-account span a:hover {
+.student-have-an-account p span a:hover {
     text-decoration: underline;
 }
 
-@media screen and (max-width: 1024px) {
-
-    .email-input,
-    .phone-number-input,
-    .password-input,
-    .password-confirmation-input,
-    .names-input,
-    .signup-google-button,
-    .signup-button {
-        width: 90%;
-    }
-
-    .signup-page {
-        margin-top: 40px;
-    }
-
-}
-
-@media screen and (max-width: 870px) {
-
-    .signup-page {
-        padding: 0px;
-        margin-top: 0px;
-    }
-
-    .signup-image {
-        display: none;
-    }
-
-    .signup-container {
-        border: none;
-    }
-
-    .signup-form {
-        border: 1px solid var(--faint-text-color);
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 680px) {
-    .signup-form {
-        border: 1px solid var(--faint-text-color);
-        width: 90%;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .signup-form {
-        border: 1px solid var(--faint-text-color);
-        width: 110%;
-    }
+.errors {
+    width: var(--container-width);
 }
