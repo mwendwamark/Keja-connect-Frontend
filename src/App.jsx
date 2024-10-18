@@ -23,8 +23,8 @@ function App() {
         <Route path="/role-selection" element={<RoleSelection />}></Route>
         <Route path="/student-signup" element={<StudentSignup />}></Route>
         <Route path="/landlord-signup" element={<LandlordSignup />}></Route>
-        <Route path="/student-login" element={<StudentLogin />}></Route>
-        <Route path="/landlord-login" element={<LandlordLogin />}></Route>
+        <Route path="/student/login" element={<StudentLogin />}></Route>
+        <Route path="/landlord/login" element={<LandlordLogin />}></Route>
         <Route
           path="/landlord/dashboard"
           element={<LandlordDashboard />}
