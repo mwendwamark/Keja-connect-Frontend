@@ -7,11 +7,11 @@ const LandlordProfile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/landlord-login");
+    navigate("/landlord/login");
   };
 
   if (!user) {
-    navigate("/landlord-login");
+    navigate("/landlord/login");
     return null;
   }
 

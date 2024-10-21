@@ -1,33 +1,35 @@
+:root {
+    --primary-font-size: 15px;
+    --input-padding: 10px;
+    --input-border: 1px solid var(--faint-text-color);
+    --container-width: 100%;
+}
+
 .landlord-login-page {
-    width: 100%;
-    padding: 10px;
+    width: 100;
     height: 100vh;
-}
-
-.landlord-login-page a {
-    color: var(--blue-link-color);
-    cursor: pointer;
-    transition: 0.4s linear;
-}
-
-.landlord-login-page a:hover {
-    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
 .landlord-login-container {
-    width: 100%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    border: 1px solid var(--faint-text-color);
+    width: 100%;
+    border: var(--input-border);
+    background-color: white;
     height: 100%;
-    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .landlord-login-image {
-    position: relative;
     width: 60%;
     height: 100%;
+    position: relative;
 }
 
 .landlord-login-image img {
@@ -37,156 +39,143 @@
     filter: grayscale(30%);
 }
 
+.landlord-login-overlay-text {
+    position: absolute;
+    top: 14%;
+    right: 50%;
+    transform: translate(60%, -10%);
+    text-align: center;
+    padding: 20px;
+    width: 80%;
+}
+
+.landlord-login-overlay-text h1 {
+    color: var(--background-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.landlord-login-overlay-text p {
+    font-size: 1.2rem;
+    color: var(--background-color);
+}
+
 .landlord-login-form {
     width: 40%;
-    display: flex;
-    flex-direction: column;
     padding: 20px;
-    gap: 5px;
-}
-
-.landlord-login-form-title {
-    text-align: center;
-}
-
-.landlord-login-form-title h1::before {
-    content: "";
-    display: inline-block;
-    width: 50px;
-    height: 2px;
-    background-color: var(--text-color);
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-.landlord-login-form-title p {
-    color: var(--faint-text-color);
-}
-
-.landlord-login-input {
     display: flex;
     flex-direction: column;
-    width: 100%;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
 }
 
-.landlord-login-password input,
-.landlord-login-input input {
+.landlord-login-title {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.landlord-login-email-input,
+.landlord-login-password-input {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto 0;
+}
+
+.landlord-login-email-input input,
+.landlord-login-password-input input {
+    padding: var(--input-padding);
+    margin-top: 5px;
+    border-radius: 0;
+    border: var(--input-border);
+    width: 100%;
+}
+
+.landlord-login-email-input label,
+.landlord-login-password-input label {
+    font-size: var(--primary-font-size);
+}
+
+.landlord-login-btn {
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
     padding: 12px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 0.2px solid var(--faint-text-color);
-}
-.landlord-login-password label,
-.landlord-login-input label{
-    color: var(--faint-text-color);
+    width: 80%;
+    text-align: center;
+    color: var(--background-color);
+    background-color: var(--text-color);
+    font-size: 1rem;
 }
 
-.landlord-forgot-pass {
-    text-align: end;
-}
-
-.landlord-login-password-field {
+.landlord-login-password-input {
     position: relative;
-    width: 100%;
 }
 
 .landlord-login-eye-icon {
     position: absolute;
     right: 10px;
-    top: 55%;
+    top: 75%;
     transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    color: #333;
-    z-index: 2;
 }
 
-.error-messages p {
-    color: red;
-    font-size: 14px;
-    padding: 10px;
+.landlord-dont-have-an-account,
+.landlord-forgot-password {
+    margin-top: 10px;
 }
 
-.landlord-login-btn {
-    padding: 12px;
-    width: 100%;
-    background-color: var(--text-color);
-    color: var(--background-color);
-    cursor: pointer;
-    transition: 0.4s ease;
-    text-align: center;
-    margin: 0 auto;
-    font-size: 16px;
+.landlord-dont-have-an-account p span a,
+.landlord-forgot-password p a {
+    color: var(--blue-link-color);
 }
 
-.landlord-login-btn:hover {
-    opacity: 0.8;
-}
-
-.landlord-dont-have-account{
-    padding-top: 10px;
-    text-align: center;
+.landlord-dont-have-an-account p span a:hover,
+.landlord-forgot-password p a:hover {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 1024px) {
-
-    .landlord-login-image,
-    .landlord-login-form {
+    .landlord-login-form,
+    .landlord-login-image {
         width: 50%;
     }
 }
 
-@media screen and (max-width: 870px) {
-
+@media screen and (max-width: 768px) {
     .landlord-login-page {
-        margin-top: -50px;
+        height: 80dvh;
     }
 
     .landlord-login-image {
         display: none;
     }
 
-    .landlord-login-container {
-        justify-content: center;
-        border: none;
+    .landlord-login-form {
+        width: 100%;
     }
 
-    .landlord-login-form {
-        border: 1px solid var(--faint-text-color);
-        width: 80%;
+    .landlord-login-title {
+        margin-bottom: 30px;
     }
 }
 
-@media screen and (max-width: 680px) {
-    .landlord-login-form {
-        width: 90%;
-        padding: 20px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .landlord-login-form {
-        width: 140%;
-    }
-}
-
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 600px) {
     .landlord-login-page {
         padding: 0px;
     }
 
-    .landlord-login-form-title h1::before {
-        content: "";
-        display: inline-block;
-        width: 30px;
-        height: 2px;
-        background-color: var(--text-color);
-        margin-right: 10px;
-        vertical-align: middle;
+    .landlord-login-form {
+        padding: 10px;
+    }
+
+    .landlord-login-email-input,
+    .landlord-login-password-input,
+    .landlord-login-btn {
+        width: 90%;
     }
 }

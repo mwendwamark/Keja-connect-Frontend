@@ -257,12 +257,13 @@ const StudentSignup = () => {
                   name="password_confirmation"
                 />
               </div>
+              <div className="errors container">
+                {error && <p style={{ color: "red" }}>{error}</p>}
+              </div>
               <button className="student-signup-btn" type="submit">
                 Create Account
               </button>
-              <div className="errors">
-                {error && <p style={{ color: "red" }}>{error}</p>}
-              </div>
+
               <div className="student-have-an-account">
                 <p>
                   Have an account?{" "}

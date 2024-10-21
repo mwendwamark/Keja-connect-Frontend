@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 const StudentProfile = () => {
@@ -7,11 +7,11 @@ const StudentProfile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/student-login");
+    navigate("/student/login");
   };
 
   if (!user) {
-    navigate("/student-login");
+    navigate("/student/login");
     return null;
   }
 

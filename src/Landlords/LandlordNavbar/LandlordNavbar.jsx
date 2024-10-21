@@ -33,7 +33,7 @@ const LandlordNavbar = () => {
             </>
           ) : (
             <li>
-              <NavLink to="/landlord-login">Login</NavLink>
+              <NavLink to="/landlord/login">Login</NavLink>
             </li>
           )}
         </ul>

@@ -11,7 +11,7 @@ const StudentNavbar = () => {
     localStorage.removeItem("token");
 
     // Redirect to login page
-    navigate("/student-login");
+    navigate("/student/login");
   };
 
   return (

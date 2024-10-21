@@ -116,7 +116,6 @@
 .landlord-first-name label,
 .landlord-last-name label {
     font-size: var(--primary-font-size);
-    margin-bottom: 5px;
 }
 
 .landlord-password-field {
@@ -162,6 +161,47 @@
     text-decoration: underline;
 }
 
-.errors{
+.errors {
     width: var(--container-width);
+}
+
+@media screen and (max-width: 1024px) {
+    .landlord-signup-page {
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .landlord-signup-page {
+        margin-bottom: 20px;
+    }
+
+    .landlord-signup-image {
+        display: none;
+    }
+
+    .landlord-signup-form {
+        width: 100%;
+    }
+
+    .landlord-signup-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .landlord-signup-container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .landlord-signup-container {
+        width: 100%;
+    }
+
+    .landlord-signup-form {
+        padding: 20px;
+    }
 }

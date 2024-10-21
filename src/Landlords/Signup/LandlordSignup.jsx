@@ -170,12 +170,12 @@ const LandlordSignup = () => {
                   name="password_confirmation"
                 />
               </div>
+              <div className="errors container">
+                {error && <p style={{ color: "red" }}>{error}</p>}
+              </div>
               <button className="landlord-signup-btn" type="submit">
                 Create Account
               </button>
-              <div className="errors">
-                {error && <p style={{ color: "red" }}>{error}</p>}
-              </div>
               <div className="landlord-have-an-account">
                 <p>
                   Have an account?{" "}

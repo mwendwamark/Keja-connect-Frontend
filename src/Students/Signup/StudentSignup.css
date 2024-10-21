@@ -116,7 +116,6 @@
 .student-first-name label,
 .student-last-name label {
     font-size: var(--primary-font-size);
-    margin-bottom: 5px;
 }
 
 .student-password-field {
@@ -164,4 +163,45 @@
 
 .errors {
     width: var(--container-width);
+}
+
+@media screen and (max-width: 1024px) {
+    .student-signup-page {
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .student-signup-page {
+        margin-bottom: 20px;
+    }
+
+    .student-signup-image {
+        display: none;
+    }
+
+    .student-signup-form {
+        width: 100%;
+    }
+
+    .student-signup-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .student-signup-container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .student-signup-container {
+        width: 100%;
+    }
+
+    .student-signup-form {
+        padding: 20px;
+    }
 }
