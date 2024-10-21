@@ -29,7 +29,7 @@ const HomePage = () => {
               <div className="hero-student-contents">
                 <p className="hero-welcome">Welcome!</p>
                 <p className="hero-role">I am a student</p>
-                <NavLink className="hero-register" to="/student-signup">
+                <NavLink className="hero-register" to="/student/signup">
                   Register
                 </NavLink>
               </div>
@@ -43,7 +43,7 @@ const HomePage = () => {
                 {" "}
                 <p className="hero-welcome">Welcome!</p>
                 <p className="hero-role">I am a Landlord</p>
-                <NavLink className="hero-register" to="/landlord-signup">
+                <NavLink className="hero-register" to="/landlord/signup">
                   Register
                 </NavLink>
               </div>{" "}
