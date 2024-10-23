@@ -134,6 +134,7 @@ const StudentLogin = () => {
           </form>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

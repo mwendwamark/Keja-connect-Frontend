@@ -28,52 +28,53 @@ const LandlordSignup = () => {
     }
   }, [error]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+   e.preventDefault();
 
-    // Check if passwords match
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      toast.error("Passwords do not match");
-      return;
-    }
+   // Check if passwords match
+   if (password !== confirmPassword) {
+     setError("Passwords do not match");
+     toast.error("Passwords do not match");
+     return;
+   }
 
-    const landlordData = {
-      landlord: {
-        first_name: firstName,
-        last_name: lastName,
-        phone_number: phoneNumber,
-        email,
-        password,
-      },
-    };
+   const landlordData = {
+     landlord: {
+       first_name: firstName,
+       last_name: lastName,
+       phone_number: phoneNumber,
+       email,
+       password,
+     },
+   };
 
-    try {
-      const response = await fetch("http://localhost:3000/landlord/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(landlordData),
-      });
+   try {
+     const response = await fetch("http://localhost:3000/landlord/signup", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify(landlordData),
+     });
 
-      const result = await response.json();
+     const result = await response.json();
+     console.log(result); // Debug: check what you're receiving
 
-      if (response.ok) {
-        localStorage.setItem("token", result.token);
-        navigate("/landlord/login"); // Redirect to landlord dashboard after successful signup
-        toast.success("Account created successfully");
-      } else {
-        setError(result.status.message);
-        toast.error("Couldn't create account. Please try again.");
-        // toast.error(
-        //   result.status.message || "Couldn't create account. Please try again."
-        // );
-      }
-    } catch (error) {
-      setError("An error occurred. Please try again.");
-    }
-  };
+     if (response.ok) {
+       // Adjusted according to the response structure from your backend
+       localStorage.setItem("token", result.status.token);
+       localStorage.setItem("landlord_id", result.status.data.id); // Store the landlord ID
+       toast.success("Account created successfully");
+       navigate("/landlord/login");
+     } else {
+       setError(result.status.message);
+       toast.error("Couldn't create account. Please try again.");
+     }
+   } catch (error) {
+     setError("An error occurred. Please try again.");
+   }
+ };
+
 
   return (
     <>

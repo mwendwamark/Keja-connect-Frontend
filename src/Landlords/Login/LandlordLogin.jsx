@@ -50,6 +50,8 @@ const LandlordLogin = () => {
         // Store token and user data
         localStorage.setItem("token", result.token);
         localStorage.setItem("user", JSON.stringify(result.data.landlord)); // Save user data in localStorage
+        localStorage.setItem("landlord_id", result.data.landlord.id); // Store the landlord id
+
         toast.success("Logged in successfully!");
         // Redirect to Landlord Dashboard
         navigate("/landlord/dashboard");
