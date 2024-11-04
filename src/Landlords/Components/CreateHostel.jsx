@@ -33,6 +33,7 @@ const CreateHostel = () => {
   });
 
   const [images, setImages] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]); // New state for storing image URLs
   const landlordId = localStorage.getItem("landlord_id"); // Get the landlord ID from localStorage or wherever it's stored.
 
   const handleChange = (e) => {
@@ -76,6 +77,7 @@ const CreateHostel = () => {
         }
       );
       console.log("Hostel created:", response.data);
+      setImageUrls(response.data.image_urls); // Update image URLs from backend response
       toast.success("Hostel created");
     } catch (error) {
       console.error("Error creating hostel:", error);
@@ -87,6 +89,18 @@ const CreateHostel = () => {
     <>
       <ToastContainer />
       <form onSubmit={handleSubmit}>
+        <div>
+          {/* Display uploaded images */}
+          {imageUrls.map((url, index) => (
+            <img
+              key={index}
+              src={url}
+              alt={`Hostel ${index + 1}`}
+              style={{ width: "100px", height: "100px", margin: "5px" }}
+            />
+          ))}
+        </div>
+
         <div>
           <label>Hostel Name</label>
           <input

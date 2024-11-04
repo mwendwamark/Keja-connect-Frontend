@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import UploadAvatar from "../Components/UploadAvatar";
 
 const LandlordNavbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -27,6 +28,7 @@ const LandlordNavbar = () => {
                 Welcome,
                 <NavLink to="/landlord-profile"> {user.first_name}!</NavLink>
               </li>
+              {/* <li><UploadAvatar/></li> */}
               <li>
                 <button onClick={handleLogout}>Logout</button>
               </li>

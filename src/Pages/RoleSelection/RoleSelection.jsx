@@ -17,9 +17,9 @@ const RoleSelection = () => {
 
   const handleContinue = () => {
     if (selectedRole === "landlord") {
-      navigate("/landlord-signup");
+      navigate("/landlord/signup");
     } else if (selectedRole === "student") {
-      navigate("/student-signup");
+      navigate("/student/signup");
     } else {
       toast.error("Please select a role before continuing.");
     }

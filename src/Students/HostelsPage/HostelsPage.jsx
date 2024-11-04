@@ -30,7 +30,7 @@ const HostelsPage = () => {
   };
 
   useEffect(() => {
-    fetchHostels(); // Fetch hostels when the component mounts
+    fetchHostels();
   }, []);
 
   const handleFilterChange = (e) => {
@@ -43,15 +43,15 @@ const HostelsPage = () => {
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();
-    fetchHostels(); // Refetch hostels with the updated filters
+    fetchHostels();
   };
 
   return (
     <div>
       <StudentNavbar />
-
       <h1>Hostel Listings</h1>
 
+      {/* Filters Form */}
       <form onSubmit={handleFilterSubmit}>
         <div>
           <label>Name</label>
@@ -106,39 +106,32 @@ const HostelsPage = () => {
         <button type="submit">Apply Filters</button>
       </form>
 
-      <div>
-        {hostels.length > 0 ? (
-          <ul>
-            {hostels.map((hostel) => (
-              <li key={hostel.id}>
-                <h3>{hostel.name}</h3>
-                <p>{hostel.location}</p>
-                <p>{hostel.price_per_month} per month</p>
-                <p>Room Type: {hostel.room_type}</p>
-                {/* <div>
-                  {hostel.image_urls?.length > 0 ? (
-                    hostel.image_urls.map((url, index) => (
-                      <img
-                        key={index}
-                        src={url}
-                        alt={`Hostel ${index}`}
-                        style={{
-                          width: "200px",
-                          height: "150px",
-                          objectFit: "cover",
-                        }}
-                      />
-                    ))
-                  ) : (
-                    <p>No images available</p>
-                  )}
-                </div> */}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No hostels found.</p>
-        )}
+      {/* Hostels Display */}
+      <div className="hostels-container">
+        {hostels.map((hostel) => (
+          <div key={hostel.id} className="hostel-card">
+            <h2>{hostel.name}</h2>
+            <p>Location: {hostel.location}</p>
+            <p>Price per Month: ${hostel.price_per_month}</p>
+            <p>Room Type: {hostel.room_type}</p>
+
+            {/* Render hostel images */}
+            <div className="hostel-images">
+              {hostel.image_urls && hostel.image_urls.length > 0 ? (
+                hostel.image_urls.map((url, index) => (
+                  <img
+                    key={index}
+                    src={url}
+                    alt={`${hostel.name} image ${index + 1}`}
+                    style={{ width: "150px", height: "100px", margin: "5px" }}
+                  />
+                ))
+              ) : (
+                <p>No images available</p>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
