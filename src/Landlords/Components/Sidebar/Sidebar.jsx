@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "./Sidebar.css";
-import logo from "../../../assets/logo1.png";
-import { NavLink } from "react-router-dom";
+import logo from "../../../assets/logo3.png";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -9,7 +9,6 @@ import {
   faBook,
   faDashboard,
   faUserCircle,
-   faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -18,6 +17,7 @@ import { MdDashboard } from "react-icons/md";
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate ()
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
@@ -37,9 +37,7 @@ const Sidebar = () => {
               <img src={logo} alt="logo" />
             </NavLink>
           </div>
-          <hr
-            style={{ color: "var(--faint - text - color)", width: "0.5px" }}
-          />
+          <hr className="sidebar-divider" />
 
           {/* Navigation Links */}
           <ul className="sidebar-links">
@@ -72,12 +70,16 @@ const Sidebar = () => {
 
         <div className="sidebar-user-profile">
           <NavLink to="/landlord-profile">
-            <FontAwesomeIcon icon={faUserCircle} className="profile-sidebar-icon" />
+            <FontAwesomeIcon
+              icon={faUserCircle}
+              className="profile-sidebar-icon"
+            />
             {!collapsed && `${user.first_name} ${user.last_name}`}
-          </NavLink>          
+          </NavLink>
           <div className="sidebar-logout">
-            <button onClick={handleLogout && toggleSidebar} >
-              {collapsed ? <FaSignOutAlt/>: "Logout"}</button>
+            <button onClick={handleLogout}>
+              {collapsed ? <FaSignOutAlt /> : "Logout"}
+            </button>
           </div>
         </div>
 

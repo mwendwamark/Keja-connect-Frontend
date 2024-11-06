@@ -1,14 +1,14 @@
 .sidebar {
     background-color: var(--background-color);
-    color: #fff;
-    width: 18%;
-    height: 100vh;
+    width: 20%;
+    height: 100%;
     position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: width 0.3s ease;
-    border-right: 1px solid var(--faint-text-color);    
+    /* border-right: 1px solid var(--faint-text-color);     */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar.collapsed {
@@ -30,6 +30,11 @@
     transition: opacity 0.3s ease;
 }
 
+.sidebar-divider {
+    border-top: 1px solid var(--faint-text-color);
+    margin: 15px 0;
+}
+
 .sidebar.collapsed .sidebar-logo img {
     opacity: 0;
     width: 0;
@@ -38,7 +43,7 @@
 .sidebar-links {
     list-style: none;
     padding: 0;
-    width: 100%;
+    width: 80%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -104,13 +109,15 @@
     text-decoration: underline;
 }
 
-.sidebar-user-profile a .profile-sidebar-icon{
+.sidebar-user-profile a .profile-sidebar-icon {
     font-size: 2.5rem;
 
 }
+
 .sidebar-user-profile .sidebar-logout {
     width: 50%;
 }
+
 .sidebar-user-profile .sidebar-logout button {
     padding: 8px;
     width: 100%;
@@ -122,23 +129,28 @@
     position: absolute;
     top: 0;
     right: -0px;
-    background-color: var(--faint-text-color);
-    color: #fff;
-    border: none;
+    background-color: #E7E7E7;
+    color: var(--text-color);
+    border: 0.5px solid #E7E7E7;
+    border-right: none;
     width: 30px;
     height: 30px;
     font-size: 1.2em;
+    border-bottom-right-radius: 0px;
     cursor: pointer;
-    border-radius: 1px;
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+
     transition: transform 0.8s ease;
 }
 
 .sidebar-toggle:hover {
     background-color: var(--text-color);
+    color: var(--background-color);
 }
 
-@media screen and (max-width: 1024px){
-    .sidebar{
+@media screen and (max-width: 1024px) {
+    .sidebar {
         width: 20%;
     }
 
@@ -148,5 +160,3 @@
         color: var(--background-color);
     }
 }
-
-
