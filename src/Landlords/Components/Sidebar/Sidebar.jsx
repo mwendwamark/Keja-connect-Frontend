@@ -1,12 +1,14 @@
-import React from 'react'
-import "./Sidebar.css"
+import React from "react";
+import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
-    <div>
-      <div></div>      
-    </div>
-  )
-}
+    <>
+      <aside>
+        
+      </aside>
+    </>
+  );
+};
 
-export default Sidebar
+export default Sidebar;

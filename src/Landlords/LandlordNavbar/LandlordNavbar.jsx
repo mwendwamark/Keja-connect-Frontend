@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./LandlordNavbar.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo1.png";
 
 const LandlordNavbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
