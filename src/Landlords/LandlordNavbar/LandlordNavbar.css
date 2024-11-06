@@ -1,0 +1,44 @@
+.landlord-navbar {
+    padding: 5px;
+    background-color: var(--background-color);
+    width: 100%;
+}
+
+.landlord-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.landlord-logo-section a img {
+    height: 80px;
+}
+
+.landlord-navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-username {
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.navbar-username a {
+    color: var(--orange-color);
+}
+
+.navbar-username a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+    .landlord-logo-section {
+        width: 70px;
+    }
+
+    .landlord-navbar-links {
+        gap: 0px;
+    }
+}

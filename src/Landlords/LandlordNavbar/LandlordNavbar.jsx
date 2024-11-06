@@ -1,36 +1,30 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import UploadAvatar from "../Components/UploadAvatar";
+import { NavLink } from "react-router-dom";
+import "./LandlordNavbar.css";
+import logo from "../../assets/logo.png";
 
 const LandlordNavbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // Clear user and token from localStorage
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-
-    // Redirect to login page
-    navigate("/landlord/login");
-  };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <NavLink to="/" className="logo">
-          My Platform
-        </NavLink>
-        <ul className="navbar-links">
+    <div className="landlord-navbar">
+      <div className="landlord-navbar-container container">
+        <div className="landlord-logo-section">
+          <NavLink to="/landlord/dashboard">
+            <img src={logo} alt="" />
+          </NavLink>
+        </div>
+        <ul className="landlord-navbar-links">
           {user ? (
             <>
               <li className="navbar-username">
                 Welcome,
                 <NavLink to="/landlord-profile"> {user.first_name}!</NavLink>
               </li>
-              {/* <li><UploadAvatar/></li> */}
               <li>
-                <button onClick={handleLogout}>Logout</button>
+                {/* <button className="logout-button" onClick={handleLogout}>
+                  Logout
+                </button> */}
               </li>
             </>
           ) : (
@@ -40,7 +34,7 @@ const LandlordNavbar = () => {
           )}
         </ul>
       </div>
-    </nav>
+    </div>
   );
 };
 
