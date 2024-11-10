@@ -1,94 +1,93 @@
-import React, { useState} from "react";
+import React from "react";
 import "./Sidebar.css";
-import logo from "../../../assets/logo3.png";
+import logo from "../../../assets/logo4.png";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faList,
-  faBook,
-  faDashboard,
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
-import { FaSignOutAlt } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
+import { IoMdSpeedometer } from "react-icons/io";
+import { MdOutlineAddBusiness } from "react-icons/md";
+import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+import { SiTicktick } from "react-icons/si";
+import { CgProfile } from "react-icons/cg";
+import { BsQuestionCircle } from "react-icons/bs";
+import { FaQuestionCircle } from "react-icons/fa";
+import { AiTwotoneHome } from "react-icons/ai";
 
 const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user"));
-  const navigate = useNavigate ()
-
-  const toggleSidebar = () => {
-    setCollapsed(!collapsed);
-  };
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/landlord/login");
-  };
-
   return (
-    <>
-      <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-        <div className="sidebar-contents">
-          {/* Logo Section */}
-          <div className="sidebar-logo">
-            <NavLink to="/landlord/dashboard">
-              <img src={logo} alt="logo" />
-            </NavLink>
-          </div>
-          <hr className="sidebar-divider" />
-
-          {/* Navigation Links */}
-          <ul className="sidebar-links">
-            <li>
-              <NavLink to="/landlord/dashboard">
-                <MdDashboard icon={faDashboard} className="sidebar-icon" />
-                {!collapsed && "Dashboard"}
+    <div className="sidebar grid">
+      <div className="logoDiv flex">
+        <img src={logo} alt="Image Name" />
+      </div>
+      <div className="menuDiv">
+        <div className="divTitle">
+          <h3>QUICK MENU</h3>
+          <ul className="menuLists grid">
+            <li className="listItem">
+              <NavLink href="#" className="menuLink flex">
+                <IoMdSpeedometer className="dash-icon" />{" "}
+                <span className="smallText">Dashboard</span>
+              </NavLink>
+            </li>{" "}
+            <li className="listItem">
+              <NavLink href="#" className="menuLink flex">
+                <MdOutlineAddBusiness className="dash-icon" />{" "}
+                <span className="smallText">Add Hostel</span>
+              </NavLink>
+            </li>{" "}
+            <li className="listItem">
+              <NavLink href="#" className="menuLink flex">
+                <HiOutlineClipboardDocumentList className="dash-icon" />{" "}
+                <span className="smallText">Current Listing</span>
+              </NavLink>
+            </li>{" "}
+            <li className="listItem">
+              <NavLink href="#" className="menuLink flex">
+                <SiTicktick className="dash-icon" />{" "}
+                <span className="smallText">Booked Hostels</span>
+              </NavLink>
+            </li>{" "}
+          </ul>
+        </div>
+      </div>
+      <div className="settingsDiv">
+        <div className="divTitle">
+          <h3>SETTINGS</h3>
+          <ul className="menuLists grid">
+            <li className="listItem">
+              <NavLink href="#" className="menuLink flex">
+                <CgProfile className="dash-icon" />{" "}
+                <span className="smallText">Profile</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/landlord/addhostel">
-                <FontAwesomeIcon icon={faPlus} className="sidebar-icon" />
-                {!collapsed && "Add Hostel"}
+            <li className="listItem">
+              <NavLink href="#" className="menuLink flex">
+                <FaQuestionCircle className="dash-icon" />{" "}
+                <span className="smallText">FAQs</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/">
-                <FontAwesomeIcon icon={faList} className="sidebar-icon" />
-                {!collapsed && "Current Listings"}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/">
-                <FontAwesomeIcon icon={faBook} className="sidebar-icon" />
-                {!collapsed && "Booked Hostels"}
+            <li className="listItem">
+              <NavLink href="#" className="menuLink flex">
+                <AiTwotoneHome className="dash-icon" />{" "}
+                <span className="smallText">Home</span>
               </NavLink>
             </li>
           </ul>
         </div>
+      </div>
+      <div className="sideBarCard">
+        <BsQuestionCircle className="dash-icon" />
+        <div className="cardContent">
+          <div className="circle1"></div>
+          <div className="circle2"></div>
 
-        <div className="sidebar-user-profile">
-          <NavLink to="/landlord-profile">
-            <FontAwesomeIcon
-              icon={faUserCircle}
-              className="profile-sidebar-icon"
-            />
-            {!collapsed && `${user.first_name} ${user.last_name}`}
-          </NavLink>
-          <div className="sidebar-logout">
-            <button onClick={handleLogout}>
-              {collapsed ? <FaSignOutAlt /> : "Logout"}
-            </button>
-          </div>
+          <h3>Help Center</h3>
+          <p>
+            Having trouble in Keja Connect, please contact us for more
+            information
+          </p>
+          <button className="btn">Go to help center</button>
         </div>
-
-        {/* Collapse/Expand Button */}
-        <button className="sidebar-toggle" onClick={toggleSidebar}>
-          {collapsed ? <FaAnglesRight /> : <FaAnglesLeft />}
-        </button>
-      </aside>
-    </>
+      </div>{" "}
+    </div>
   );
 };
 

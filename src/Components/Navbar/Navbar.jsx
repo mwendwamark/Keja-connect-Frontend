@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
-import logo from "../../assets/logo3.png";
+import logo from "../../assets/logo4.png";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);

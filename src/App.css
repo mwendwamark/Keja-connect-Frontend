@@ -11,6 +11,7 @@
   --light-green: #96D5D3;
   --blue-link-color: #3328FE;
   --orange-color: #EA5024;
+  --dashboard-color: #ddddddda;
 
   /* Font sizes */
   --h1-fs: 48px;
@@ -70,13 +71,50 @@ input {
   padding: 0;
   margin-left: auto;
   margin-right: auto;
-  max-width:  94%;
+  max-width: 94%;
 }
 
 .section {
   margin-top: 4rem;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dash-icons {
+  font-size: 1.1rem;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--inputColor);
+  padding: .8rem 1rem;
+  color: var(--textColor);
+}
+
+.btn .icon {
+  margin-left: .5rem;
+}
+
+.btn:hover {
+  background: var(--pink-color);
+  color: var(--background-color);
+}
 
 @media screen and (max-width: 900px) {
   .h2-heading {

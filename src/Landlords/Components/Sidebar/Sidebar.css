@@ -1,162 +1,150 @@
 .sidebar {
-    background-color: var(--background-color);
-    width: 20%;
+    background: var(--background-color);
+    box-shadow: 1px 0px 4px var(--faint-text-color);
+    width: 18%;
     height: 100%;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: width 0.3s ease;
-    /* border-right: 1px solid var(--faint-text-color);     */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 2rem;
+    overflow: auto;
 }
 
-.sidebar.collapsed {
-    width: 100px;
+.sidebar a.active {
+    color:var(--light-green);
 }
 
-.sidebar-contents {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5px;
-    padding: 5px;
-}
-
-.sidebar-logo img {
-    width: 80%;
-    max-width: 180px;
-    transition: opacity 0.3s ease;
-}
-
-.sidebar-divider {
-    border-top: 1px solid var(--faint-text-color);
-    margin: 15px 0;
-}
-
-.sidebar.collapsed .sidebar-logo img {
-    opacity: 0;
-    width: 0;
-}
-
-.sidebar-links {
-    list-style: none;
-    padding: 0;
-    width: 80%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding-top: 40px;
-}
-
-.sidebar-links li {
-    width: 100%;
-    gap: 5px;
-}
-
-.sidebar-links a {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    color: var(--faint-text-color);
-    text-decoration: none;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-.sidebar-links a:hover {
-    background-color: var(--text-color);
-    color: var(--background-color);
-    border-radius: 30px;
-}
-
-.sidebar-links a.active {
-    background-color: var(--text-color);
-    color: var(--background-color);
-    border-radius: 30px;
-}
-
-.sidebar-icon {
-    margin-right: 10px;
-    font-size: 1.2em;
-}
-
-.sidebar.collapsed .sidebar-links a .sidebar-icon {
-    margin: 0;
-}
-
-.sidebar-user-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-}
-
-.sidebar-user-profile a {
-    color: var(--faint-text-color);
-    text-decoration: none;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.sidebar-user-profile a:hover {
-    text-decoration: underline;
-}
-
-.sidebar-user-profile a .profile-sidebar-icon {
-    font-size: 2.5rem;
-
-}
-
-.sidebar-user-profile .sidebar-logout {
-    width: 50%;
-}
-
-.sidebar-user-profile .sidebar-logout button {
-    padding: 8px;
-    width: 100%;
-    background: var(--text-color);
-    color: var(--background-color);
-}
-
-.sidebar-toggle {
-    position: absolute;
-    top: 0;
-    right: -0px;
-    background-color: #E7E7E7;
-    color: var(--text-color);
-    border: 0.5px solid #E7E7E7;
-    border-right: none;
-    width: 30px;
-    height: 30px;
-    font-size: 1.2em;
-    border-bottom-right-radius: 0px;
+.sidebar .logoDiv {
+    padding: 0rem 0rem 0;
     cursor: pointer;
-    border-radius: 8px;
-    border-top-right-radius: 0px;
-
-    transition: transform 0.8s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sidebar-toggle:hover {
-    background-color: var(--text-color);
-    color: var(--background-color);
+.sidebar .logoDiv img {
+    max-width: 100%;
+    height: 100px;
 }
 
-@media screen and (max-width: 1024px) {
-    .sidebar {
-        width: 20%;
-    }
+.sidebar .menuDiv .divTitle,
+.sidebar .settingsDiv .divTitle {
+    font-size: 1rem;
+    counter-reset: var(--text-color);
+    padding: 0 1.5rem 1.5rem;
+}
 
-    .sidebar-user-profile .sidebar-logout button {
-        padding: 8px 30px 8px;
-        background: var(--text-color);
-        color: var(--background-color);
-    }
+.sidebar .menuDiv .divTitle h3,
+.sidebar .settingsDiv .divTitle h3{
+    font-size: 17px;
+    color: var(--green-color);
+}
+.sidebar .menuDiv .menuLists .listItem,
+.sidebar .settingsDiv .menuLists .listItem {
+    padding: 0.2rem 1.5rem;
+    width: 100%;
+    position: relative;
+}
+
+.sidebar .menuDiv .menuLists .listItem::before,
+.sidebar .settingsDiv .menuLists .listItem::before {
+    position: absolute;
+    content: "";
+    height: 0%;
+    left: 0;
+    width: 5px;
+    bottom: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: var(--green-color);
+}
+
+.sidebar .menuDiv .menuLists .listItem .menuLink,
+.sidebar .settingsDiv .menuLists .listItem .menuLink {
+    color: var(--faint-text-color);
+    font-weight: 400;
+    transition: 0;
+}
+
+.sidebar .menuDiv .menuLists .listItem .menuLink .dash-icon,
+.sidebar .settingsDiv .menuLists .listItem .menuLink .dash-icon {
+    margin-right: 0.5rem;
+}
+
+.sidebar .menuDiv .menuLists .listItem:hover .menuLink,
+.sidebar .settingsDiv .menuLists .listItem:hover .menuLink {
+    color: var(--green-color);
+    transition: 0;
+}
+
+.sidebar .menuDiv .menuLists .listItem:hover::before,
+.sidebar .settingsDiv .menuLists .listItem:hover::before {
+    height: 100%;
+    transition: 0.3s ease;
+}
+
+.sidebar .sideBarCard {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+
+.sidebar .sideBarCard .dash-icon {
+    position: absolute;
+    background-color: var(--light-green);
+    border: 10px solid var(--background-color);
+    font-size: 3rem;
+    border-radius: 50%;
+    top: -8px;
+    right: 50%;
+    transform: translate(50%);
+    z-index: 100;
+}
+
+.sidebar .sideBarCard .cardContent {
+    position: relative;
+    padding: 1rem;
+    background: var(--light-green);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sidebar .sideBarCard .cardContent h3 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    font-weight: 800;
+}
+
+.sidebar .sideBarCard .cardContent p {
+    font-size: 1rem;
+    color: var(--faint-text-color);
+    padding-bottom: 1rem;
+    font-weight: 500;
+}
+
+.sidebar .sideBarCard .cardContent .btn {
+    position: relative;
+    color: var(--text-color);
+    z-index: 1000;
+}
+
+.sidebar .sideBarCard .cardContent .circle1,
+.sidebar .sideBarCard .cardContent .circle2 {
+    position: absolute;
+    background: var(--green-color);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.sidebar .sideBarCard .cardContent .circle1 {
+    height: 100px;
+    width: 100px;
+    top: -50px;
+    left: -50px;
+}
+
+.sidebar .sideBarCard .cardContent .circle2 {
+    height: 150px;
+    width: 150px;
+    bottom: -80px;
+    right: -50px;
 }

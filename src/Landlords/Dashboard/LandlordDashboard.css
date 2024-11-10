@@ -1,4 +1,15 @@
-.landlord-dashboard {
-    background-color: #E7E7E7;
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
+}
+
+.landlord-container {
+    width: 97vw;
+    height: 95vh;
+    background-color: var(--dashboard-color);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
