@@ -1,7 +1,8 @@
 .landlord-navbar {
-    padding: 5px;
+    padding: px;
     background-color: var(--background-color);
     width: 100%;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 .landlord-navbar-container {

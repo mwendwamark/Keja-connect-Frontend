@@ -13,6 +13,7 @@ import LandlordDashboard from "./Landlords/Dashboard/LandlordDashboard";
 import HostelsPage from "./Students/HostelsPage/HostelsPage";
 import StudentProfile from "./Students/Profile/StudentProfile";
 import LandlordProfile from "./Landlords/Profile/LandlordProfle";
+import GetStarted from "./Landlords/Pages/GetStarted/GetStarted";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/hostels" element={<HostelsPage />}></Route>
         <Route path="/landlord-profile" element={<LandlordProfile />}></Route>
         <Route path="/student-profile" element={<StudentProfile />}></Route>
+        <Route path ="/get-started" element= {<GetStarted/>}></Route>
       </Routes>
     </>
   );

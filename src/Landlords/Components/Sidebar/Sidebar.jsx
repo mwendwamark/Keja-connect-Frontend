@@ -22,25 +22,25 @@ const Sidebar = () => {
           <h3>QUICK MENU</h3>
           <ul className="menuLists grid">
             <li className="listItem">
-              <NavLink href="#" className="menuLink flex">
+              <NavLink to="/landlord/dashboard" className="menuLink flex">
                 <IoMdSpeedometer className="dash-icon" />{" "}
                 <span className="smallText">Dashboard</span>
               </NavLink>
             </li>{" "}
             <li className="listItem">
-              <NavLink href="#" className="menuLink flex">
+              <NavLink to="/get-started" className="menuLink flex">
                 <MdOutlineAddBusiness className="dash-icon" />{" "}
                 <span className="smallText">Add Hostel</span>
               </NavLink>
             </li>{" "}
             <li className="listItem">
-              <NavLink href="#" className="menuLink flex">
+              <NavLink to="/" className="menuLink flex">
                 <HiOutlineClipboardDocumentList className="dash-icon" />{" "}
                 <span className="smallText">Current Listing</span>
               </NavLink>
             </li>{" "}
             <li className="listItem">
-              <NavLink href="#" className="menuLink flex">
+              <NavLink to="/" className="menuLink flex">
                 <SiTicktick className="dash-icon" />{" "}
                 <span className="smallText">Booked Hostels</span>
               </NavLink>
@@ -53,19 +53,19 @@ const Sidebar = () => {
           <h3>SETTINGS</h3>
           <ul className="menuLists grid">
             <li className="listItem">
-              <NavLink href="#" className="menuLink flex">
+              <NavLink to="/landlord-profile" className="menuLink flex">
                 <CgProfile className="dash-icon" />{" "}
                 <span className="smallText">Profile</span>
               </NavLink>
             </li>
             <li className="listItem">
-              <NavLink href="#" className="menuLink flex">
+              <NavLink to="/faqs" className="menuLink flex">
                 <FaQuestionCircle className="dash-icon" />{" "}
                 <span className="smallText">FAQs</span>
               </NavLink>
             </li>
             <li className="listItem">
-              <NavLink href="#" className="menuLink flex">
+              <NavLink to="/" className="menuLink flex">
                 <AiTwotoneHome className="dash-icon" />{" "}
                 <span className="smallText">Home</span>
               </NavLink>
