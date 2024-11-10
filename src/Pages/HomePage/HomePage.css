@@ -20,18 +20,25 @@
     padding: 5px;
 }
 
-.hero-title h2 {
+.hero-title h3 {
     font-weight: 500;
-    font-family: var(--h1-ff);
+    font-family: var(--text-ff);
     letter-spacing: -0.5px;
-    font-size: var(--h2-fs);
-    background: linear-gradient(90deg, var(--green-color), var(--light-green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 20px;
     background-clip: text;
-    color: transparent;
+    color: var(--faint-text-color);
     display: inline-block;
     margin-bottom: -10px;
+}
+
+.hero-title h3::after {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--faint-text-color);
+    margin-right: 10px;
+    vertical-align:baseline;
 }
 
 
@@ -341,11 +348,11 @@
     color: var(--faint-text-color);
 }
 
-.why-choose-us-student-contents h3::before,
-.why-choose-us-landlord-contents h3::before {
+.why-choose-us-student-contents h3::after,
+.why-choose-us-landlord-contents h3::after {
     content: "";
     display: inline-block;
-    width: 10px;
+    width: 30px;
     height: 2px;
     background-color: var(--text-color);
     margin-right: 10px;
@@ -381,8 +388,6 @@
     .hero-image-landlord,
     .hero-image-student {
         width: 43%;
-
-
     }
 }
 

@@ -31,7 +31,7 @@ const RoleSelection = () => {
       <div className="role-selection-page container">
         <h3>What brings you here?</h3>
         <h2 className="h2-heading">
-          Join Keja Connect today by creating an account
+          Join Jamii Hostels today by creating an account
         </h2>
         <div className="role-selection-container">
           <div

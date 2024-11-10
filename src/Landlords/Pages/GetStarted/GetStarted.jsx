@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LandlordNavbar from "../../LandlordNavbar/LandlordNavbar";
 import { NavLink } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
 import "./GetStarted.css";
+import ScrollReveal from "scrollreveal";
 
 const GetStarted = () => {
+  useEffect(() => {
+    const sr = ScrollReveal({
+      reset: false,
+      distance: "50px",
+      duration: 1000,
+      delay: 200,
+      easing: "ease-in-out",
+    });
+
+    sr.reveal(".get-started-top", {
+      origin: "top",
+      duration: 1200,
+    });
+
+    const contentContainers = document.querySelectorAll(".content-container");
+    contentContainers.forEach((container, index) => {
+      sr.reveal(container, {
+        origin: index % 2 === 0 ? "left" : "right", 
+        duration: 2000,
+        delay: index * 200, 
+      });
+    });
+
+    sr.reveal(".get-started-bottom", {
+      origin: "bottom",
+      duration: 1200,
+      delay: 300,
+    });
+  }, []);
+
   return (
     <>
       <LandlordNavbar />
@@ -60,4 +91,3 @@ const GetStarted = () => {
 };
 
 export default GetStarted;
-
