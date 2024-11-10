@@ -15,7 +15,7 @@ const HomePage = () => {
       <div className="home-page">
         <div className="home-hero-section container">
           <div className="hero-title">
-            <h2>Jamii hostels</h2>
+            <h3>Keja Connect</h3>
             <h1>Streamline your hostel hunting experience</h1>{" "}
             <p>
               Students can find and reserve the perfect hostels, while landlords
@@ -65,7 +65,7 @@ const HomePage = () => {
                 Find your perfect home away from home
               </h2>
               <p>
-                Jamii Hostels is the ultimate platform for students seeking
+                Keja Connect is the ultimate platform for students seeking
                 comfortable and affordable accommodation near their
                 universities. We bridge the gap between students and hostel
                 owners, providing a seamless and efficient booking experience.
@@ -121,7 +121,7 @@ const HomePage = () => {
                 List your hostels and reach thousands of potential student
                 tenants. Manage your listings, track bookings, and calculate
                 your earnings effortlessly through your personalized dashboard.
-                Jamii Hostels makes it simple to fill your rooms and grow your
+                Keja Connect makes it simple to fill your rooms and grow your
                 business.
               </p>
             </div>{" "}
