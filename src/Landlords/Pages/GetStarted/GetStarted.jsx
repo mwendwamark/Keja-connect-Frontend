@@ -80,7 +80,7 @@ const GetStarted = () => {
           </div>
         </div>
         <div className="get-started-bottom">
-          <NavLink className="get-started-btn" to="/step1-home">
+          <NavLink className="get-started-btn" to="/create-hostel">
             Get Started
             <BsArrowRightShort className="arrow-icon" />
           </NavLink>

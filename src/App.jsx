@@ -14,6 +14,7 @@ import HostelsPage from "./Students/HostelsPage/HostelsPage";
 import StudentProfile from "./Students/Profile/StudentProfile";
 import LandlordProfile from "./Landlords/Profile/LandlordProfle";
 import GetStarted from "./Landlords/Pages/GetStarted/GetStarted";
+import CreateHostel from "./Landlords/Components/CreateHostel";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/landlord-profile" element={<LandlordProfile />}></Route>
         <Route path="/student-profile" element={<StudentProfile />}></Route>
         <Route path ="/get-started" element= {<GetStarted/>}></Route>
+        <Route path="/create-hostel" element={<CreateHostel />}></Route>
       </Routes>
     </>
   );
