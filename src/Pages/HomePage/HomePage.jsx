@@ -19,15 +19,36 @@ const HomePage = () => {
     });
 
     // Apply reveal effect to each section with specific settings
-    sr.reveal(".hero-title", { origin: "left" });
-    sr.reveal(".hero-images", { origin: "right", delay: 500 });
-    sr.reveal(".intro-image", { origin: "left", delay: 300 });
-    sr.reveal(".intro-contents", { origin: "right", delay: 500 });
-    sr.reveal(".data-item", { interval: 200, origin: "bottom", delay: 600 });
-    sr.reveal(".why-choose-us-students", { origin: "left", delay: 400 });
-    sr.reveal(".why-choose-us-landlords", { origin: "right", delay: 400 });
-    sr.reveal(".testimonial-section", { origin: "bottom", delay: 300 });
-  }, []);;
+
+   const applyScrollReveal = () => {
+     if (window.innerWidth <= 1024) {
+       // For medium and smaller screens
+       sr.reveal(".hero-title", { origin: "bottom", duration: 2000 });
+       sr.reveal(".hero-images", { origin: "bottom", delay: 300 });
+       sr.reveal(".intro-image", { origin: "bottom", delay: 300 });
+       sr.reveal(".intro-contents", { origin: "bottom", delay: 500 });
+       sr.reveal(".data-item", { interval: 200, origin: "bottom", delay: 600 });
+       sr.reveal(".why-choose-us-students", { origin: "bottom", delay: 400 });
+       sr.reveal(".why-choose-us-landlords", { origin: "bottom", delay: 400 });
+     } else {
+       // For large screens
+       sr.reveal(".hero-title", { origin: "left" });
+       sr.reveal(".hero-images", { origin: "right", delay: 500 });
+       sr.reveal(".intro-image", { origin: "left", delay: 300 });
+       sr.reveal(".intro-contents", { origin: "right", delay: 500 });
+       sr.reveal(".data-item", {
+         interval: 200,
+         origin: "bottom",
+         delay: 600,
+       });
+       sr.reveal(".why-choose-us-students", { origin: "left", delay: 400 });
+       sr.reveal(".why-choose-us-landlords", { origin: "right", delay: 400 });
+     }
+   };
+
+    applyScrollReveal();
+  }, []);
+
   return (
     <>
       <Navbar />
