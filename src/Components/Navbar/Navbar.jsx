@@ -1,56 +1,66 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { IoMdMenu, IoMdClose } from "react-icons/io";
 import logo from "../../assets/logo4.png";
 
 const Navbar = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-  function handleShowNavbar() {
-    setShowNavbar(!showNavbar);
-  }
-
+    const toggleMenu = () => setMenuOpen(!menuOpen);
+    const closeMenu = () => setMenuOpen(false);
+  
+    
   return (
-    <nav className="navbar">
-      <div className="navbar-container container">
-        <div className="logo-section">
-          <NavLink to="/">
-            <img src={logo} alt="" />
+    <header>
+      <nav className="navbar">
+        <div className="navbar-container container">
+          {/* Logo */}
+          <NavLink to="/" className="navbar-logo">
+            <img src={logo} alt="Logo" />
           </NavLink>
-        </div>
 
-        <div className={`nav-elements ${showNavbar && "active"}`}>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>{" "}
-            <li>
-              <NavLink to="/about">About</NavLink>
-            </li>{" "}
-            <li>
-              <NavLink to="/faqs">FAQs</NavLink>
-            </li>{" "}
-            <li>
-              <NavLink to="/contacts">Contacts</NavLink>
-            </li>{" "}
-          </ul>
-        </div>
-        <div className="nav-login">
-          <ul>
-            <li>
-              <NavLink className="nav-login-btn" to="/role-selection">
+          {/* Navigation Links */}
+          <div className={`navbar-links ${menuOpen ? "active" : ""}`}>
+            <NavLink to="/" onClick={closeMenu} className="nav-item">
+              Home
+            </NavLink>
+            <NavLink to="/about" onClick={closeMenu} className="nav-item">
+              About Us
+            </NavLink>
+            <NavLink to="/faqs" onClick={closeMenu} className="nav-item">
+              FAQs
+            </NavLink>
+            <NavLink to="/contacts" onClick={closeMenu} className="nav-item">
+              Contacts
+            </NavLink>
+
+            <div className="nav-right-side hide-on-large">
+              <NavLink
+                to="/role-selection"
+                onClick={closeMenu}
+                className="nav-item contact-button"
+              >
                 Login
               </NavLink>
-            </li>
-          </ul>
+            </div>
+          </div>
+
+          <div className="nav-right-side hide-on-small">
+            <NavLink
+              to="/role-selection"
+              onClick={closeMenu}
+              className="nav-item contact-button"
+            >
+              Login
+            </NavLink>
+          </div>
+          <div className="navbar-menu-icon" onClick={toggleMenu}>
+            {menuOpen ? <FaTimes style={{ color: "var(--light-green)" }} /> : <FaBars />}
+          </div>
         </div>
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          {showNavbar ? <IoMdClose /> : <IoMdMenu />}{" "}
-          {/* Show close icon when navbar is open */}
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 
