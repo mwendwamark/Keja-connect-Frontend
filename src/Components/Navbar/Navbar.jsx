@@ -5,12 +5,17 @@ import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo4.png";
 
 const Navbar = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    // When the scroll is higher than the 560 viewport height, add the "scroll-navbar" class to the tag with the "navbar" class
+    if (this.scrollY >= 105) navbar.classList.add("scroll-navbar");
+    else navbar.classList.remove("scroll-navbar");
+  });
 
-    const toggleMenu = () => setMenuOpen(!menuOpen);
-    const closeMenu = () => setMenuOpen(false);
-  
-    
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header>
       <nav className="navbar">
@@ -56,7 +61,11 @@ const Navbar = () => {
             </NavLink>
           </div>
           <div className="navbar-menu-icon" onClick={toggleMenu}>
-            {menuOpen ? <FaTimes style={{ color: "var(--light-green)" }} /> : <FaBars />}
+            {menuOpen ? (
+              <FaTimes style={{ color: "var(--light-green)" }} />
+            ) : (
+              <FaBars />
+            )}
           </div>
         </div>
       </nav>
