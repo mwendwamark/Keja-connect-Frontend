@@ -1,0 +1,45 @@
+.student-navbar {
+    padding: px;
+    background-color: var(--background-color);
+    width: 100%;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.student-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.student-logo-section a img {
+    height: 90px;
+}
+
+.student-navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.student-navbar-username {
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.student-navbar-username a {
+    color: var(--orange-color);
+}
+
+.student-navbar-username a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+    .student-logo-section {
+        width: 70px;
+    }
+
+    .student-navbar-links {
+        gap: 0px;
+    }
+}

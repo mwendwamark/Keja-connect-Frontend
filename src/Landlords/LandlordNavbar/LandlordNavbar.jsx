@@ -20,12 +20,7 @@ const LandlordNavbar = () => {
               <li className="navbar-username">
                 Welcome,
                 <NavLink to="/landlord-profile"> {user.first_name}!</NavLink>
-              </li>
-              <li>
-                {/* <button className="logout-button" onClick={handleLogout}>
-                  Logout
-                </button> */}
-              </li>
+              </li>              
             </>
           ) : (
             <li>

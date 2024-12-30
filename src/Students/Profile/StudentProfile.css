@@ -1,4 +1,4 @@
-.landlord-profile-page {
+.student-profile-page {
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
@@ -8,7 +8,7 @@
     color: #333;
 }
 
-.landlord-profile-page h1 {
+.student-profile-page h1 {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
@@ -16,18 +16,18 @@
     text-align: center;
 }
 
-.landlord-profile-page p {
+.student-profile-page p {
     font-size: 1rem;
     line-height: 1.6;
     margin: 0.5rem 0;
 }
 
-.landlord-profile-page p strong {
+.student-profile-page p strong {
     color: #666;
     font-weight: 500;
 }
 
-.landlord-profile-page button {
+.student-profile-page button {
     display: block;
     width: 100%;
     margin-top: 1.5rem;
@@ -42,6 +42,6 @@
     transition: background-color 0.3s ease;
 }
 
-.landlord-profile-page button:hover {
+.student-profile-page button:hover {
     background-color: #c0392b;
 }
