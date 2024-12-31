@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import LandlordNavbar from "../LandlordNavbar/LandlordNavbar";
 
 const CreateHostel = () => {
   const [hostelData, setHostelData] = useState({
@@ -87,6 +88,7 @@ const CreateHostel = () => {
 
   return (
     <>
+      <LandlordNavbar />
       <ToastContainer />
       <form onSubmit={handleSubmit}>
         <div>

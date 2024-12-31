@@ -1,0 +1,136 @@
+.hostels-page {
+    padding: 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-input {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--light-green);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.filter-button.reset-button {
+    background-color: var(--orange-color);
+    color: var(--background-color);
+}
+
+.no-results {
+    color: red;
+    text-align: center;
+}
+
+.hostels-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.hostel-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+
+.hostel-image {
+    height: 60%;
+}
+
+.hostel-image img {
+    width: 100%;
+    height: auto;
+}
+
+.hostel-swiper {
+    width: 100%;
+    height: 260px;
+}
+
+.hostel-swiper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.hostel-card:hover {
+    transform: scale(1.05);
+}
+
+.hostel-info {
+    height: 40%;
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hostel-info p {
+    color: var(--faint-text-color);
+}
+
+.name-price {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.name-price p {
+    font-weight: 500;
+    color: var(--faint-text-color);
+}
+
+.name-price h3 {
+    font-weight: 600;
+}
+
+.name-price p span {
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+}
