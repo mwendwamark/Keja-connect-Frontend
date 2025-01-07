@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import StudentNavbar from "../StudentNavbar/StudentNavbar";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "./HostelsPage.css";
-// import { FaLocation } from "react-icons/fa";
+import StudentNavbar from "../StudentNavbar/StudentNavbar";
+import { IoLocationOutline } from "react-icons/io5";
 
 const HostelsPage = () => {
   const [hostels, setHostels] = useState([]);
@@ -17,18 +18,17 @@ const HostelsPage = () => {
     max_price: "",
     room_type: "",
   });
-  const [noResults, setNoResults] = useState(false);
 
   const fetchHostels = async (filterParams = {}) => {
     try {
       const response = await axios.get("http://localhost:3000/hostels", {
         params: filterParams,
       });
-      if (response.data.length === 0) {
-        setNoResults(true);
-        setTimeout(() => setNoResults(false), 5000);
-      }
-      setHostels(response.data);
+      const updatedHostels = response.data.map((hostel) => {
+        const uniqueImages = [...new Set(hostel.image_urls)];
+        return { ...hostel, image_urls: uniqueImages };
+      });
+      setHostels(updatedHostels);
     } catch (error) {
       console.error("Error fetching hostels:", error);
     }
@@ -63,13 +63,9 @@ const HostelsPage = () => {
     <>
       <StudentNavbar />
       <div className="hostels-page container">
-        <header className="page-header">
-          <h1>Find Your Perfect Hostel</h1>
-          <p>
-            Filter by location, price, and room type to find your ideal stay.
-          </p>
-        </header>
+        <h1>Available Hostels</h1>
 
+        {/* Filter Form */}
         <section className="search-filter-section">
           <form className="filter-form" onSubmit={handleFilterSubmit}>
             <input
@@ -134,63 +130,45 @@ const HostelsPage = () => {
           </form>
         </section>
 
-        {noResults && (
-          <p className="no-results">
-            No hostels match your filters. Showing all hostels...
-          </p>
-        )}
-
-        <section className="hostels-container">
-          {hostels.length > 0 ? (
-            hostels.map((hostel) => (
-              <div key={hostel.id} className="hostel-card">
-                <div className="hostel-image">
-                  {hostel.image_urls && hostel.image_urls.length > 0 ? (
-                    <Swiper
-                      navigation={false}
-                      pagination={{ clickable: true }} // Optional: Display pagination dots
-                      loop={true}
-                      modules={[Autoplay, Pagination, Navigation]}
-                      autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                      }}
-                      speed={1000} // Increased transition duration for smoother effect
+        {/* Hostels List */}
+        <div className="hostels-container">
+          {hostels.map((hostel) => (
+            <div key={hostel.id} className="hostel-card">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={10}
+                slidesPerView={1}
+                navigation={false}
+                pagination={{ clickable: true }}
+                // autoplay={{ delay: 3000 }}
+                speed={1800}
+              >
+                {hostel.image_urls.map((url, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={url}
+                      alt={`${hostel.name} image ${index + 1}`}
                       className="hostel-swiper"
-                    >
-                      {hostel.image_urls.map((image, index) => (
-                        <SwiperSlide key={index}>
-                          <img
-                            src={image}
-                            alt={`${hostel.name} ${index + 1}`}
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  ) : (
-                    <p>No image available</p>
-                  )}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>{" "}
+              <div className="hostel-info">
+                <div className="name-price">
+                  <h3>{hostel.name}</h3>
+                  <p><span>KES </span>{hostel.price_per_month}/ Month</p>
                 </div>
-                <div className="hostel-info">
-                  <div className="name-price">
-                    <h3>{hostel.name}</h3>
-                    <p>
-                      KES <span>{hostel.price_per_month}/Month</span>
-                    </p>
-                  </div>
-                  <div className="hostel-location">
-                    {" "}
-                    {/* <FaLocation /> */}
-                    <p>{hostel.location}</p>
-                  </div>
-                  <p>{hostel.room_type}</p>
-                </div>
+                <p>{hostel.room_type}</p>
+
+                <p className="location-info">
+                  <IoLocationOutline />
+                  {hostel.location}
+                </p>
+                <div className="hostel-images"></div>
               </div>
-            ))
-          ) : (
-            <p className="loading">Loading hostels...</p>
-          )}
-        </section>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
