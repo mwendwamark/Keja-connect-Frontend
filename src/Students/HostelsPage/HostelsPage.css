@@ -22,6 +22,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-family: var(--text-ff);
 }
 
 .filter-buttons {
@@ -39,6 +40,7 @@
     border: 2px solid var(--orange-color);
     color: var(--background-color);
     cursor: pointer;
+    font-family: var(--text-ff);
 }
 
 .filter-button.reset-button {
@@ -56,16 +58,15 @@
 .hostels-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 15px;
 }
 
 .hostel-card {
-    border: 1px solid #ccc;
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    transition: 0.5s linear;
     gap: 20px;
+    border: 1px solid #ccc;
 }
 
 .hostel-image {
@@ -91,6 +92,7 @@
 
 .hostel-card:hover {
     transform: scale(1.01);
+    filter: grayscale(70%);
 }
 
 .hostel-info {
@@ -104,7 +106,7 @@
 
 .hostel-info p {
     color: var(--faint-text-color);
-    margin-top: 3px;
+    margin-bottom:3px;
 }
 
 .hostel-info h3 {
@@ -151,5 +153,19 @@
 @media screen and (max-width: 900px) {
     .hostels-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .hostels-container {
+        grid-template-columns: repeat(1, 1fr);
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 500px) {
+    .hostels-container {
+        grid-template-columns: repeat(1, 1fr);
+        width: 90%;
     }
 }

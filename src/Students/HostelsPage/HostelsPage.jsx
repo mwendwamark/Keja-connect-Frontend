@@ -8,6 +8,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "./HostelsPage.css";
 import StudentNavbar from "../StudentNavbar/StudentNavbar";
 import { IoLocationOutline } from "react-icons/io5";
+import RatingDisplay from "../Components/RatingDisplay";
 
 const HostelsPage = () => {
   const [hostels, setHostels] = useState([]);
@@ -158,12 +159,14 @@ const HostelsPage = () => {
                   <h3>{hostel.name}</h3>
                   <p><span>KES </span>{hostel.price_per_month}/ Month</p>
                 </div>
+
                 <p>{hostel.room_type}</p>
 
                 <p className="location-info">
                   <IoLocationOutline />
                   {hostel.location}
                 </p>
+                <RatingDisplay rating={hostel.average_rating} reviewsCount={hostel.reviews_count}/>
                 <div className="hostel-images"></div>
               </div>
             </div>
