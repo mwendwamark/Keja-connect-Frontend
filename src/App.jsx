@@ -10,11 +10,12 @@ import StudentLogin from "./Students/Login/StudentLogin";
 import LandlordLogin from "./Landlords/Login/LandlordLogin";
 import LandlordSignup from "./Landlords/Signup/LandlordSignup";
 import LandlordDashboard from "./Landlords/Dashboard/LandlordDashboard";
-import HostelsPage from "./Students/HostelsPage/HostelsPage";
 import StudentProfile from "./Students/Profile/StudentProfile";
 import LandlordProfile from "./Landlords/Profile/LandlordProfle";
 import GetStarted from "./Landlords/Pages/GetStarted/GetStarted";
 import CreateHostel from "./Landlords/Components/CreateHostel";
+import HostelDetails from "./Students/Pages/HostelDetails/HostelDetails";
+import HostelsPage from "./Students/Pages/HostelsPage/HostelsPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/student-profile" element={<StudentProfile />}></Route>
         <Route path ="/get-started" element= {<GetStarted/>}></Route>
         <Route path="/create-hostel" element={<CreateHostel />}></Route>
+        <Route path= "/hostels/:id" element={<HostelDetails/>}></Route>
       </Routes>
     </>
   );

@@ -6,9 +6,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "./HostelsPage.css";
-import StudentNavbar from "../StudentNavbar/StudentNavbar";
+import StudentNavbar from "../../StudentNavbar/StudentNavbar";
 import { IoLocationOutline } from "react-icons/io5";
-import RatingDisplay from "../Components/RatingDisplay";
+import RatingDisplay from "../../Components/Rating/RatingDisplay";
+import { NavLink } from "react-router-dom";
 
 const HostelsPage = () => {
   const [hostels, setHostels] = useState([]);
@@ -134,12 +135,12 @@ const HostelsPage = () => {
         {/* Hostels List */}
         <div className="hostels-container">
           {hostels.map((hostel) => (
-            <div key={hostel.id} className="hostel-card">
+            <NavLink to={`/hostels/${hostel.id}`} key={hostel.id} className="hostel-card">
               <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={10}
                 slidesPerView={1}
-                navigation={false}
+                navigation={true}
                 pagination={{ clickable: true }}
                 // autoplay={{ delay: 3000 }}
                 speed={1800}
@@ -169,7 +170,7 @@ const HostelsPage = () => {
                 <RatingDisplay rating={hostel.average_rating} reviewsCount={hostel.reviews_count}/>
                 <div className="hostel-images"></div>
               </div>
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>
