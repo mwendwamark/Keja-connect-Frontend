@@ -35,8 +35,8 @@ const LandlordNavbar = () => {
           {user ? (
             <>
               <li className="navbar-username">
-                Welcome,{" "}
-                <NavLink to="/landlord-profile">{user.first_name}!</NavLink>
+              <span className="welcome-username">Welcome,</span>{" "}
+                <NavLink to="/landlord-profile">{user.first_name}  <span className="welcome-username">!</span>{" "}</NavLink>
               </li>
             </>
           ) : (

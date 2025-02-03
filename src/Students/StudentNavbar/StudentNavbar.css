@@ -46,3 +46,9 @@
         gap: 0px;
     }
 }
+
+@media screen and (max-width: 500px){
+    .welcome-username{
+        display: none;
+    }
+}
