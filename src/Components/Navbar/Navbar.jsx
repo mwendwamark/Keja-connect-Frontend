@@ -1,24 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo4.png";
 
 const Navbar = () => {
-  window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
-    // When the scroll is higher than the 560 viewport height, add the "scroll-navbar" class to the tag with the "navbar" class
-    if (this.scrollY >= 105) navbar.classList.add("scroll-navbar");
-    else navbar.classList.remove("scroll-navbar");
-  });
-
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 105) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <header>
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? "scroll-navbar" : ""}`}>
         <div className="navbar-container container">
           {/* Logo */}
           <NavLink to="/" className="navbar-logo">
@@ -39,7 +52,6 @@ const Navbar = () => {
             <NavLink to="/contacts" onClick={closeMenu} className="nav-item">
               Contacts
             </NavLink>
-
             <div className="nav-right-side hide-on-large">
               <NavLink
                 to="/role-selection"
@@ -60,6 +72,7 @@ const Navbar = () => {
               Login
             </NavLink>
           </div>
+
           <div className="navbar-menu-icon" onClick={toggleMenu}>
             {menuOpen ? (
               <FaTimes style={{ color: "var(--light-green)" }} />

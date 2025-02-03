@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./StudentNavbar.css";
 import logo from "../../assets/logo4.png";
 
 const StudentNavbar = () => {
+  const [scrolled, setScrolled] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
-  window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".student-navbar");
-    // When the scroll is higher than the 560 viewport height, add the "scroll-navbar" class to the tag with the "navbar" class
-    if (this.scrollY >= 100) navbar.classList.add("scroll-navbar");
-    else navbar.classList.remove("scroll-navbar");
-  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
 
   return (
-    <nav className="student-navbar">
+    <nav className={`student-navbar ${scrolled ? "scroll-navbar" : ""}`}>
       <div className="student-navbar-container container">
         <div className="landlord-logo-section">
           <NavLink to="/hostels">
