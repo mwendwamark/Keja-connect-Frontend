@@ -135,7 +135,7 @@ const HostelsPage = () => {
         {/* Hostels List */}
         <div className="hostels-container">
           {hostels.map((hostel) => (
-            <NavLink to={`/hostels/${hostel.id}`} key={hostel.id} className="hostel-card">
+            <NavLink to={`/hostels/${hostel.id}`} key={hostel.id} className="hostels-card">
               <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={10}
@@ -150,12 +150,12 @@ const HostelsPage = () => {
                     <img
                       src={url}
                       alt={`${hostel.name} image ${index + 1}`}
-                      className="hostel-swiper"
+                      className="hostels-swiper"
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>{" "}
-              <div className="hostel-info">
+              <div className="hostels-info">
                 <div className="name-price">
                   <h3>{hostel.name}</h3>
                   <p><span>KES </span>{hostel.price_per_month}/ Month</p>
@@ -168,7 +168,7 @@ const HostelsPage = () => {
                   {hostel.location}
                 </p>
                 <RatingDisplay rating={hostel.average_rating} reviewsCount={hostel.reviews_count}/>
-                <div className="hostel-images"></div>
+                <div className="hostels-images"></div>
               </div>
             </NavLink>
           ))}
