@@ -1,6 +1,8 @@
 import React from "react";
 import "./Step1Intro.css";
 import vid from "../../../assets/step1.webm";
+// import vid from "../../../assets/step1-unscreen.gif";
+
 
 const Step1Intro = () => {
   return (

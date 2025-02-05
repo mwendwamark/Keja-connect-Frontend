@@ -134,13 +134,13 @@
   background-color: var(--text-color);
   color: var(--background-color);
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, gap 0.3s ease; /* Add gap transition */
+  transition: background-color 0.3s ease, color 0.3s ease, gap 0.3s ease; 
 }
 
 .next-button:hover {
   background-color: var(--faint-text-color);
   color: white;
-  gap: 0.55rem; /* Increase the gap on hover */
+  gap: 0.55rem;
 }
 
 .submit-button {
@@ -158,6 +158,34 @@
 .submit-button:hover {
   background-color: var(--faint-text-color);
   color: white
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+.loading-content {
+  text-align: center;
+  color: white;
+}
+
+.loading-content img {
+  width: 150px; 
+  height: 150px;
+}
+
+.loading-content p {
+  margin-top: 10px;
+  font-size: 18px;
 }
 
 /* Responsive Design */
