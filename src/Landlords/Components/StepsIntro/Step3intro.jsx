@@ -1,13 +1,12 @@
 import React from "react";
-import "./Step3Intro.css";
-import vid from "../../../assets/step3.mp4";
+import vid from "../../../assets/step3.webm";
 
 const Step3intro = () => {
   return (
     <div>
       <div>
-        <div className="step3-intro-container">
-          <div className="step-intro-contents">
+        <div className="steps-intro-container">
+          <div className="steps-intro-contents">
             <h3>Step 3</h3>
             <h2>Finish up and publish</h2>
             <p>
@@ -16,7 +15,7 @@ const Step3intro = () => {
             </p>
           </div>
 
-          <div className="step-intro-video">
+          <div className="steps-intro-video">
             <video
               className="step1-video"
               autoPlay

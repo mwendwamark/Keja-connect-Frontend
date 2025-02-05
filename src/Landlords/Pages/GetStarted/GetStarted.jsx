@@ -39,7 +39,7 @@ const GetStarted = () => {
   return (
     <>
       <LandlordNavbar />
-      <div className="get-started">
+      <div className="get-started container section">
         <div className="get-started-top">
           <div className="left-side">
             <h1>It is easy to get started with Keja Connect</h1>

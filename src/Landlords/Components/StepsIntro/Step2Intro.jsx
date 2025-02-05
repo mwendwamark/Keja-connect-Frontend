@@ -1,14 +1,13 @@
 import React from "react";
-import "./Step2Intro.css";
-import vid from "../../../assets/step2.mp4";
+import vid from "../../../assets/step2.webm";
 
 const Step2Intro = () => {
   return (
     <div>
       <div>
-        <div className="step2-intro-container">
-          <div className="step-intro-contents">
-            <h3>Step 1</h3>
+        <div className="steps-intro-container">
+          <div className="steps-intro-contents">
+            <h3>Step 2</h3>
             <h2>Make your place stand out</h2>
             <p>
               In this step, you’ll add some of the amenities your place offers,
@@ -16,7 +15,7 @@ const Step2Intro = () => {
             </p>
           </div>
 
-          <div className="step-intro-video">
+          <div className="steps-intro-video">
             <video
               className="step1-video"
               autoPlay

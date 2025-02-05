@@ -5,7 +5,6 @@
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
-    margin: 5px 0 40px;
 }
 
 .get-started-top {
@@ -83,7 +82,7 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    border-top: 1px solid var(--faint-text-color);
+    border-top: 2px solid var(--dashboard-color);
     padding-top: 20px;
 }
 
@@ -149,5 +148,9 @@
         width: 100%;
         justify-content: center;
         margin: 0 auto;
+    }
+    .get-started-top .left-side h1 {
+        text-align: left;
+        font-size: 36px;
     }
 }

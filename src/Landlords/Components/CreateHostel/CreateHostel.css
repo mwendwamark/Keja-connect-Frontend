@@ -1,10 +1,7 @@
 .create-hostel-form {
-  /* max-width: 800px; */
-  /* margin: 2rem auto; */
   padding: 2rem;
   background-color: var(--background-color);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Form Title */
@@ -14,13 +11,6 @@
   color: var(--green-color);
   margin-bottom: 2rem;
   text-align: center;
-}
-
-/* Form Step */
-.form-step {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 /* Form Grid */
@@ -88,52 +78,86 @@
 }
 
 .image-preview img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 8px;
   border: 1px solid var(--dashboard-color);
 }
 
-/* Step Buttons */
-.step-buttons {
+/* Step Container */
+.step-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Step Buttons Container */
+.step-buttons-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--background-color);
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
-  margin-top: 1.5rem;
+  align-items: center;
+  border-top: 1px solid var(--dashboard-color);
 }
 
-.next-button,
-.back-button,
-.submit-button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
+/* Back Button (Underlined Text) */
+.back-link {
   font-size: 14px;
-  font-weight: var(--text-bold);
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.next-button,
-.submit-button {
-  background-color: var(--light-green);
   color: var(--green-color);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.back-button {
-  background-color: var(--dashboard-color);
-  color: var(--text-color);
+.back-link:hover {
+  color: var(--orange-color);
 }
 
-.next-button:hover,
-.submit-button:hover {
-  background-color: var(--dark-pink);
-  color: white;
+/* Next Button */
+.next-button {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75rem 1.9rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, gap 0.3s ease; /* Add gap transition */
 }
 
-.back-button:hover {
+.next-button:hover {
   background-color: var(--faint-text-color);
   color: white;
+  gap: 0.55rem; /* Increase the gap on hover */
+}
+
+.submit-button {
+  padding: 0.8rem 1.9rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, gap 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--faint-text-color);
+  color: white
 }
 
 /* Responsive Design */
@@ -142,11 +166,25 @@
     grid-template-columns: 1fr;
   }
 
+  .step-container {
+    padding: 0rem;
+  }
+  .create-hostel-form h1 {
+    font-size: 24px;
+  }
   .create-hostel-form {
+    padding: 0rem;
+  }
+  .step-buttons-container {
     padding: 1rem;
   }
 
-  .create-hostel-form h1 {
-    font-size: 24px;
+  .back-link {
+    font-size: 12px;
+  }
+
+  .next-button {
+    padding: 0.5rem 1rem;
+    font-size: 12px;
   }
 }
