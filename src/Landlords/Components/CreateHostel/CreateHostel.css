@@ -208,11 +208,10 @@
   }
 
   .back-link {
-    font-size: 12px;
+    font-size: 1.1rem;
   }
 
   .next-button {
-    padding: 0.5rem 1rem;
-    font-size: 12px;
+    padding: 0.8rem 2rem;
   }
 }
