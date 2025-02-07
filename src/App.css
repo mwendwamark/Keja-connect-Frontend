@@ -2,7 +2,7 @@
 
 :root {
   /* Colors */
-  --background-color: #f4f4f4;
+  --background-color: #ffffff !important;
   --pink-color: #F2DDE3;
   --green-color: #063231;
   --text-color: #0d0c22;
@@ -11,7 +11,7 @@
   --light-green: #96D5D3;
   --blue-link-color: #3328FE;
   --orange-color: #EA5024;
-  --dashboard-color: #ddddddda;
+  --dashboard-color: #f4f4f4 !important;
 
   /* Font sizes */
   --h1-fs: 48px;
