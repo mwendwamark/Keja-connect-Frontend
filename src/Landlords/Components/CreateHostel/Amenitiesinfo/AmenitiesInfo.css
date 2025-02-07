@@ -1,39 +1,44 @@
 .amenities-form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  align-items: stretch;
 }
-/* Hide the default checkbox */
 .hidden-checkbox {
-    display: none;
-  }
-  
-  /* Style the custom checkbox */
+  display: none;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px;
+  width: 200px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.hidden-checkbox:checked + .custom-checkbox {
+  background-color: #e0f7fa;
+  border-color: var(--green-color);
+}
+
+.custom-checkbox svg {
+  font-size: 20px;
+  color: var(--green-color);
+}
+
+.custom-checkbox span {
+  font-size: 16px;
+  color: #333;
+}
+
+@media (max-width: 590px) {
   .custom-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px;
-    width: 200px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
-  /* Change styles when the checkbox is checked */
-  .hidden-checkbox:checked + .custom-checkbox {
-    background-color: #e0f7fa;
-    border-color: #00bcd4;
-  }
-  
-  /* Icon and text styling */
-  .custom-checkbox svg {
-    font-size: 20px;
-    color: #00bcd4;
-  }
-  
-  .custom-checkbox span {
-    font-size: 16px;
-    color: #333;
-  }
+}
