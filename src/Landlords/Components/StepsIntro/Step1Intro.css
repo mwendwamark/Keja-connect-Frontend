@@ -1,5 +1,5 @@
 .steps-intro-container {
-  min-height: 50vh;
+  /* height: 0vh; */
   width: 100%;
   padding: 1rem;
   display: flex;
@@ -77,7 +77,7 @@
 
 @media (max-width: 590px) {
   .steps-intro-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 2rem;
     padding: .8rem;
   }
@@ -91,6 +91,42 @@
     height: 400px;
   }
 
+  .steps-intro-video video {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 420px) {
+
+  .steps-intro-video {
+    height: 380px;
+  }
+  .steps-intro-video video {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+
+@media (max-width: 375px) {
+
+  .steps-intro-video {
+    height: 340px;
+  }
+  .steps-intro-video video {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+
+  .steps-intro-video {
+    height: 280px;
+  }
   .steps-intro-video video {
     height: 100%;
     width: 100%;
