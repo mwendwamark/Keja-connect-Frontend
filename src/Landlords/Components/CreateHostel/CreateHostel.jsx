@@ -8,7 +8,10 @@ import Step2Intro from "../StepsIntro/Step2Intro";
 import Step3intro from "../StepsIntro/Step3intro";
 import loadingGif from "../../../assets/loading.gif";
 import { BsArrowRight } from "react-icons/bs";
-
+import BasicHostelInfo from "./BasicHostelInfo/BasicHostelInfo";
+import StepNavigation from "./StepNavigation/StepNavigation";
+import AmenitiesInfo from "./Amenitiesinfo/AmenitiesInfo";
+import FinalInfo from "./FinalInfo/FinalInfo";
 const CreateHostel = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [hostelData, setHostelData] = useState({
@@ -132,72 +135,14 @@ const CreateHostel = () => {
           )}
 
           {/* Step 1: Superficial Details */}
-          {currentStep === 1 && (
-            <div className="step-container">
-              <h2>Step 1: Tell us about your hostel</h2>
-              <div className="form-grid">
-                <div className="form-group">
-                  <label>Hostel Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={hostelData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Location</label>
-                  <input
-                    type="text"
-                    name="location"
-                    value={hostelData.location}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Room Type</label>
-                  <input
-                    type="text"
-                    name="room_type"
-                    value={hostelData.room_type}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Bedrooms</label>
-                  <input
-                    type="number"
-                    name="bedrooms"
-                    value={hostelData.bedrooms}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Available Units</label>
-                  <input
-                    type="number"
-                    name="available_units"
-                    value={hostelData.available_units}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="step-buttons-container container">
-                <span className="back-link" onClick={prevStep}>
-                  Back
-                </span>
-                <button
-                  type="button"
-                  className="next-button"
-                  onClick={nextStep}
-                >
-                  Next <BsArrowRight className="next-icon" />
-                </button>
-              </div>
+
+          {currentStep == 1 && (
+            <div className="step-container_">
+              <BasicHostelInfo
+                hostelData={hostelData}
+                handleChange={handleChange}
+              />
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
 
@@ -205,69 +150,18 @@ const CreateHostel = () => {
           {currentStep === 2 && (
             <div className="step-container">
               <Step2Intro />
-              <div className="step-buttons-container container">
-                <span className="back-link" onClick={prevStep}>
-                  Back
-                </span>
-                <button
-                  type="button"
-                  className="next-button"
-                  onClick={nextStep}
-                >
-                  Next <BsArrowRight className="next-icon" />
-                </button>
-              </div>
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
 
           {/* Step 3: Amenities */}
           {currentStep === 3 && (
             <div className="step-container">
-              <h2>Step 2: What amenities does your hostel offer?</h2>
-              <div className="form-grid">
-                {[
-                  "toilet",
-                  "kitchen",
-                  "study_room",
-                  "wifi",
-                  "bathroom",
-                  "wardrobe",
-                  "laundry_services",
-                  "balcony",
-                  "garden",
-                  "swimming_pool",
-                  "gym",
-                  "parking",
-                  "tokens",
-                  "cctv_cameras",
-                  "hot_shower",
-                  "air_conditioner",
-                  "smoke_alarm",
-                  "first_aid_kit",
-                ].map((amenity) => (
-                  <div className="checkbox-group" key={amenity}>
-                    <input
-                      type="checkbox"
-                      name={amenity}
-                      checked={hostelData[amenity]}
-                      onChange={handleChange}
-                    />
-                    <label>{amenity.replace(/_/g, " ")}</label>
-                  </div>
-                ))}
-              </div>
-              <div className="step-buttons-container container">
-                <span className="back-link" onClick={prevStep}>
-                  Back
-                </span>
-                <button
-                  type="button"
-                  className="next-button"
-                  onClick={nextStep}
-                >
-                  Next <BsArrowRight className="next-icon" />
-                </button>
-              </div>
+              <AmenitiesInfo
+                hostelData={hostelData}
+                handleChange={handleChange}
+              />
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
 
@@ -275,69 +169,19 @@ const CreateHostel = () => {
           {currentStep === 4 && (
             <div className="step-container">
               <Step3intro />
-              <div className="step-buttons-container container">
-                <span className="back-link" onClick={prevStep}>
-                  Back
-                </span>
-                <button
-                  type="button"
-                  className="next-button"
-                  onClick={nextStep}
-                >
-                  Next <BsArrowRight className="next-icon" />
-                </button>
-              </div>
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
 
           {/* Step 5: Images, Description, and Price */}
           {currentStep === 5 && (
             <div className="step-container">
-              <h2>Step 3: Add images, description, and set your price</h2>
-              <div className="form-grid">
-                <div className="form-group">
-                  <label>Price per Month</label>
-                  <input
-                    type="number"
-                    name="price_per_month"
-                    value={hostelData.price_per_month}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Water Supply</label>
-                  <input
-                    type="text"
-                    name="water_supply"
-                    value={hostelData.water_supply}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Security</label>
-                  <input
-                    type="text"
-                    name="security"
-                    value={hostelData.security}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Images</label>
-                  <input
-                    type="file"
-                    name="images"
-                    multiple
-                    onChange={handleImageChange}
-                  />
-                  <div className="image-preview">
-                    {imageUrls.map((url, index) => (
-                      <img key={index} src={url} alt={`Hostel ${index + 1}`} />
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <FinalInfo
+                hostelData={hostelData}
+                handleChange={handleChange}
+                handleImageChange={handleImageChange}
+                imageUrls={imageUrls}
+              />
               <div className="step-buttons-container container">
                 <span className="back-link" onClick={prevStep}>
                   Back
