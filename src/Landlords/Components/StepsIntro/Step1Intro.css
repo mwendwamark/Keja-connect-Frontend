@@ -1,10 +1,10 @@
 .steps-intro-container {
-  /* height: 0vh; */
+  height: 70vh;
   width: 100%;
   padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2rem;
 }
 
@@ -49,7 +49,7 @@
 .steps-intro-video video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
   border-radius: 12px;
 }
 

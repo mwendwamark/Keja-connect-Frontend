@@ -87,10 +87,10 @@ const CreateHostel = () => {
         }
       );
       setImageUrls(response.data.image_urls);
-      toast.success("Hostel created successfully!");
+      toast.success("Hostel created successfully! You will be redirected to your Dashboard");
       setTimeout(() => {
         window.location.href = "/landlord/dashboard";
-      }, 5000);
+      }, 10000);
     } catch (error) {
       console.error("Error creating hostel:", error);
       toast.error("Failed to create hostel. Please try again.");
@@ -117,20 +117,12 @@ const CreateHostel = () => {
       <ToastContainer />
       <div className="create-hostel-form container">
         <form onSubmit={handleSubmit}>
+
           {/* Step 0: Introduction */}
           {currentStep === 0 && (
             <div className="step-container">
               <Step1Intro />
-              <div className="step-buttons-container container">
-                <span className="back-link" onClick={prevStep}></span>
-                <button
-                  type="button"
-                  className="next-button step1-btn"
-                  onClick={nextStep}
-                >
-                  Next <BsArrowRight className="next-icon" />
-                </button>
-              </div>
+              <StepNavigation  onNext={nextStep} />
             </div>
           )}
 
@@ -194,6 +186,7 @@ const CreateHostel = () => {
                   {loading ? "Creating..." : "Create Hostel"}
                 </button>
               </div>
+
             </div>
           )}
         </form>

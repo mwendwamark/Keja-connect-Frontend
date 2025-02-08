@@ -8,6 +8,10 @@
   display: none;
 }
 
+.amenities-step-container {
+  height: 150vh;
+}
+
 .custom-checkbox {
   display: flex;
   align-items: center;
