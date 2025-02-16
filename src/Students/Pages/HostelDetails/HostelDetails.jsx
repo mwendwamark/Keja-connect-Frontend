@@ -14,7 +14,10 @@ import { CgGym } from "react-icons/cg";
 import { MdKitchen, MdSmokeFree, MdShower } from "react-icons/md";
 import { RiFirstAidKitLine, RiHotelBedFill } from "react-icons/ri";
 import { BiCctv } from "react-icons/bi";
-import { PiPottedPlant } from "react-icons/pi";
+import { PiPottedPlant, PiToiletDuotone } from "react-icons/pi";
+import { TbAirConditioning } from "react-icons/tb";
+import { FaDog } from "react-icons/fa";
+import { GiHomeGarage, GiDesk } from "react-icons/gi";
 import StudentNavbar from "../../StudentNavbar/StudentNavbar";
 import RatingDisplay from "../../Components/Rating/RatingDisplay";
 import "./HostelDetails.css";
@@ -126,12 +129,27 @@ const HostelDetails = () => {
                 <p className="overview-label">Bedrooms</p>
                 <p className="overview-value">{hostel.bedrooms}</p>
               </div>
+              <div className="overview-item">
+                <p className="overview-label">Deposit Amount</p>
+                <p className="overview-value">KES {hostel.deposit_amount}</p>
+              </div>
+              <div className="overview-item">
+                <p className="overview-label">Electricity Billing</p>
+                <p className="overview-value">{hostel.electricity_billing}</p>
+              </div>
+              <div className="overview-item">
+                <p className="overview-label">Max Occupancy</p>
+                <p className="overview-value">{hostel.max_occupancy}</p>
+              </div>
+              <div className="overview-item">
+                <p className="overview-label">Furnishing</p>
+                <p className="overview-value">{hostel.furnishing}</p>
+              </div>
             </div>
           </div>
-
           {/* Amenities Section */}
           <div className="hostel-amenities">
-            <h2>Available amenities</h2>
+            <h2>Available Amenities</h2>
             <div className="amenities-grid">
               {renderAmenity(<IoWifiOutline />, "Wi-Fi", hostel.wifi)}
               {renderAmenity(<FaParking />, "Parking", hostel.parking)}
@@ -172,7 +190,41 @@ const HostelDetails = () => {
                 "Laundry Services",
                 hostel.laundry_services
               )}
+              {renderAmenity(<FaDog />, "Pet Friendly", hostel.pet_friendly)}
+              {renderAmenity(
+                <TbAirConditioning />,
+                "Air Conditioner",
+                hostel.air_conditioner
+              )}
+              {renderAmenity(<PiToiletDuotone />, "Toilet", hostel.toilet)}
+              {renderAmenity(<GiDesk />, "Study Room", hostel.study_room)}
+              {renderAmenity(<PiPottedPlant />, "Balcony", hostel.balcony)}
             </div>
+          </div>
+          {/* Nearby Facilities Section */}{" "}
+          <div className="hostel-distance-calculation">
+            <p>
+              Distance to <span>{hostel.university_name}</span>{" "}
+            </p>
+            <p>
+              {" "}
+              <span> {hostel.distance_to_university}</span> km from the
+              university
+            </p>
+          </div>
+          <div className="hostel-nearby-facilities">
+            <h2>Nearby Facilities</h2>
+            <p>{hostel.nearby_facilities}</p>
+          </div>
+          {/* Rules Section */}
+          <div className="hostel-rules">
+            <h2>Rules</h2>
+            <p>{hostel.rules}</p>
+          </div>
+          {/* description Section */}
+          <div className="hostel-description">
+            <h2>Description</h2>
+            <p>{hostel.description}</p>
           </div>
         </div>
 

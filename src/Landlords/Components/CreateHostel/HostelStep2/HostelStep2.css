@@ -1,0 +1,85 @@
+.hostel-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hostel-form__header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.hostel-form__header h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.hostel-form__header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.hostel-form__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.hostel-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.hostel-form__field label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.hostel-form__field input,
+.hostel-form__field select {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  font-family: var(--text-ff);
+}
+
+.hostel-form__field input:focus,
+.hostel-form__field select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+/* .hostel-form__field input[type="number"] {
+  -moz-appearance: textfield;
+} */
+
+.hostel-form__field input[type="number"]::-webkit-outer-spin-button,
+.hostel-form__field input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hostel-form__field select {
+  background-color: white;
+  cursor: pointer;
+}
+
+.hostel-form__textarea{
+  height: 300px;
+}
+
+@media (max-width: 600px) {
+  .hostel-form {
+    padding: 1rem;
+  }
+  
+  .hostel-form__fields {
+    grid-template-columns: 1fr;
+  }
+}

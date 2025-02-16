@@ -152,6 +152,27 @@
   margin-top: 48px;
 }
 
+.hostel-distance-calculation {
+  padding: 0;
+
+}
+.hostel-distance-calculation p{
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--faint-text-color);
+}
+
+.hostel-distance-calculation p span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--orange-color);
+}
+
+.hostel-distance-calculation span {
+
+color: var(--orange-color);
+}
+
 .review {
   padding: 24px 0;
   border-bottom: 1px solid #dddddd;

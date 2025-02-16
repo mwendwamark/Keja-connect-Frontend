@@ -1,5 +1,5 @@
 import React from "react";
-import vid from "../../../assets/step2.mp4";
+import vid from "../../../../assets/step2.mp4";
 
 const Step2Intro = () => {
   return (

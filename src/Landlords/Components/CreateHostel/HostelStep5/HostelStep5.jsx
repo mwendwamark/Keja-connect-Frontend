@@ -1,0 +1,59 @@
+import React from "react";
+import "./HostelStep5.css";
+
+const HostelStep5 = ({ hostelData, handleChange }) => {
+  return (
+    <div className="hostel-form">
+      <div className="hostel-form__header">
+        <h2>Utility</h2>
+        <p>
+          Choose the available amenities present in your property by clicking on
+          the amenity
+        </p>
+      </div>
+      {/* electricity billing */}
+      <div className="hostel-form__field">
+        <label>Electricity Billing</label>
+        <select
+          name="electricity_billing"
+          onChange={handleChange}
+          value={hostelData.electricity_billing}
+          required
+        >
+          <option value="">Select Electricity Billing type</option>
+          <option value="Pre paid">Pre-paid (Tokens)</option>
+          <option value="Post paid">Post-paid </option>
+          <option value="Solar Pannel">Solar Panel</option>
+        </select>
+      </div>
+      <div className="hostel-form__fields">
+        {/* water supply */}
+        <div className="hostel-form__field">
+          <label>Water Supply</label>
+          <input
+            type="text"
+            name="water_supply"
+            value={hostelData.water_supply}
+            onChange={handleChange}
+            required
+            placeholder="Describe water supply of your house"
+          />
+        </div>
+        {/* security */}
+        <div className="hostel-form__field">
+          <label>Security</label>
+          <input
+            type="text"
+            name="security"
+            value={hostelData.security}
+            onChange={handleChange}
+            required
+            placeholder="Security situation in your area"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HostelStep5;

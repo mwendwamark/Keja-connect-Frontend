@@ -45,7 +45,6 @@
     border-radius: 4px;
     font-size: 1rem;
     transition: all 0.2s ease;
-    /* -moz-appearance: textfield; */
   }
   
   .final-form__field input[type="number"]::-webkit-outer-spin-button,
@@ -62,7 +61,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
   }
-  
+
   .final-form__file-input:hover {
     border-color: #007bff;
     background-color: rgba(0, 123, 255, 0.05);
@@ -88,7 +87,6 @@
     transform: scale(1.05);
   }
   
-  /* Focus states */
   .final-form__field input:focus,
   .final-form__file-input:focus {
     outline: none;
@@ -96,7 +94,6 @@
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
   }
   
-  /* ... (previous CSS remains the same) ... */
 
 .final-form__preview-section,
 .final-form__uploaded-section {

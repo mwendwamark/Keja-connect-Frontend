@@ -1,0 +1,49 @@
+.amenities-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    align-items: stretch;
+  }
+  .hidden-checkbox {
+    display: none;
+  }
+  
+  .amenities-step-container {
+    height: 150vh;
+  }
+  
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px;
+    width: 200px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .hidden-checkbox:checked + .custom-checkbox {
+    background-color: #e0f7fa;
+    border-color: var(--green-color);
+  }
+  
+  .custom-checkbox svg {
+    font-size: 20px;
+    color: var(--green-color);
+  }
+  
+  .custom-checkbox span {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  @media (max-width: 590px) {
+    .custom-checkbox {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+  }
+  

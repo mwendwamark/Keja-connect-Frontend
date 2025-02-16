@@ -1,6 +1,6 @@
 import React from "react";
 import "./Step1Intro.css";
-import vid from "../../../assets/step1.mp4";
+import vid from "../../../../assets/step1.mp4";
 // import vid from "../../../assets/step1-unscreen.gif";
 
 
