@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import LandlordNavbar from "../../LandlordNavbar/LandlordNavbar";
@@ -8,16 +8,23 @@ import Step2Intro from "../StepsIntro/Step2Intro";
 import Step3intro from "../StepsIntro/Step3intro";
 import loadingGif from "../../../assets/loading.gif";
 import { BsArrowRight } from "react-icons/bs";
-import BasicHostelInfo from "./BasicHostelInfo/BasicHostelInfo";
 import StepNavigation from "./StepNavigation/StepNavigation";
-import AmenitiesInfo from "./Amenitiesinfo/AmenitiesInfo";
-import FinalInfo from "./FinalInfo/FinalInfo";
+import FinalInfo from "./HostelStep3/HostelStep3";
+import HostelStep1 from "./HostelStep1/HostelStep1";
+import HostelStep2 from "./HostelStep2/HostelStep2";
+import HostelStep3 from "./HostelStep3/HostelStep3";
+import HostelStep4 from "./HostelStep4/HostelStep4";
+import HostelStep5 from "./HostelStep5/HostelStep5";
+import HostelStep7 from "./HostelStep7/HostelStep7";
+import HostelStep6 from "./HostelStep6/HostelStep6";
+
 const CreateHostel = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [hostelData, setHostelData] = useState({
     name: "",
     location: "",
     price_per_month: "",
+    description: "",
     room_type: "",
     bedrooms: "",
     toilet: false,
@@ -33,7 +40,6 @@ const CreateHostel = () => {
     gym: false,
     available_units: "",
     parking: false,
-    tokens: false,
     cctv_cameras: false,
     hot_shower: false,
     air_conditioner: false,
@@ -41,12 +47,50 @@ const CreateHostel = () => {
     first_aid_kit: false,
     water_supply: "",
     security: "",
+    latitude: "",
+    longitude: "",
+    deposit_amount: "",
+    pet_friendly: false,
+    electricity_billing: "",
+    max_occupancy: "",
+    furnishing: "",
+    nearby_facilities: "",
+    rules: "",
   });
 
   const [images, setImages] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const [loading, setLoading] = useState(false);
   const landlordId = localStorage.getItem("landlord_id");
+
+  // Function to get location coordinates
+  const getLocationCoordinates = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setHostelData((prevData) => ({
+            ...prevData,
+            latitude,
+            longitude,
+          }));
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          toast.error(
+            "Failed to get location. Please enable location services."
+          );
+        }
+      );
+    } else {
+      toast.error("Geolocation is not supported by this browser.");
+    }
+  };
+
+  // Automatically fetch coordinates when the component mounts
+  useEffect(() => {
+    getLocationCoordinates();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -87,12 +131,14 @@ const CreateHostel = () => {
         }
       );
       setImageUrls(response.data.image_urls);
-      toast.success("Hostel created successfully! You will be redirected to your Dashboard");
+      toast.success(
+        "Hostel created successfully! You will be redirected to your Dashboard"
+      );
       setTimeout(() => {
         window.location.href = "/landlord/dashboard";
-      }, 10000);
+      }, 12000);
     } catch (error) {
-      console.error("Error creating hostel:", error);
+      // console.error("Error creating hostel:", error);
       toast.error("Failed to create hostel. Please try again.");
     } finally {
       setLoading(false);
@@ -117,58 +163,86 @@ const CreateHostel = () => {
       <ToastContainer />
       <div className="create-hostel-form container">
         <form onSubmit={handleSubmit}>
-
           {/* Step 0: Introduction */}
           {currentStep === 0 && (
             <div className="step-container">
               <Step1Intro />
-              <StepNavigation  onNext={nextStep} />
+              <StepNavigation onNext={nextStep} />
             </div>
           )}
-
-          {/* Step 1: Superficial Details */}
-
-          {currentStep == 1 && (
+          {/* Step 1: Basic Hostel Information */}
+          {currentStep === 1 && (
             <div className="step-container_">
-              <BasicHostelInfo
+              <HostelStep1
+                hostelData={hostelData}
+                handleChange={handleChange}
+              />
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
+            </div>
+          )}{" "}
+          {currentStep === 2 && (
+            <div className="step-container">
+              <HostelStep2
                 hostelData={hostelData}
                 handleChange={handleChange}
               />
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
-
-          {/* Step 2: Amenities */}
-          {currentStep === 2 && (
+          {/* Step 2: Amenities Introduction */}
+          {currentStep === 3 && (
             <div className="step-container">
               <Step2Intro />
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
-
-          {/* Step 3: Amenities */}
-          {currentStep === 3 && (
+          {currentStep === 4 && (
             <div className="step-container">
-              <AmenitiesInfo
+              <HostelStep3
                 hostelData={hostelData}
                 handleChange={handleChange}
               />
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
-
-          {/* Step 4: Images, Description, and Price */}
-          {currentStep === 4 && (
+          {currentStep === 5 && (
+            <div className="step-container">
+              <HostelStep4
+                hostelData={hostelData}
+                handleChange={handleChange}
+              />
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
+            </div>
+          )}
+          {currentStep === 6 && (
+            <div className="step-container">
+              <HostelStep5
+                hostelData={hostelData}
+                handleChange={handleChange}
+              />
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
+            </div>
+          )}
+          {currentStep === 7 && (
             <div className="step-container">
               <Step3intro />
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
+          {/* Step 5: Final Information and Submission */}
 
-          {/* Step 5: Images, Description, and Price */}
-          {currentStep === 5 && (
+          {currentStep === 8 && (
             <div className="step-container">
-              <FinalInfo
+              <HostelStep6
+                hostelData={hostelData}
+                handleChange={handleChange}
+              />
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
+            </div>
+          )}
+          {currentStep === 9 && (
+            <div className="step-container">
+              <HostelStep7
                 hostelData={hostelData}
                 handleChange={handleChange}
                 handleImageChange={handleImageChange}
@@ -186,7 +260,6 @@ const CreateHostel = () => {
                   {loading ? "Creating..." : "Create Hostel"}
                 </button>
               </div>
-
             </div>
           )}
         </form>

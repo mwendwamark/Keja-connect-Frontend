@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./FinalInfo.css";
+import "./HostelStep7.css"
 
-const FinalInfo = ({
+const HostelStep7 = ({
   hostelData,
   handleChange,
   handleImageChange,
@@ -12,18 +12,18 @@ const FinalInfo = ({
 
   const handleFilePreview = (event) => {
     const files = Array.from(event.target.files);
-    
+
     // Store the actual files
     setSelectedFiles(files);
-    
+
     // Clear previous previews
     setPreviewImages([]);
-    
+
     // Generate preview URLs
-    files.forEach(file => {
+    files.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setPreviewImages(prev => [...prev, e.target.result]);
+        setPreviewImages((prev) => [...prev, e.target.result]);
       };
       reader.readAsDataURL(file);
     });
@@ -34,18 +34,22 @@ const FinalInfo = ({
 
   const removePreviewImage = (indexToRemove) => {
     // Remove the preview image
-    setPreviewImages(prev => prev.filter((_, index) => index !== indexToRemove));
-    
+    setPreviewImages((prev) =>
+      prev.filter((_, index) => index !== indexToRemove)
+    );
+
     // Remove the corresponding file from selectedFiles
-    const updatedFiles = selectedFiles.filter((_, index) => index !== indexToRemove);
+    const updatedFiles = selectedFiles.filter(
+      (_, index) => index !== indexToRemove
+    );
     setSelectedFiles(updatedFiles);
-    
+
     // Create a new FileList-like object
     const dataTransfer = new DataTransfer();
-    updatedFiles.forEach(file => dataTransfer.items.add(file));
-    
+    updatedFiles.forEach((file) => dataTransfer.items.add(file));
+
     // Update the file input
-    const fileInput = document.querySelector('.final-form__file-input');
+    const fileInput = document.querySelector(".final-form__file-input");
     if (fileInput) {
       fileInput.files = dataTransfer.files;
     }
@@ -60,6 +64,7 @@ const FinalInfo = ({
           the amenity
         </p>
       </div>
+
       <div className="final-form__content">
         <div className="final-form__field">
           <label>Price per Month</label>
@@ -71,6 +76,7 @@ const FinalInfo = ({
             required
           />
         </div>
+
         <div className="final-form__field">
           <label>Images</label>
           <input
@@ -126,4 +132,4 @@ const FinalInfo = ({
   );
 };
 
-export default FinalInfo;
+export default HostelStep7;
