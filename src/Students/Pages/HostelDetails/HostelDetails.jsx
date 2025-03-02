@@ -148,7 +148,7 @@ const HostelDetails = () => {
             </div>
           </div>
           {/* Amenities Section */}
-          <div className="hostel-amenities">
+         <div className="hostel-amenities">
             <h2>Available Amenities</h2>
             <div className="amenities-grid">
               {renderAmenity(<IoWifiOutline />, "Wi-Fi", hostel.wifi)}
@@ -212,6 +212,8 @@ const HostelDetails = () => {
               university
             </p>
           </div>
+
+          {/* Nearby Facilities Section */}
           <div className="hostel-nearby-facilities">
             <h2>Nearby Facilities</h2>
             <p>{hostel.nearby_facilities}</p>
@@ -221,8 +223,10 @@ const HostelDetails = () => {
             <h2>Rules</h2>
             <p>{hostel.rules}</p>
           </div>
+
+
           {/* description Section */}
-          <div className="hostel-description">
+           <div className="hostel-description">
             <h2>Description</h2>
             <p>{hostel.description}</p>
           </div>

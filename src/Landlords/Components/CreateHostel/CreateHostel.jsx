@@ -141,7 +141,10 @@ const CreateHostel = () => {
         }
       );
       setImageUrls(response.data.image_urls);
-      toast.success("Hostel created successfully!");
+
+      toast.success(
+        "Hostel created successfully! You will be redirected to your Dashboard"
+      );
       setTimeout(() => {
         window.location.href = "/landlord/dashboard";
       }, 12000);
