@@ -6,6 +6,7 @@ import img from "../../assets/LandlordSignup.jpg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const LandlordSignup = () => {
   const [firstName, setFirstName] = useState("");
@@ -28,56 +29,111 @@ const LandlordSignup = () => {
     }
   }, [error]);
 
- const handleSubmit = async (e) => {
-   e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-   // Check if passwords match
-   if (password !== confirmPassword) {
-     setError("Passwords do not match");
-     toast.error("Passwords do not match");
-     return;
-   }
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      toast.error("Passwords do not match");
+      return;
+    }
 
-   const landlordData = {
-     landlord: {
-       first_name: firstName,
-       last_name: lastName,
-       phone_number: phoneNumber,
-       email,
-       password,
-     },
-   };
+    const landlordData = {
+      landlord: {
+        first_name: firstName,
+        last_name: lastName,
+        phone_number: phoneNumber,
+        email,
+        password,
+      },
+    };
 
-   try {
-     const response = await fetch("http://localhost:3000/landlord/signup", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify(landlordData),
-     });
+    try {
+      const response = await fetch("http://localhost:3000/landlord/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(landlordData),
+      });
 
-     const result = await response.json();
-     console.log(result); // Debug: check what you're receiving
+      const result = await response.json();
+      console.log(result); // Debug: check what you're receiving
 
-     if (response.ok) {
-       // Adjusted according to the response structure from your backend
-       localStorage.setItem("token", result.status.token);
-       localStorage.setItem("landlord_id", result.status.data.id); // Store the landlord ID
-       toast.success("Account created successfully");
-       navigate("/landlord/login");
-     } else {
-       setError(result.status.message);
-       toast.error("Couldn't create account. Please try again.");
-     }
-   } catch (error) {
-     setError("An error occurred. Please try again.");
-   }
- };
-
+      if (response.ok) {
+        // Adjusted according to the response structure from your backend
+        localStorage.setItem("token", result.status.token);
+        localStorage.setItem("landlord_id", result.status.data.id); // Store the landlord ID
+        toast.success("Account created successfully");
+        navigate("/landlord/login");
+      } else {
+        setError(result.status.message);
+        toast.error("Couldn't create account. Please try again.");
+      }
+    } catch (error) {
+      setError("An error occurred. Please try again.");
+    }
+  };
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Landlord Signup | KejaConnect - Manage Your Properties</title>
+        <meta
+          name="description"
+          content="Sign up for KejaConnect as a landlord to manage your properties and connect with students. Create your account and streamline your rental business."
+        />
+        <meta
+          name="keywords"
+          content="landlord signup, KejaConnect, property management, student accommodation, Kenya hostels, landlord dashboard"
+        />
+        <link
+          rel="canonical"
+          href="https://kejaconnect.vercel.app/landlord/signup"
+        />
+
+        {/* Open Graph / Facebook Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://kejaconnect.vercel.app/landlord/signup"
+        />
+        <meta
+          property="og:title"
+          content="Landlord Signup | KejaConnect - Manage Your Properties"
+        />
+        <meta
+          property="og:description"
+          content="Sign up for KejaConnect as a landlord to manage your properties and connect with students. Create your account and streamline your rental business."
+        />
+        {/* <meta
+          property="og:image"
+          content="https://kejaconnect.vercel.app/images/landlord-signup-og.jpg"
+        /> */}
+
+        {/* Twitter Meta Tags */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://kejaconnect.vercel.app/landlord/signup"
+        />
+        <meta
+          property="twitter:title"
+          content="Landlord Signup | KejaConnect - Manage Your Properties"
+        />
+        <meta
+          property="twitter:description"
+          content="Sign up for KejaConnect as a landlord to manage your properties and connect with students. Create your account and streamline your rental business."
+        />
+        {/* <meta
+          property="twitter:image"
+          content="https://kejaconnect.vercel.app/images/landlord-signup-twitter.jpg"
+        />        */}
+        {/* Robots Meta Tag */}
+        <meta name="robots" content="index, follow" />
+      </Helmet>{" "}
       <Navbar />
       <div className="landlord-signup-page container">
         <div className="landlord-signup-container">

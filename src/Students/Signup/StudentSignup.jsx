@@ -6,6 +6,7 @@ import img from "../../assets/StudentSignup.jpg"; // You can replace this with a
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const StudentSignup = () => {
   const [firstName, setFirstName] = useState("");
@@ -73,6 +74,65 @@ const StudentSignup = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>
+          Student Signup | KejaConnect - Affordable Student Accommodation
+        </title>
+        <meta
+          name="description"
+          content="Sign up for KejaConnect to access affordable student accommodation near universities. Create your account and find the perfect hostel for your student life."
+        />
+        <meta
+          name="keywords"
+          content="student signup, KejaConnect, affordable accommodation, student hostel, university housing, Kenya hostels"
+        />
+        <link
+          rel="canonical"
+          href="https://kejaconnect.vercel.app/student/signup"
+        />
+
+        {/* Open Graph / Facebook Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://kejaconnect.vercel.app/student/signup"
+        />
+        <meta
+          property="og:title"
+          content="Student Signup | KejaConnect - Affordable Student Accommodation"
+        />
+        <meta
+          property="og:description"
+          content="Sign up for KejaConnect to access affordable student accommodation near universities. Create your account and find the perfect hostel for your student life."
+        />
+        {/* <meta
+          property="og:image"
+          content="https://kejaconnect.vercel.app/images/student-signup-og.jpg"
+        /> */}
+
+        {/* Twitter Meta Tags */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://kejaconnect.vercel.app/student/signup"
+        />
+        <meta
+          property="twitter:title"
+          content="Student Signup | KejaConnect - Affordable Student Accommodation"
+        />
+        <meta
+          property="twitter:description"
+          content="Sign up for KejaConnect to access affordable student accommodation near universities. Create your account and find the perfect hostel for your student life."
+        />
+        {/* <meta
+          property="twitter:image"
+          content="https://kejaconnect.vercel.app/images/student-signup-twitter.jpg"
+        /> */}
+
+      {/* Robots Meta Tag */}
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <Navbar />
       <div className="student-signup-page container">
         <div className="student-signup-container">

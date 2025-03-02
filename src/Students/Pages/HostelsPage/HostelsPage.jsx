@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -63,6 +64,36 @@ const HostelsPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Student Hostels in Kenya | Affordable Accommodation</title>
+        <meta
+          name="description"
+          content="Find affordable student hostels near universities across Kenya. Browse by location, price, and room type. Book your ideal hostel today!"
+        />
+        <meta
+          name="keywords"
+          content="student hostels, affordable hostels, university accommodation, Kenya hostels, hostel booking"
+        />
+        <link rel="canonical" href="https://kejaconnect.vercel.app/hostels" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kejaconnect.vercel.app/hostels" />
+        <meta
+          property="og:title"
+          content="Student Hostels in Kenya Near Universities | Affordable Accommodation | Variety of Hostels"
+        />
+        <meta
+          property="og:description"
+          content="Find affordable student hostels near universities across Kenya. Browse by location, price, and room type. Book your ideal hostel today!"
+        />
+        {/* Og image */}
+        {/* <meta
+          property="og:image"
+          content="https://www.yourwebsite.com/images/hostels-og-image.jpg"
+        /> */}
+      </Helmet>
       <StudentNavbar />
       <div className="hostels-page container">
         <h1>Available Hostels</h1>
@@ -135,7 +166,11 @@ const HostelsPage = () => {
         {/* Hostels List */}
         <div className="hostels-container">
           {hostels.map((hostel) => (
-            <NavLink to={`/hostels/${hostel.id}`} key={hostel.id} className="hostels-card">
+            <NavLink
+              to={`/hostels/${hostel.id}`}
+              key={hostel.id}
+              className="hostels-card"
+            >
               <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={10}
@@ -149,8 +184,11 @@ const HostelsPage = () => {
                   <SwiperSlide key={index}>
                     <img
                       src={url}
-                      alt={`${hostel.name} image ${index + 1}`}
+                      alt={`${hostel.name} hostel in ${
+                        hostel.location
+                      } - Image ${index + 1}`}
                       className="hostels-swiper"
+                      loading="lazy"
                     />
                   </SwiperSlide>
                 ))}
@@ -158,7 +196,10 @@ const HostelsPage = () => {
               <div className="hostels-info">
                 <div className="name-price">
                   <h3>{hostel.name}</h3>
-                  <p><span>KES </span>{hostel.price_per_month}/ Month</p>
+                  <p>
+                    <span>KES </span>
+                    {hostel.price_per_month}/ Month
+                  </p>
                 </div>
 
                 <p>{hostel.room_type}</p>
@@ -167,7 +208,10 @@ const HostelsPage = () => {
                   <IoLocationOutline />
                   {hostel.location}
                 </p>
-                <RatingDisplay rating={hostel.average_rating} reviewsCount={hostel.reviews_count}/>
+                <RatingDisplay
+                  rating={hostel.average_rating}
+                  reviewsCount={hostel.reviews_count}
+                />
                 <div className="hostels-images"></div>
               </div>
             </NavLink>

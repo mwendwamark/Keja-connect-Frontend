@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -62,6 +63,75 @@ const HostelDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`${hostel.name} | Affordable Student Hostel near ${hostel.university_name}`}</title>
+        <meta
+          name="description"
+          content={`Find ${hostel.name}, an affordable student hostel in ${
+            hostel.location
+          } near ${hostel.university_name}. ${hostel.description.substring(
+            0,
+            150
+          )}...`}
+        />
+        <meta
+          name="keywords"
+          content={`${hostel.name}, ${hostel.university_name}, student hostel, affordable accommodation, ${hostel.location}, ${hostel.room_type}, hostel booking`}
+        />
+        <link
+          rel="canonical"
+          href={`https://kejaconnect.vercel.app/hostels/${hostel.id}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://kejaconnect.vercel.app/hostels/${hostel.id}`}
+        />
+        <meta
+          property="og:title"
+          content={`${hostel.name} | Affordable Student Hostel near ${hostel.university_name}`}
+        />
+        <meta
+          property="og:description"
+          content={`Find ${
+            hostel.name
+          }, a comfortable and affordable student hostel near ${
+            hostel.university_name
+          }. ${hostel.description.substring(0, 150)}...`}
+        />{" "}
+        {/* <meta
+          property="og:image"
+          content={
+            hostel.image_urls[0] ||
+            "https://kejaconnect.vercel.app/images/default-hostel-og.jpg"
+          }
+        /> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content={`https://kejaconnect.vercel.app/hostels/${hostel.id}`}
+        />
+        <meta
+          property="twitter:title"
+          content={`${hostel.name} | Affordable Student Hostel in ${hostel.location}, near ${hostel.university_name}`}
+        />
+        <meta
+          property="twitter:description"
+          content={`Find ${
+            hostel.name
+          }, a comfortable and affordable student hostel near ${
+            hostel.university_name
+          }. ${hostel.description.substring(0, 150)}...`}
+        />
+        {/* <meta
+          property="twitter:image"
+          content={
+            hostel.image_urls[0] ||
+            "https://kejaconnect.vercel.app/images/default-hostel-twitter.jpg"
+          }
+        /> */}
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <StudentNavbar />
       <div className="hostel-details-container container section">
         {/* Header Section */}
@@ -148,7 +218,7 @@ const HostelDetails = () => {
             </div>
           </div>
           {/* Amenities Section */}
-         <div className="hostel-amenities">
+          <div className="hostel-amenities">
             <h2>Available Amenities</h2>
             <div className="amenities-grid">
               {renderAmenity(<IoWifiOutline />, "Wi-Fi", hostel.wifi)}
@@ -212,7 +282,6 @@ const HostelDetails = () => {
               university
             </p>
           </div>
-
           {/* Nearby Facilities Section */}
           <div className="hostel-nearby-facilities">
             <h2>Nearby Facilities</h2>
@@ -223,10 +292,8 @@ const HostelDetails = () => {
             <h2>Rules</h2>
             <p>{hostel.rules}</p>
           </div>
-
-
           {/* description Section */}
-           <div className="hostel-description">
+          <div className="hostel-description">
             <h2>Description</h2>
             <p>{hostel.description}</p>
           </div>

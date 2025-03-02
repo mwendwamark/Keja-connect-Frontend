@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate, NavLink } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -62,6 +63,64 @@ const StudentLogin = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Student Login | KejaConnect - Affordable Student Accommodation
+        </title>
+        <meta
+          name="description"
+          content="Log in to KejaConnect to access affordable student accommodation near universities. Manage your bookings and find the perfect hostel."
+        />
+        <meta
+          name="keywords"
+          content="student login, KejaConnect, affordable accommodation, student hostel, university housing, Kenya hostels"
+        />
+        <link
+          rel="canonical"
+          href="https://kejaconnect.vercel.app/student/login"
+        />
+
+        {/* Open Graph / Facebook Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://kejaconnect.vercel.app/student/login"
+        />
+        <meta
+          property="og:title"
+          content="Student Login | KejaConnect - Affordable Student Accommodation"
+        />
+        <meta
+          property="og:description"
+          content="Log in to KejaConnect to access affordable student accommodation near universities. Manage your bookings and find the perfect hostel."
+        />
+        {/* <meta
+          property="og:image"
+          content="https://kejaconnect.vercel.app/images/student-login-og.jpg"
+        /> */}
+
+        {/* Twitter Meta Tags */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://kejaconnect.vercel.app/student/login"
+        />
+        <meta
+          property="twitter:title"
+          content="Student Login | KejaConnect - Affordable Student Accommodation"
+        />
+        <meta
+          property="twitter:description"
+          content="Log in to KejaConnect to access affordable student accommodation near universities. Manage your bookings and find the perfect hostel."
+        />
+        {/* <meta
+          property="twitter:image"
+          content="https://kejaconnect.vercel.app/images/student-login-twitter.jpg"
+        /> */}
+
+        {/* Robots Meta Tag */}
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <Navbar />
       <div className="student-login-page container">
         <div className="student-login-container">
@@ -134,7 +193,7 @@ const StudentLogin = () => {
           </form>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 };
