@@ -526,4 +526,4 @@ const UpdateHostel = ({ match }) => {
   );
 };
 
-export default UpdateHostel;
+export default UpdateHostel;          
