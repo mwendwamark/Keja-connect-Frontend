@@ -34,7 +34,7 @@
 .hostel-form__field label {
   font-size: 1rem;
   font-weight: 500;
-  color: #444;
+  color: var(--faint-text-color);
   margin-bottom: 0.5rem;
 }
 
@@ -68,10 +68,10 @@
 }
 
 .hostel-form__textarea {
-  height: 100px;
+  height: 150px;
   font-family: var(--text-ff);
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 1rem;
 }
 
