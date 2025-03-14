@@ -193,6 +193,154 @@ color: var(--orange-color);
   line-height: 1.5;
 }
 
+/* Existing HostelDetails.css content */
+
+/* Reviews Section Styles */
+.hostel-reviews {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-review-button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.add-review-button:hover {
+  background-color: #3e8e41;
+}
+
+.no-reviews {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  transition: transform 0.2s;
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.review-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.review-date {
+  color: #777;
+  font-size: 0.9em;
+}
+
+.review-rating {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 2px;
+}
+
+.star.filled {
+  color: #ffb400;
+}
+
+.star.empty {
+  color: #ccc;
+}
+
+.review-comment {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.review-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-button, .delete-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  text-decoration: none;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.edit-button:hover {
+  background-color: #0b7dda;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+  .reviews-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .review-header {
+    flex-direction: column;
+  }
+  
+  .review-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
 @media (max-width: 768px) {
   .hostel-details-container {
     padding: 10px;

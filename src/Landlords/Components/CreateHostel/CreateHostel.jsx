@@ -264,7 +264,7 @@ const CreateHostel = () => {
                 </span>
                 <button
                   type="submit"
-                  className="submit-button"
+                  className="submit-hostel-button"
                   disabled={loading}
                 >
                   {loading ? "Creating..." : "Create Hostel"}
