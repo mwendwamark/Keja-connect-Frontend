@@ -125,7 +125,7 @@ const StudentLogin = () => {
       <div className="student-login-page container">
         <div className="student-login-container">
           <div className="student-login-image">
-            <img src={img} alt="student-login-image" />
+            <img src={img} alt="student-login-image" loading="lazy"/>
             <div className="student-login-overlay-text">
               <h1 className="h2-heading">Welcome back!</h1>
               <p>Join our platform to manage properties and more</p>

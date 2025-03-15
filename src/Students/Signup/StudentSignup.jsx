@@ -137,7 +137,7 @@ const StudentSignup = () => {
       <div className="student-signup-page container">
         <div className="student-signup-container">
           <div className="student-signup-image">
-            <img src={img} alt="student-sign-up-image" />
+            <img src={img} alt="student-sign-up-image" loading="lazy"/>
             <div className="student-overlay-text">
               <h1 className="h2-heading">Create a Student's account</h1>
               <p>

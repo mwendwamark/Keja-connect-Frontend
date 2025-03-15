@@ -138,7 +138,7 @@ const LandlordSignup = () => {
       <div className="landlord-signup-page container">
         <div className="landlord-signup-container">
           <div className="landlord-signup-image">
-            <img src={img} alt="landlord-Sign-up-image" />
+            <img src={img} alt="landlord-Sign-up-image" loading="lazy" />
             <div className="landlord-overlay-text">
               <h1 className="h2-heading">Create a Landlord's account</h1>
               <p>Join our platform to manage properties and more</p>

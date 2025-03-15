@@ -41,7 +41,7 @@ const RoleSelection = () => {
             onClick={() => handleRoleSelection("landlord")}
           >
             <h4>Landlord</h4>
-            <img src={landlordImg} alt="Landlord" />
+            <img src={landlordImg} alt="Landlord" loading="lazy"/>
           </div>
           <div
             className={`role-card ${
@@ -50,7 +50,7 @@ const RoleSelection = () => {
             onClick={() => handleRoleSelection("student")}
           >
             <h4>Student</h4>
-            <img src={studentImg} alt="Student" />
+            <img src={studentImg} alt="Student" loading="lazy" />
           </div>
         </div>
         <p>Select your role above</p>

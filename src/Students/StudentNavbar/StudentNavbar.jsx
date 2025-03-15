@@ -30,7 +30,7 @@ const StudentNavbar = () => {
       <div className="student-navbar-container container">
         <div className="landlord-logo-section">
           <NavLink to="/hostels">
-            <img src={logo} alt="" />
+            <img src={logo} alt="keja-connect-logo" loading="lazy" />
           </NavLink>
         </div>
         <ul className="student-navbar-links">

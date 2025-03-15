@@ -127,7 +127,7 @@ const LandlordLogin = () => {
       <div className="landlord-login-page container">
         <div className="landlord-login-container">
           <div className="landlord-login-image">
-            <img src={img} alt="landlord-login-image" />
+            <img src={img} alt="landlord-login-image" loading="lazy" />
             <div className="landlord-login-overlay-text">
               <h1 className="h2-heading">Welcome back!</h1>
               <p>Join our platform to manage properties and more</p>

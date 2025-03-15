@@ -28,7 +28,7 @@ const LandlordNavbar = () => {
       <div className="landlord-navbar-container container">
         <div className="landlord-logo-section">
           <NavLink to="/landlord/dashboard">
-            <img src={logo} alt="" />
+            <img src={logo} alt="logo" loading="lazy" />
           </NavLink>
         </div>
         <ul className="landlord-navbar-links">

@@ -15,7 +15,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar grid">
       <div className="logoDiv flex">
-        <img src={logo} alt="Image Name" />
+        <img src={logo} alt="Image Name" loading="lazy"/>
       </div>
       <div className="menuDiv">
         <div className="divTitle">

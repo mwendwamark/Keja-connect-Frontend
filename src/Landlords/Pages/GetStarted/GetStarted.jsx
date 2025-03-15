@@ -73,7 +73,7 @@ const GetStarted = () => {
                   <p>{content.description}</p>
                 </div>
                 <div className="contents-image">
-                  <img src={content.imgSrc} alt="content illustration" />
+                  <img src={content.imgSrc} alt="content illustration" loading="lazy" />
                 </div>
               </div>
             ))}

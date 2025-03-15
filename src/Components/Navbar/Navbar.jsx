@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="navbar-container container">
           {/* Logo */}
           <NavLink to="/" className="navbar-logo">
-            <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" loading="lazy" />
           </NavLink>
 
           {/* Navigation Links */}

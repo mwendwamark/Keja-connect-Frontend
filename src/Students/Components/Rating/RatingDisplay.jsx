@@ -1,54 +1,52 @@
-// import React from "react";
-// import { Star } from "lucide-react";
-
-// const RatingDisplay = ({ rating, reviewsCount = 0 }) => {
-//   // Convert rating to number and handle undefined/null cases
-//   const numericRating = Number(rating) || 0;
-
-//   return (
-//     <div className="flex items-center gap-2">
-//       <div className="flex items-center">
-//         <Star
-//           className={`w-3 h-5 ${
-//             numericRating > 0
-              // "?" "fill-yellow-400 text-yellow-400"
-//               : "text-gray-300"
-//           }`}
-//         />
-//         <span className="ml-1 text-sm font-medium">
-//           {numericRating.toFixed(1)}
-//         </span>
-//       </div>
-//       <span className="text-sm text-gray-500">
-//         ({reviewsCount} {reviewsCount === 1 ? "review" : "reviews"})
-//       </span>
-//     </div>
-//   );
-// };
-
-// export default RatingDisplay;
-
 import React from "react";
 import { Star } from "lucide-react";
-import "./RatingDisplay.css"; // Don't forget to create this CSS file
+import "./RatingDisplay.css";
 
 const RatingDisplay = ({ rating, reviewsCount = 0 }) => {
   // Convert rating to number and handle undefined/null cases
   const numericRating = Number(rating) || 0;
+  
+  // Generate stars based on rating
+  const renderStars = () => {
+    const stars = [];
+    const fullStars = Math.floor(numericRating);
+    const hasHalfStar = numericRating - fullStars >= 0.5;
+    
+    // Full stars
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<Star key={`full-${i}`} className="star-filled" fill="gold" stroke="gold" size={16} />);
+    }
+    
+    // Half star
+    if (hasHalfStar) {
+      stars.push(
+        <div key="half" className="half-star-container">
+          <Star className="star-filled half" fill="gold" stroke="gold" size={16} />
+          <Star className="star-empty half" stroke="gray" size={16} />
+        </div>
+      );
+    }
+    
+    // Empty stars
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<Star key={`empty-${i}`} className="star-empty" stroke="gray" size={16} />);
+    }
+    
+    return stars;
+  };
 
   return (
     <div className="rating-container">
-      <div className="rating-star-container">
-        <Star
-          className={`rating-star ${numericRating > 0 ? "star-active" : "star-inactive"}`}
-        />
-        <span className="rating-value">
-          {numericRating.toFixed(1)}
+      <div className="rating-stars">
+        {renderStars()}
+      </div>
+      <div className="rating-text">
+        <span className="rating-value">{numericRating.toFixed(1)}</span>
+        <span className="review-count">
+          ({reviewsCount} {reviewsCount === 1 ? "review" : "reviews"})
         </span>
       </div>
-      <span className="review-count">
-        ({reviewsCount} {reviewsCount === 1 ? "review" : "reviews"})
-      </span>
     </div>
   );
 };
