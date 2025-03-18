@@ -11,6 +11,7 @@ import StudentNavbar from "../../StudentNavbar/StudentNavbar";
 import { IoLocationOutline } from "react-icons/io5";
 import RatingDisplay from "../../Components/Rating/RatingDisplay";
 import { NavLink } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const HostelsPage = () => {
   const [hostels, setHostels] = useState([]);
@@ -218,6 +219,7 @@ const HostelsPage = () => {
           ))}
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

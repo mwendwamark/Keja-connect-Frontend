@@ -19,7 +19,8 @@ import HostelsPage from "./Students/Pages/HostelsPage/HostelsPage";
 import CreateHostel from "./Landlords/Components/CreateHostel/CreateHostel";
 import ReviewForm from "./Students/Components/ReviewsManager/ReviewsForm";
 import ReviewsList from "./Students/Components/ReviewsList/ReviewsList";
-// import ReviewsList from "./Students/Components/ReviewsManager/ReviewsList";
+import PasswordResetRequest from "./Components/PasswordReset/PasswordResetRequest";
+import PasswordResetConfirm from "./Components/PasswordReset/PasswordResetConfirm";
 
 function App() {
   return (
@@ -32,6 +33,13 @@ function App() {
         <Route path="/landlord/signup" element={<LandlordSignup />} />
         <Route path="/student/login" element={<StudentLogin />} />
         <Route path="/landlord/login" element={<LandlordLogin />} />
+        
+        {/* Password Reset Routes */}
+        <Route path="/student/forgot-password" element={<PasswordResetRequest userType="student" />} />
+        <Route path="/landlord/forgot-password" element={<PasswordResetRequest userType="landlord" />} />
+        <Route path="/student/password/edit" element={<PasswordResetConfirm userType="student" />} />
+        <Route path="/landlord/password/edit" element={<PasswordResetConfirm userType="landlord" />} />
+        
         <Route path="/landlord/dashboard" element={<LandlordDashboard />} />
         <Route path="/hostels" element={<HostelsPage />} />
         <Route path="/landlord-profile" element={<LandlordProfile />} />

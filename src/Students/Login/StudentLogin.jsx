@@ -170,7 +170,7 @@ const StudentLogin = () => {
             </div>
             <div className="student-forgot-password">
               <p>
-                <NavLink to="/student/reset/password">Forgot Password?</NavLink>
+                <NavLink to="/student/forgot-password">Forgot Password?</NavLink>
               </p>
             </div>
             <div className="errors container ">

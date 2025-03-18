@@ -172,7 +172,7 @@ const LandlordLogin = () => {
             </div>
             <div className="landlord-forgot-password">
               <p>
-                <NavLink to="landlord/reset/password">Forgot Password?</NavLink>
+                <NavLink to="/landlord/forgot-password">Forgot Password?</NavLink>
               </p>
             </div>
             <div className="errors container ">

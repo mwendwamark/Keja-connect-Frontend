@@ -28,7 +28,8 @@ const RoleSelection = () => {
   return (
     <>
       <Navbar />
-      <div className="role-selection-page container">
+      <div className="role-selection-page container section">
+        <div className="role-selection__container">
         <h3>What brings you here?</h3>
         <h2 className="h2-heading">
           Join Jamii Hostels today by creating an account
@@ -59,6 +60,7 @@ const RoleSelection = () => {
         </button>
         <ToastContainer />
       </div>
+    </div>
     </>
   );
 };
