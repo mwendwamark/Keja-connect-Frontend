@@ -373,6 +373,48 @@
     line-height: 1.5;
 }
 
+.why-choose-us-student-contents a{
+    margin-top: 50px;
+    display: inline-block;
+    width: fit-content;
+    padding: 15px 30px;
+    background-color: var(--green-color);
+    color: var(--background-color);
+    border-radius: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.why-choose-us-landlord-contents a {
+    margin-top: 50px;
+    display: inline-block;
+    width: fit-content;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    border: 2px solid var(--green-color);
+    color:var(--green-color);
+}
+
+.why-choose-us-student-contents a:hover{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 2px solid var(--green-color);
+    transform: translateY(-2px);
+}
+.why-choose-us-landlord-contents a:hover {
+    background-color: var(--green-color);
+    color: var(--background-color);
+    transform: translateY(-2px);
+}
+
 @media screen and (max-width: 1023px) {
 
     .hero-images,
@@ -519,8 +561,11 @@
     }
 
     .hero-title h1 {
-        line-height: 40px;
+        line-height: 45px;
+        letter-spacing: 0.2px;
         margin-bottom: 10px;
+        font-weight: 500;
+
     }
 
     .intro-image,
