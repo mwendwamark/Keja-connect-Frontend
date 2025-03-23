@@ -108,7 +108,7 @@ const HomePage = () => {
               </h2>
               <p>
                 Keja Connect is the ultimate platform for students seeking
-                comfortable and affordable accommodation near their
+                comfortable and affordable hostels near their
                 universities. We bridge the gap between students and hostel
                 owners, providing a seamless and efficient booking experience.
 
