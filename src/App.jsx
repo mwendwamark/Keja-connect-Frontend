@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 // Import files
 import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
+import About from "./Pages/About/About";
 // import Navbar from "./Components/Navbar/Navbar";
 import RoleSelection from "./Pages/RoleSelection/RoleSelection";
 import StudentSignup from "./Students/Signup/StudentSignup";
@@ -28,6 +29,7 @@ function App() {
       {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
         <Route path="/role-selection" element={<RoleSelection />} />
         <Route path="/student/signup" element={<StudentSignup />} />
         <Route path="/landlord/signup" element={<LandlordSignup />} />

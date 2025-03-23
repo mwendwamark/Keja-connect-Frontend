@@ -13,6 +13,10 @@
   --orange-color: #EA5024;
   --dashboard-color: #f4f4f4 !important;
 
+  /* RGB Values for opacity/gradients */
+  --light-green-rgb: 150, 213, 211;
+  --orange-rgb: 234, 80, 36;
+
   /* Font sizes */
   --h1-fs: 48px;
   --h2-fs: 30px;
@@ -75,12 +79,29 @@ input {
 }
 
 .section {
-  margin-top: 5rem;
+  padding-top: 6.5rem;
+}
+
+.section-bottom{
+  padding-bottom: 4rem;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
+  width: 0.8rem;
 }
+::-webkit-scrollbar-track {
+  background: var(--dashboard-color);
+  
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--light-green);
+  border-radius: 8px;
+
+}
+
 
 .flex {
   display: flex;

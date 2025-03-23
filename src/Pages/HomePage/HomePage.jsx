@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./HomePage.css";
@@ -110,6 +111,7 @@ const HomePage = () => {
                 comfortable and affordable accommodation near their
                 universities. We bridge the gap between students and hostel
                 owners, providing a seamless and efficient booking experience.
+
               </p>
             </div>{" "}
           </div>{" "}
@@ -179,7 +181,18 @@ const HomePage = () => {
           <div className="testimonial-items">
             <Testimonials />
           </div>
-        </div>       
+        </div> 
+
+        <div className="home-cta-section container section section-bottom">
+          <div className="home-cta-container">
+            <h2>Ready to find your perfect student accommodation?</h2>
+            <p>Join thousands of students who have found their ideal hostel through Jamii Hostels.</p>
+            <div className="cta-buttons">
+              <NavLink to="/hostels" className="cta-button">Browse Hostels</NavLink>
+              <NavLink to="/about" className="cta-button cta-secondary">Learn More</NavLink>
+            </div>
+          </div>
+        </div>      
       </div>
       <Footer/>
     </>
