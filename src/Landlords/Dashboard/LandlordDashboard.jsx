@@ -5,6 +5,7 @@ import MiniNavbar from "../Components/MiniNavbar.jsx/MiniNavbar";
 import { FaHome, FaUsers, FaMoneyBillWave, FaBed } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const LandlordDashboard = () => {
   const [dashboardData, setDashboardData] = useState({
@@ -38,7 +39,7 @@ const LandlordDashboard = () => {
         // console.log("Using token:", token); // Debug log
 
         const response = await axios.get(
-          "http://localhost:3000/api/landlords/dashboard",
+          `${API_BASE_URL}/api/landlords/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`

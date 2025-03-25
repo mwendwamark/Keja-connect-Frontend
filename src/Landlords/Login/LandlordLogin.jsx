@@ -7,6 +7,7 @@ import "./LandlordLogin.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import img from "../../assets/landlordlogin.jpeg";
 import { Helmet } from "react-helmet";
+import { API_ENDPOINTS } from "../../config/api";
 
 const LandlordLogin = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ const LandlordLogin = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/landlord/login", {
+      const response = await fetch(API_ENDPOINTS.LANDLORD.LOGIN, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

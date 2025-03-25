@@ -22,6 +22,7 @@ import { GiHomeGarage, GiDesk } from "react-icons/gi";
 import StudentNavbar from "../../StudentNavbar/StudentNavbar";
 import RatingDisplay from "../../Components/Rating/RatingDisplay";
 import "./HostelDetails.css";
+import { API_ENDPOINTS } from "../../../config/api";
 
 const HostelDetails = () => {
   const { id } = useParams();
@@ -39,11 +40,11 @@ const HostelDetails = () => {
   useEffect(() => {
     const fetchHostelDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/hostels/${id}`);
+        const response = await axios.get(`${API_ENDPOINTS.GENERAL.HOSTELS}/${id}`);
         setHostel(response.data);
         
         // Fetch reviews for this hostel
-        const reviewsResponse = await axios.get(`http://localhost:3000/hostels/${id}/reviews`, {
+        const reviewsResponse = await axios.get(`${API_ENDPOINTS.GENERAL.HOSTELS}/${id}/reviews`, {
           headers: token ? { 'Authorization': `Bearer ${token}` } : {}
         });
         setReviews(reviewsResponse.data);
@@ -62,7 +63,7 @@ const HostelDetails = () => {
   const handleDeleteReview = async (reviewId) => {
     if (window.confirm('Are you sure you want to delete this review?')) {
       try {
-        await axios.delete(`http://localhost:3000/reviews/${reviewId}`, {
+        await axios.delete(`${API_ENDPOINTS.GENERAL.REVIEWS}/${reviewId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

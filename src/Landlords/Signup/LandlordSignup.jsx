@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
+import { API_ENDPOINTS } from "../../config/api";
 
 const LandlordSignup = () => {
   const [firstName, setFirstName] = useState("");
@@ -50,7 +51,7 @@ const LandlordSignup = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/landlord/signup", {
+      const response = await fetch(API_ENDPOINTS.LANDLORD.SIGNUP, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./StudentLogin.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import img from "../../assets/studentlogin.jpg";
+import { API_ENDPOINTS } from "../../config/api";
 
 const StudentLogin = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ const StudentLogin = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/student/login", {
+      const response = await fetch(API_ENDPOINTS.STUDENT.LOGIN, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -12,6 +12,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import RatingDisplay from "../../Components/Rating/RatingDisplay";
 import { NavLink } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { API_ENDPOINTS } from "../../../config/api";
 
 const HostelsPage = () => {
   const [hostels, setHostels] = useState([]);
@@ -25,7 +26,7 @@ const HostelsPage = () => {
 
   const fetchHostels = async (filterParams = {}) => {
     try {
-      const response = await axios.get("http://localhost:3000/hostels", {
+      const response = await axios.get(API_ENDPOINTS.GENERAL.HOSTELS, {
         params: filterParams,
       });
       const updatedHostels = response.data.map((hostel) => {
