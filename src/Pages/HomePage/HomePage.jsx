@@ -1,8 +1,8 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { NavLink } from "react-router-dom";
 import "./HomePage.css";
-import Testimonials from "../../assets/Testimonial/Testimonials";
+// Lazy load the Testimonials component
+const Testimonials = lazy(() => import("../../assets/Testimonial/Testimonials"));
 import landlordimg from "../../assets/Hero-landlord.png";
 import studentimg from "../../assets/Hero-student.png";
 import introImg from "../../assets/Home-intro-img.png";
@@ -11,6 +11,7 @@ import chooseUs2 from "../../assets/choose2.png";
 import Navbar from "../../Components/Navbar/Navbar";
 import ScrollReveal from "scrollreveal";
 import Footer from "../../Components/Footer/Footer"
+
 const HomePage = () => {
   useEffect(() => {
     const sr = ScrollReveal({
@@ -63,7 +64,7 @@ const HomePage = () => {
               Students can find and reserve the perfect hostels, while landlords
               list and manage their properties—all in one place.
             </p>
-            <NavLink to="/role-selection">Get started </NavLink>
+            <NavLink to="/role-selection" aria-label="Get started with Keja Connect">Get started </NavLink>
           </div>
 
           <div className="hero-images">
@@ -71,12 +72,19 @@ const HomePage = () => {
               <div className="hero-student-contents">
                 <p className="hero-welcome">Welcome!</p>
                 <p className="hero-role">I am a student</p>
-                <NavLink className="hero-register" to="/student/signup">
+                <NavLink className="hero-register" to="/student/signup" aria-label="Register as a student">
                   Register
                 </NavLink>
               </div>
               <div className="student-img">
-                <img src={studentimg} alt="student-image"  loading="lazy"/>
+                <img 
+                  src={studentimg} 
+                  alt="Student using Keja Connect platform" 
+                  width="159" 
+                  height="200"
+                  loading="lazy"
+                  fetchpriority="low"
+                />
               </div>
             </div>
 
@@ -85,12 +93,18 @@ const HomePage = () => {
                 {" "}
                 <p className="hero-welcome">Welcome!</p>
                 <p className="hero-role">I am a Landlord</p>
-                <NavLink className="hero-register" to="/landlord/signup">
+                <NavLink className="hero-register" to="/landlord/signup" aria-label="Register as a landlord">
                   Register
                 </NavLink>
               </div>{" "}
               <div className="landlord-img">
-                <img src={landlordimg} alt="landlord-image" />
+                <img 
+                  src={landlordimg} 
+                  alt="Landlord using Keja Connect platform" 
+                  width="235" 
+                  height="200"
+                  fetchpriority="high"
+                />
               </div>
             </div>
           </div>
@@ -99,7 +113,13 @@ const HomePage = () => {
         <div className="home-introduction-section">
           <div className="intro-image-contents container">
             <div className="intro-image">
-              <img src={introImg} alt="" />
+              <img 
+                src={introImg} 
+                alt="Students finding accommodation through Keja Connect" 
+                width="800" 
+                height="600"
+                loading="lazy"
+              />
             </div>
             <div className="intro-contents">
               <h3>Introduction</h3>
@@ -111,7 +131,6 @@ const HomePage = () => {
                 comfortable and affordable hostels near their
                 universities. We bridge the gap between students and hostel
                 owners, providing a seamless and efficient booking experience.
-
               </p>
             </div>{" "}
           </div>{" "}
@@ -147,16 +166,28 @@ const HomePage = () => {
                 booking history. Your home away from home is just a few clicks
                 away!
               </p>
-              <NavLink to="/student/signup"> Student account</NavLink>
+              <NavLink to="/student/signup" aria-label="Create a student account to find hostels"> Student account</NavLink>
             </div>
             <div className="why-choose-us-student-image">
-              <img src={chooseUs1} alt="" />
+              <img 
+                src={chooseUs1} 
+                alt="Students benefiting from Keja Connect services" 
+                width="113" 
+                height="100"
+                loading="lazy"
+              />
             </div>
           </div>
 
           <div className="why-choose-us-landlords container">
             <div className="why-choose-us-landlord-image">
-              <img src={chooseUs2} alt="" />
+              <img 
+                src={chooseUs2} 
+                alt="Landlords managing properties on Keja Connect" 
+                width="164" 
+                height="120"
+                loading="lazy"
+              />
             </div>
             <div className="why-choose-us-landlord-contents">
               <h3>FOR LANDLORDS</h3>
@@ -169,7 +200,7 @@ const HomePage = () => {
                 business.
               </p>
 
-              <NavLink to="/landlord/signup"> Landlord account</NavLink>
+              <NavLink to="/landlord/signup" aria-label="Create a landlord account to list properties"> Landlord account</NavLink>
 
             </div>{" "}
           </div>
@@ -179,17 +210,19 @@ const HomePage = () => {
 
         <div className="testimonial-section">
           <div className="testimonial-items">
-            <Testimonials />
+            <Suspense fallback={<div>Loading testimonials...</div>}>
+              <Testimonials />
+            </Suspense>
           </div>
         </div> 
 
         <div className="home-cta-section container section section-bottom">
           <div className="home-cta-container">
             <h2>Ready to find your perfect student accommodation?</h2>
-            <p>Join thousands of students who have found their ideal hostel through Jamii Hostels.</p>
+            <p>Join thousands of students who have found their ideal hostel through Keja Connect.</p>
             <div className="cta-buttons">
-              <NavLink to="/hostels" className="cta-button">Browse Hostels</NavLink>
-              <NavLink to="/about" className="cta-button cta-secondary">Learn More</NavLink>
+              <NavLink to="/hostels" className="cta-button" aria-label="View available hostels">Browse Hostels</NavLink>
+              <NavLink to="/about" className="cta-button cta-secondary" aria-label="Learn more about Keja Connect">Learn More</NavLink>
             </div>
           </div>
         </div>      

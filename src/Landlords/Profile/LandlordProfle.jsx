@@ -13,7 +13,7 @@ const LandlordProfile = () => {
   };
 
   if (!user) {
-    navigate("/landlord/login");
+    window.location.href= "/landlord/login";
     return null;
   }
 

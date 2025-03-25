@@ -66,7 +66,6 @@
   position: relative;
   z-index: 4;
   max-width: 800px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .about-hero-content h1 {
