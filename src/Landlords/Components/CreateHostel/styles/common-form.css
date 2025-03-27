@@ -1,0 +1,114 @@
+/* Common form styles */
+.hostel-form {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.hostel-form__header {
+  text-align: left;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.hostel-form__header h2 {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.hostel-form__header p {
+  color: var(--faint-text-color);
+  font-size: 1rem;
+}
+
+.hostel-form__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.hostel-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.hostel-form__field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--faint-text-color);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hostel-form__field input,
+.hostel-form__field select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--background-color);
+  width: 100%;
+}
+
+.hostel-form__field input:focus,
+.hostel-form__field select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.hostel-form__field input::placeholder {
+  color: var(--faint-text-color);
+  opacity: 0.7;
+}
+
+.hostel-form__field input[type="number"]::-webkit-outer-spin-button,
+.hostel-form__field input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hostel-form__field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M1 4l5 5 5-5z' fill='%23666666'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hostel-form {
+    padding: 0.5rem;
+  }
+
+  .hostel-form__fields {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hostel-form__header {
+    text-align: center;
+  }
+
+  .hostel-form__header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hostel-form__field label {
+    font-size: 0.8rem;
+  }
+
+  .hostel-form__field input,
+  .hostel-form__field select {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./HostelStep7.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const HostelStep7 = ({
   hostelData,
@@ -79,14 +81,18 @@ const HostelStep7 = ({
 
         <div className="final-form__field">
           <label>Images</label>
-          <input
-            type="file"
-            name="images"
-            multiple
-            onChange={handleFilePreview}
-            className="final-form__file-input"
-            accept="image/*"
-          />
+          <div className="final-form__upload-container">
+            <FontAwesomeIcon icon={faUpload} className="final-form__upload-icon" />
+            <input
+              type="file"
+              name="images"
+              multiple
+              onChange={handleFilePreview}
+              className="final-form__file-input"
+              accept="image/*"
+            />
+            <span className="final-form__upload-text">Click to upload images or drag and drop</span>
+          </div>
           {previewImages.length > 0 && (
             <div className="final-form__preview-section">
               <h3>Preview Selected Images</h3>

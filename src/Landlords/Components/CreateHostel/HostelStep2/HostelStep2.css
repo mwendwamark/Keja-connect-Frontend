@@ -1,7 +1,12 @@
+/* Import common form styles */
+@import '../styles/common-form.css';
+
+/* Step 2 specific styles */
 .hostel-form {
-  max-width: 800px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .hostel-form__header {
@@ -70,12 +75,19 @@
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .hostel-form {
-    padding: 1rem;
+    padding: 0.5rem;
   }
   
   .hostel-form__fields {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hostel-form__field {
+    padding: 0.25rem;
   }
 }

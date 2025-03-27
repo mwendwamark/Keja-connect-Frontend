@@ -1,9 +1,25 @@
+/* Import common form styles */
+@import '../styles/common-form.css';
+
+/* Step 3 specific styles */
+.hostel-step3-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.hostel-step3-form {
+  width: 100%;
+}
+
 .amenities-form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 12px;
   align-items: stretch;
 }
+
 .hidden-checkbox {
   display: none;
 }
@@ -43,5 +59,18 @@
   .custom-checkbox {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hostel-step3-container {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hostel-step3-form {
+    padding: 0.25rem;
   }
 }

@@ -159,13 +159,13 @@ const CreateHostel = () => {
   const nextStep = () => {
     setTimeout(() => {
       setCurrentStep(currentStep + 1);
-    }, 1500);
+    }, 1200);
   };
 
   const prevStep = () => {
     setTimeout(() => {
       setCurrentStep(currentStep - 1);
-    }, 1500);
+    }, 1200);
   };
 
   return (
