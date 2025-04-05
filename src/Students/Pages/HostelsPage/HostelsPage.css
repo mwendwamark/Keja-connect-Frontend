@@ -268,7 +268,7 @@
 }
 
 .hostel-header h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     margin: 0;
     line-height: 1.2;
@@ -282,7 +282,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 .hostel-rating svg {
@@ -294,13 +294,13 @@
     align-items: center;
     gap: 4px;
     color: #717171;
-    font-size: 0.875rem;
+    font-size: 1rem;
     margin: 0 0 4px;
 }
 
 .hostel-type {
     color: #717171;
-    font-size: 0.875rem;
+    font-size: 1rem;
     margin: 0 0 8px;
 }
 
@@ -366,21 +366,40 @@
         width: 100%;
     }
     
-    .filter-column {
+    /* .filter-column {
         flex: 1 0 100%;
-    }
+    } */
     
     .search-filter-section.active {
         padding: 16px;
     }
     
+    /* Improved button styles for mobile */
     .filter-buttons {
         flex-direction: column;
         gap: 12px;
+        margin-top: 20px;
+        padding-top: 20px;
     }
     
     .clear-filter-button,
     .apply-filter-button {
         width: 100%;
+        padding: 14px 16px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .clear-filter-button {
+        order: 2;
+        text-decoration: none;
+        border: 1px solid #DDDDDD;
+        background-color: white;
+    }
+    
+    .apply-filter-button {
+        order: 1;
+        font-weight: 600;
     }
 }
