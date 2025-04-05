@@ -24,6 +24,7 @@ const API_ENDPOINTS = {
   // General endpoints
   GENERAL: {
     HOSTELS: `${API_BASE_URL}/hostels`,
+    UNIVERSITIES: `${API_BASE_URL}/universities`,
   }
 };
 

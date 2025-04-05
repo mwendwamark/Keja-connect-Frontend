@@ -1,171 +1,386 @@
 .hostels-page {
-    padding: 0px;
+    padding: 20px 0;
+    /* max-width: 1400px; */
+    margin: 0 auto;
 }
 
-.page-header {
-    text-align: center;
-    margin-bottom: 20px;
+/* ===== Airbnb-style Filter Bar ===== */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 10px 0;
+    border-bottom: 1px solid #EBEBEB;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
 }
 
+.filter-main-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    color: #222222;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.filter-main-btn:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.filter-main-btn.active {
+    border-color: #000;
+    background-color: #f7f7f7;
+}
+
+.filter-badge {
+    background-color: var(--orange-color);
+    color: white;
+    font-size: 0.75rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+}
+
+.quick-filters {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 16px;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    gap: 12px;
+    margin-left: 16px;
+}
+
+.quick-filters::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+.quick-filter-btn {
+    white-space: nowrap;
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: 1px solid #DDDDDD;
+    background-color: white;
+    color: #222222;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quick-filter-btn:hover {
+    border-color: #BBBBBB;
+    background-color: #f7f7f7;
+}
+
+/* ===== Collapsible Filter Section ===== */
 .search-filter-section {
-    margin-bottom: 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 16px;
+    border: 1px solid #DDDDDD;
+}
+
+.search-filter-section.active {
+    max-height: 500px;
+    opacity: 1;
+    padding: 24px;
+    margin-bottom: 28px;
 }
 
 .filter-form {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filter-column {
+    flex: 1 0 200px;
+}
+
+.filter-column h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #222222;
 }
 
 .filter-input {
-    margin: 5px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: var(--text-ff);
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.filter-input:focus {
+    border-color: #222222;
+    outline: none;
+}
+
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.price-separator {
+    color: #717171;
 }
 
 .filter-buttons {
+    flex: 1 0 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    border-top: 1px solid #EBEBEB;
+    padding-top: 16px;
 }
 
-.filter-button {
-    margin: 5px;
-    padding: 10px 15px;
+.clear-filter-button {
+    background: none;
     border: none;
-    border-radius: 4px;
-    background-color: var(--orange-color);
-    border: 2px solid var(--orange-color);
-    color: var(--background-color);
+    color: #222222;
+    font-weight: 600;
+    text-decoration: underline;
     cursor: pointer;
-    font-family: var(--text-ff);
+    padding: 8px 16px;
 }
 
-.filter-button.reset-button {
-    background-color: var(--background-color);
-    color: var(--orange-color);
-    font-size: 500;
-    border: 2px solid var(--orange-color);
+.apply-filter-button {
+    background-color: #222222;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.no-results {
-    color: red;
-    text-align: center;
+.apply-filter-button:hover {
+    background-color: #000000;
+    transform: translateY(-1px);
 }
 
-.hostels-container {
+/* ===== Hostels Grid - Airbnb Style ===== */
+.hostels-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    gap: 24px;
 }
 
-.hostels-card {
-    border-radius: 4px;
+.hostel-card {
+    text-decoration: none;
+    color: #222222;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 0;
+    background: none;
+    overflow: visible;
+    transition: transform 0.2s;
+}
+
+.hostel-card:hover {
+    transform: translateY(-2px);
+}
+
+.hostel-image-container {
+    position: relative;
+    height: 0;
+    padding-bottom: 66.66%; /* 3:2 aspect ratio */
+    border-radius: 12px;
     overflow: hidden;
-    transition: 0.5s linear;
-    gap: 20px;
-    border: 1px solid #ccc;
+    margin-bottom: 12px;
 }
 
-.hostels-image {
-    height: 55%;
-}
-
-.hostels-image img {
+.hostel-swiper {
+    height: 100%;
     width: 100%;
-    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.hostels-swiper {
-    width: 100%;
-    height: 250px;
-}
-
-.hostels-swiper img {
+.hostel-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
 }
 
-.hostels-card:hover {
-    transform: scale(1.01);
-    /* filter: grayscale(10%); */
-}
-
-.hostels-info {
-    height: 45%;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 5px 15px 15px;
-}
-
-.hostels-info p {
-    color: var(--faint-text-color);
-    margin-bottom:3px;
-}
-
-.hostels-info h3 {
-    font-size: 1.2rem;
-}
-
-.name-price {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.name-price p {
-    font-weight: 500;
-    color: var(--faint-text-color);
-}
-
-.name-price h3 {
-    font-weight: 600;
-}
-
-.name-price p span {
-    font-weight: 400;
-    color: var(--text-color);
-}
-
-
-.location-info {
+.favorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    z-index: 2;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.loading {
+.favorite-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(0, 0, 0, 0.5);
+    stroke: white;
+    stroke-width: 2px;
+    transition: all 0.2s;
+}
+
+.favorite-btn:hover svg {
+    fill: rgba(255, 56, 92, 0.9);
+}
+
+.hostel-info {
+    padding: 0;
+}
+
+.hostel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.hostel-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.hostel-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.875rem;
+}
+
+.hostel-rating svg {
+    color: var(--orange-color);
+}
+
+.hostel-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #717171;
+    font-size: 0.875rem;
+    margin: 0 0 4px;
+}
+
+.hostel-type {
+    color: #717171;
+    font-size: 0.875rem;
+    margin: 0 0 8px;
+}
+
+.hostel-price {
+    margin: 8px 0 0;
+}
+
+.price-value {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.price-period {
+    font-weight: normal;
+    color: #717171;
+}
+
+/* ===== No Results Message ===== */
+.no-results {
+    grid-column: 1 / -1;
     text-align: center;
-    font-size: 18px;
+    padding: 40px 0;
+    font-size: 1.1rem;
+    color: #717171;
 }
 
-@media screen and (max-width: 1100px) {
-    .hostels-container {
+/* ===== Responsive Styles ===== */
+@media screen and (max-width: 1200px) {
+    .hostels-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media screen and (max-width: 900px) {
-    .hostels-container {
+    .hostels-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .filter-column {
+        flex: 1 0 calc(50% - 10px);
     }
 }
 
-@media screen and (max-width: 620px) {
-    .hostels-container {
-        grid-template-columns: repeat(1, 1fr);
-        width: 80%;
-        margin: 0 auto;
+@media screen and (max-width: 600px) {
+    .hostels-page {
+        padding: 12px;
     }
-}
-@media screen and (max-width: 500px) {
-    .hostels-container {
-        grid-template-columns: repeat(1, 1fr);
-        width: 90%;
+    
+    .hostels-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .quick-filters {
+        margin-left: 0;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .filter-column {
+        flex: 1 0 100%;
+    }
+    
+    .search-filter-section.active {
+        padding: 16px;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .clear-filter-button,
+    .apply-filter-button {
+        width: 100%;
     }
 }
