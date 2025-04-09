@@ -10,19 +10,29 @@ import {
   IoWaterOutline,
   IoShieldCheckmarkOutline,
 } from "react-icons/io5";
-import { FaParking, FaSwimmingPool, FaBath, FaDoorOpen, FaStar, FaRegStar, FaEdit, FaTrash } from "react-icons/fa";
+import {
+  FaParking,
+  FaSwimmingPool,
+  FaBath,
+  FaDoorOpen,
+  FaStar,
+  FaRegStar,
+  FaEdit,
+  FaTrash,
+  FaDog,
+} from "react-icons/fa";
 import { CgGym } from "react-icons/cg";
 import { MdKitchen, MdSmokeFree, MdShower } from "react-icons/md";
 import { RiFirstAidKitLine, RiHotelBedFill } from "react-icons/ri";
 import { BiCctv } from "react-icons/bi";
 import { PiPottedPlant, PiToiletDuotone } from "react-icons/pi";
 import { TbAirConditioning } from "react-icons/tb";
-import { FaDog } from "react-icons/fa";
-import { GiHomeGarage, GiDesk } from "react-icons/gi";
+import { GiDesk } from "react-icons/gi";
 import StudentNavbar from "../../StudentNavbar/StudentNavbar";
 import RatingDisplay from "../../Components/Rating/RatingDisplay";
 import "./HostelDetails.css";
 import { API_ENDPOINTS } from "../../../config/api";
+import { GoHeart } from "react-icons/go";
 
 const HostelDetails = () => {
   const { id } = useParams();
@@ -30,7 +40,7 @@ const HostelDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   // Get auth data from localStorage
   const token = localStorage.getItem("token");
   const userJson = localStorage.getItem("user");
@@ -40,15 +50,20 @@ const HostelDetails = () => {
   useEffect(() => {
     const fetchHostelDetails = async () => {
       try {
-        const response = await axios.get(`${API_ENDPOINTS.GENERAL.HOSTELS}/${id}`);
+        const response = await axios.get(
+          `${API_ENDPOINTS.GENERAL.HOSTELS}/${id}`
+        );
         setHostel(response.data);
-        
+
         // Fetch reviews for this hostel
-        const reviewsResponse = await axios.get(`${API_ENDPOINTS.GENERAL.HOSTELS}/${id}/reviews`, {
-          headers: token ? { 'Authorization': `Bearer ${token}` } : {}
-        });
+        const reviewsResponse = await axios.get(
+          `${API_ENDPOINTS.GENERAL.HOSTELS}/${id}/reviews`,
+          {
+            headers: token ? { Authorization: `Bearer ${token}` } : {},
+          }
+        );
         setReviews(reviewsResponse.data);
-        
+
         setLoading(false);
       } catch (err) {
         console.error("Error loading data:", err);
@@ -60,18 +75,19 @@ const HostelDetails = () => {
     fetchHostelDetails();
   }, [id, token]);
 
-  const handleDeleteReview = async (reviewId) => {
-    if (window.confirm('Are you sure you want to delete this review?')) {
+  const handleDeleteReview = async (reviewId, event) => {
+    event.preventDefault();
+    if (window.confirm("Are you sure you want to delete this review?")) {
       try {
         await axios.delete(`${API_ENDPOINTS.GENERAL.REVIEWS}/${reviewId}`, {
           headers: {
-            'Authorization': `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
-        setReviews(reviews.filter(review => review.id !== reviewId));
+        setReviews(reviews.filter((review) => review.id !== reviewId));
       } catch (err) {
-        console.error('Error deleting review:', err);
-        alert('Failed to delete review');
+        console.error("Error deleting review:", err);
+        alert("Failed to delete review");
       }
     }
   };
@@ -80,12 +96,22 @@ const HostelDetails = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(
-        i <= rating ? 
-          <FaStar key={i} className="star filled" /> : 
+        i <= rating ? (
+          <FaStar key={i} className="star filled" />
+        ) : (
           <FaRegStar key={i} className="star empty" />
+        )
       );
     }
     return stars;
+  };
+
+  // Helper function to get initials from name
+  const getInitials = (name) => {
+    if (!name) return "A"; // Default for Anonymous
+    const names = name.split(" ");
+    if (names.length === 1) return names[0].charAt(0).toUpperCase();
+    return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
   };
 
   // Helper function to render amenities
@@ -122,45 +148,6 @@ const HostelDetails = () => {
           name="keywords"
           content={`${hostel.name}, ${hostel.university_name}, student hostel, affordable accommodation, ${hostel.location}, ${hostel.room_type}, hostel booking`}
         />
-        <link
-          rel="canonical"
-          href={`https://kejaconnect.vercel.app/hostels/${hostel.id}`}
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={`https://kejaconnect.vercel.app/hostels/${hostel.id}`}
-        />
-        <meta
-          property="og:title"
-          content={`${hostel.name} | Affordable Student Hostel near ${hostel.university_name}`}
-        />
-        <meta
-          property="og:description"
-          content={`Find ${
-            hostel.name
-          }, a comfortable and affordable student hostel near ${
-            hostel.university_name
-          }. ${hostel.description.substring(0, 150)}...`}
-        />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content={`https://kejaconnect.vercel.app/hostels/${hostel.id}`}
-        />
-        <meta
-          property="twitter:title"
-          content={`${hostel.name} | Affordable Student Hostel in ${hostel.location}, near ${hostel.university_name}`}
-        />
-        <meta
-          property="twitter:description"
-          content={`Find ${
-            hostel.name
-          }, a comfortable and affordable student hostel near ${
-            hostel.university_name
-          }. ${hostel.description.substring(0, 150)}...`}
-        />
-        <meta name="robots" content="index, follow" />
       </Helmet>
       <StudentNavbar />
       <div className="hostel-details-container container section">
@@ -168,20 +155,10 @@ const HostelDetails = () => {
         <div className="hostel-header-container">
           <div className="hostel-header">
             <h1 className="hostel-name">{hostel.name}</h1>
-            <div className="hostel-location">
-              <IoLocationOutline className="location-icon" />
-              <p>{hostel.location}</p>
-            </div>
-            <RatingDisplay
-              rating={hostel.average_rating}
-              reviewsCount={hostel.reviews_count}
-            />
-          </div>
-          <div className="book-now">
-            <NavLink to="/book-now" className="book-now-button">
-              {" "}
-              Reserve
-            </NavLink>
+            <p className="save-hostel">
+              <GoHeart />
+              <span>Save</span>
+            </p>
           </div>
         </div>
 
@@ -206,9 +183,38 @@ const HostelDetails = () => {
             ))}
           </Swiper>
         </div>
+        <div className="hostel-brief-info">
+          <div className="hostel-brief-info-contents">
+            <p className="hostel-type">{hostel.room_type}</p>
+
+            {/* Updated location section with distance integration */}
+            <div className="hostel-location-with-distance">
+              <div className="hostel-location">
+                <IoLocationOutline className="location-icon" />
+                <p>{hostel.location}</p>
+              </div>
+              <span className="location-divider"></span>
+              <p>
+                <span className="university-name">{hostel.university_name}</span>
+                <span> · </span>
+                <span className="distance-badge">{hostel.distance_to_university} km</span>
+              </p>
+            </div>
+            <RatingDisplay
+              rating={hostel.average_rating}
+              reviewsCount={hostel.reviews_count}
+            />
+          </div>
+
+          <div className="book-now">
+            <NavLink to="/book-now" className="book-now-button">
+              Reserve
+            </NavLink>
+          </div>
+        </div>
 
         {/* Details Section */}
-        <div className="hostel-details-grid">
+        <div className="hostel-details-grid section">
           {/* Overview Section */}
           <div className="hostel-overview">
             <h2>Overview</h2>
@@ -301,79 +307,86 @@ const HostelDetails = () => {
               {renderAmenity(<PiPottedPlant />, "Balcony", hostel.balcony)}
             </div>
           </div>
-          {/* Nearby Facilities Section */}{" "}
-          <div className="hostel-distance-calculation">
-            <p>
-              Distance to <span>{hostel.university_name}</span>{" "}
-            </p>
-            <p>
-              {" "}
-              <span> {hostel.distance_to_university}</span> km from the
-              university
-            </p>
-          </div>
+          
           {/* Nearby Facilities Section */}
           <div className="hostel-nearby-facilities">
             <h2>Nearby Facilities</h2>
             <p>{hostel.nearby_facilities}</p>
           </div>
+          
           {/* Rules Section */}
           <div className="hostel-rules">
             <h2>Rules</h2>
             <p>{hostel.rules}</p>
           </div>
-          {/* description Section */}
+          
+          {/* Description Section */}
           <div className="hostel-description">
             <h2>Description</h2>
             <p>{hostel.description}</p>
           </div>
         </div>
 
-        {/* Reviews Section - Updated with new component */}
+        {/* Reviews Section - Airbnb Style with Avatars */}
         <div className="hostel-reviews">
           <div className="reviews-header">
             <h2>Reviews</h2>
             {studentId && (
-              <NavLink to={`/write-review?hostelId=${id}`} className="add-review-button">
+              <NavLink
+                to={`/write-review?hostelId=${id}`}
+                className="add-review-button"
+              >
                 Write a Review
               </NavLink>
             )}
           </div>
-          
+
           {reviews.length === 0 ? (
             <p className="no-reviews">
-              No reviews yet. {studentId ? 'Be the first to leave a review!' : 'Log in to leave a review.'}
+              No reviews yet.{" "}
+              {studentId
+                ? "Be the first to leave a review!"
+                : "Log in to leave a review."}
             </p>
           ) : (
             <div className="reviews-list">
-              {reviews.map(review => (
+              {reviews.map((review) => (
                 <div key={review.id} className="review-card">
                   <div className="review-header">
-                    <div className="review-author">{review.student?.name || "Anonymous"}</div>
-                    <div className="review-date">
-                      {new Date(review.created_at).toLocaleDateString()}
+                    <div className="user-avatar">
+                      {getInitials(review.student?.name)}
+                    </div>
+                    <div className="review-author-info">
+                      <div className="review-author">
+                        {review.student?.name || "Anonymous"}
+                      </div>
+                      <div className="review-date">
+                        {new Date(review.created_at).toLocaleDateString()}
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div className="review-rating">
                     {renderStars(review.rating)}
                   </div>
-                  
-                  <div className="review-comment">
-                    {review.comment}
-                  </div>
-                  
+
+                  <div className="review-comment">{review.comment}</div>
+
                   {studentId === review.student?.id && (
                     <div className="review-actions">
-                      <NavLink to={`/reviews/${review.id}/edit`} className="edit-button">
+                      <NavLink
+                        to={`/reviews/${review.id}/edit`}
+                        className="review-action-link"
+                      >
                         <FaEdit /> Edit
                       </NavLink>
-                      <button 
-                        onClick={() => handleDeleteReview(review.id)} 
-                        className="delete-button"
+                      <a
+                        href="#"
+                        onClick={(e) => handleDeleteReview(review.id, e)}
+                        className="review-action-link delete"
                       >
                         <FaTrash /> Delete
-                      </button>
+                      </a>
                     </div>
                   )}
                 </div>

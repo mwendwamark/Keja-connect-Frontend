@@ -328,6 +328,7 @@
 }
 
 /* ===== Responsive Styles ===== */
+
 @media screen and (max-width: 1200px) {
     .hostels-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -403,3 +404,14 @@
         font-weight: 600;
     }
 }
+/* @media screen and (min-width: 1200px) {
+    .hostels-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .hostels-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+} */

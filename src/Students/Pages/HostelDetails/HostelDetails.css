@@ -12,25 +12,29 @@
   align-items: center;
 }
 
-
-.book-now-button
- {
-  padding: 0.7rem 0.6rem;
-  background-color: var(--light-green);
-  color: var(--text-color);
+.book-now-button {
+  padding: 0.7rem 3rem;
+  background-color: var(--green-color);
+  color: var(--background-color);
+  border-radius: 8px;
 }
 
 .book-now-button:hover {
   background-color: var(--green-color);
+  opacity: 0.9;
   color: var(--background-color);
 }
 
 .hostel-header {
   margin-bottom: 32px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .hostel-name {
-  font-size: 32px;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--text-color);
   margin-bottom: 8px;
@@ -41,12 +45,45 @@
   align-items: center;
   gap: 8px;
   color: var(--faint-text-color);
-  font-size: 16px;
+  font-size: 1rem;
   margin-bottom: 16px;
 }
 
+.hostel-location-with-distance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--faint-text-color);
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.location-divider {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--faint-text-color);
+  margin: 0 8px;
+}
+
+.distance-badge {
+  color: var(--orange-color);
+  font-weight: 500;
+}
+
+.university-name {
+  font-weight: 500;
+}
+
+.hostel-brief-info .hostel-type {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .location-icon {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .hostel-image-gallery {
@@ -67,21 +104,59 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-top: -20px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 12px;
+  font-size: 1rem;
   color: #222222;
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  transition: all 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
   background: #ffffff;
+  width: 15px;
+  border-radius: 10px;
+}
+
+.hostel-brief-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.save-hostel {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  cursor: pointer;
+}
+
+.save-hostel:hover {
+  filter: brightness(0.9);
+  text-decoration: underline;
 }
 
 .hostel-details-grid {
@@ -95,249 +170,271 @@
 
 .hostel-overview h2,
 .hostel-amenities h2,
-.hostel-reviews h2 {
-  font-size: 24px;
+.hostel-reviews h2,
+.hostel-nearby-facilities h2,
+.hostel-rules h2,
+.hostel-description h2 {
+  font-size: 1.5rem;
   font-weight: 600;
   color: #222222;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .overview-item {
-  padding: 16px;
+  padding: 1rem;
   border: 1px solid #dddddd;
   border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.overview-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .overview-label {
   color: #717171;
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .overview-value {
   color: #222222;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .amenities-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 1rem;
 }
 
 .amenity-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
   color: #222222;
-  font-size: 16px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.amenity-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .amenity-icon {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .amenity-label {
-  font-size: 14px;
-}
-
-.hostel-reviews {
-  margin-top: 48px;
-}
-
-.hostel-distance-calculation {
-  padding: 0;
-
-}
-.hostel-distance-calculation p{
   font-size: 1rem;
-  font-weight: 400;
-  color: var(--faint-text-color);
 }
 
-.hostel-distance-calculation p span {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--orange-color);
-}
-
-.hostel-distance-calculation span {
-
-color: var(--orange-color);
-}
-
-.review {
-  padding: 24px 0;
-  border-bottom: 1px solid #dddddd;
-}
-
-.review:last-child {
-  border-bottom: none;
-}
-
-.review-author {
-  font-weight: 600;
-  color: #222222;
-  margin-bottom: 8px;
-}
-
-.review-comment {
-  color: #717171;
-  line-height: 1.5;
-}
-
-/* Existing HostelDetails.css content */
-
-/* Reviews Section Styles */
-.hostel-reviews {
-  margin-top: 40px;
-  padding: 20px;
+/* Styled nearby facilities section */
+.hostel-nearby-facilities {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.hostel-nearby-facilities p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Styled rules section */
+.hostel-rules {
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #2196F3;
+}
+
+.hostel-rules p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Styled description section */
+.hostel-description {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.hostel-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Reviews Section Styles - Airbnb-like with avatars */
+.hostel-reviews {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .reviews-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .add-review-button {
-  padding: 8px 16px;
-  background-color: #4CAF50;
+  padding: 0.5rem 1rem;
+  background-color: var(--green-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .add-review-button:hover {
-  background-color: #3e8e41;
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
 .no-reviews {
   text-align: center;
-  padding: 20px;
+  padding: 1.5rem;
   color: #666;
   font-style: italic;
+  font-size: 1rem;
 }
 
 .reviews-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
 .review-card {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 16px;
-  background-color: #f9f9f9;
-  transition: transform 0.2s;
+  border: none;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background-color: #f8f8f8;
+  transition: all 0.3s ease;
 }
 
 .review-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .review-header {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--green-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.review-author-info {
+  flex-grow: 1;
 }
 
 .review-author {
-  font-weight: bold;
+  font-weight: 600;
   color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .review-date {
   color: #777;
-  font-size: 0.9em;
+  font-size: 0.85rem;
 }
 
 .review-rating {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   display: flex;
-  gap: 2px;
+  gap: 0.125rem;
 }
 
 .star.filled {
   color: #ffb400;
+  font-size: 1rem;
 }
 
 .star.empty {
   color: #ccc;
+  font-size: 1rem;
 }
 
 .review-comment {
-  margin-bottom: 12px;
-  line-height: 1.5;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 .review-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
 
-.edit-button, .delete-button {
+.review-action-link {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 0.9em;
-  cursor: pointer;
-}
-
-.edit-button {
-  background-color: #2196F3;
-  color: white;
-  border: none;
+  gap: 0.375rem;
+  color: #666;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-.delete-button {
-  background-color: #f44336;
-  color: white;
-  border: none;
+.review-action-link:hover {
+  color: var(--green-color);
 }
 
-.edit-button:hover {
-  background-color: #0b7dda;
+.review-action-link.delete {
+  color: #777;
 }
 
-.delete-button:hover {
-  background-color: #d32f2f;
+.review-action-link.delete:hover {
+  color: #f44336;
 }
 
-@media (max-width: 768px) {
-  .reviews-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  
-  .review-header {
-    flex-direction: column;
-  }
-  
-  .review-actions {
-    flex-direction: column;
-    gap: 8px;
+@media (max-width: 992px) {
+  .reviews-list {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -345,9 +442,10 @@ color: var(--orange-color);
   .hostel-details-container {
     padding: 10px;
   }
+  
   .hostel-details-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 2rem;
   }
 
   .hostel-image-gallery .swiper {
@@ -357,11 +455,51 @@ color: var(--orange-color);
   .amenities-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .reviews-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .hostel-location-with-distance {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .location-divider {
+    display: none;
+  }
+  
+  /* Fix for reserve button alignment on mobile */
+  .hostel-brief-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .book-now {
+    width: 100%;
+  }
+  
+  .book-now-button {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }
 
-@media (max-width: 500px) {
-.hostel-name {
-  font-size: 24px;
+@media (max-width: 576px) {
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hostel-name {
+    font-size: 1.5rem;
+  }
 }
-}
-
