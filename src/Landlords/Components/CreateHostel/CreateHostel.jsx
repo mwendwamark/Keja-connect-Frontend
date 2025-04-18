@@ -17,6 +17,7 @@ import HostelStep4 from "./HostelStep4/HostelStep4";
 import HostelStep5 from "./HostelStep5/HostelStep5";
 import HostelStep7 from "./HostelStep7/HostelStep7";
 import HostelStep6 from "./HostelStep6/HostelStep6";
+import HostelMap from "./HostelMap";
 
 const CreateHostel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -95,8 +96,39 @@ const CreateHostel = () => {
 
   // Automatically fetch coordinates when the component mounts
   useEffect(() => {
-    getLocationCoordinates();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setHostelData((prevData) => ({
+            ...prevData,
+            latitude,
+            longitude,
+          }));
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          toast.error("Failed to get location. Please enable location services.");
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
+        }
+      );
+    } else {
+      toast.error("Geolocation is not supported by this browser.");
+    }
   }, []);
+
+  // Handler for updating coordinates from map
+  const handleMapCoordinates = ({ latitude, longitude }) => {
+    setHostelData((prevData) => ({
+      ...prevData,
+      latitude,
+      longitude,
+    }));
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -191,16 +223,25 @@ const CreateHostel = () => {
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}{" "}
+          {/* Hostel Location Step */}
           {currentStep === 2 && (
             <div className="step-container">
-              <HostelStep2
-                hostelData={hostelData}
-                handleChange={handleChange}
-              />
+              <div style={{ margin: "2rem 0" }}>
+                <h4>Select Hostel Location</h4>
+                <HostelMap
+                  latitude={hostelData.latitude}
+                  longitude={hostelData.longitude}
+                  setCoordinates={handleMapCoordinates}
+                />
+                {hostelData.latitude && hostelData.longitude && (
+                  <p>
+                    Selected Coordinates: <b>{hostelData.latitude}, {hostelData.longitude}</b>
+                  </p>
+                )}
+              </div>
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
-          {/* Step 2: Amenities Introduction */}
           {currentStep === 3 && (
             <div className="step-container">
               <Step2Intro />
@@ -209,7 +250,7 @@ const CreateHostel = () => {
           )}
           {currentStep === 4 && (
             <div className="step-container">
-              <HostelStep3
+              <HostelStep2
                 hostelData={hostelData}
                 handleChange={handleChange}
               />
@@ -218,7 +259,7 @@ const CreateHostel = () => {
           )}
           {currentStep === 5 && (
             <div className="step-container">
-              <HostelStep4
+              <HostelStep3
                 hostelData={hostelData}
                 handleChange={handleChange}
               />
@@ -227,7 +268,7 @@ const CreateHostel = () => {
           )}
           {currentStep === 6 && (
             <div className="step-container">
-              <HostelStep5
+              <HostelStep4
                 hostelData={hostelData}
                 handleChange={handleChange}
               />
@@ -236,13 +277,20 @@ const CreateHostel = () => {
           )}
           {currentStep === 7 && (
             <div className="step-container">
+              <HostelStep5
+                hostelData={hostelData}
+                handleChange={handleChange}
+              />
+              <StepNavigation onBack={prevStep} onNext={nextStep} />
+            </div>
+          )}
+          {currentStep === 8 && (
+            <div className="step-container">
               <Step3intro />
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
-          {/* Step 5: Final Information and Submission */}
-
-          {currentStep === 8 && (
+          {currentStep === 9 && (
             <div className="step-container">
               <HostelStep6
                 hostelData={hostelData}
@@ -251,7 +299,7 @@ const CreateHostel = () => {
               <StepNavigation onBack={prevStep} onNext={nextStep} />
             </div>
           )}
-          {currentStep === 9 && (
+          {currentStep === 10 && (
             <div className="step-container">
               <HostelStep7
                 hostelData={hostelData}
