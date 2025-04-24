@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./LandlordDashboard.css";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import MiniNavbar from "../Components/MiniNavbar.jsx/MiniNavbar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { FaHome, FaUsers, FaMoneyBillWave, FaBed } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { API_BASE_URL } from "../../config/api";
+import PendingBookings from "./components/PendingBookings";
 
 const LandlordDashboard = () => {
   const [dashboardData, setDashboardData] = useState({
@@ -109,7 +109,7 @@ const LandlordDashboard = () => {
           <Sidebar />
           <div className="dashboard-body">
             <div className="dashboard-main">
-              
+              {/* Pending Bookings Section */}
               <div className="stats-grid">
                 <div className="stat-card">
                   <div className="stat-icon">
@@ -189,6 +189,8 @@ const LandlordDashboard = () => {
                   </div>
                 </div>
               </div>
+              <PendingBookings />
+
             </div>
           </div>
         </div>

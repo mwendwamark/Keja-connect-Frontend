@@ -1,4 +1,8 @@
 User-agent: *
+Disallow: /api/
+Disallow: /private/
+Disallow: /admin/
+Disallow: /backend/
 Allow: /
 
 Sitemap: https://kejaconnect.vercel.app/sitemap.xml

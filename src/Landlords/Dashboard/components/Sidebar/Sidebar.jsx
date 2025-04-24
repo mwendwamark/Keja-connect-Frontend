@@ -1,6 +1,6 @@
 import React from "react";
 import "./Sidebar.css";
-import logo from "../../../assets/logo4.png";
+import logo from "../../../../assets/logo4.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdOutlineAddBusiness } from "react-icons/md";

@@ -40,6 +40,9 @@ const HostelDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [bookingStatus, setBookingStatus] = useState(null);
+  const [bookingLoading, setBookingLoading] = useState(false);
+  const [bookingError, setBookingError] = useState(null);
 
   // Get auth data from localStorage
   const token = localStorage.getItem("token");
@@ -127,6 +130,38 @@ const HostelDetails = () => {
     return null;
   };
 
+  // Reserve/Booking Handler
+  const handleReserve = async () => {
+    if (!studentId || !token) {
+      setBookingError("You must be logged in as a student to reserve a hostel.");
+      return;
+    }
+    setBookingLoading(true);
+    setBookingError(null);
+    try {
+      const response = await axios.post(
+        `${API_ENDPOINTS.GENERAL.BOOKINGS}`,
+        {
+          booking: {
+            hostel_id: hostel.id,
+            start_date: new Date().toISOString().slice(0, 10), // today, or prompt for date
+            end_date: null // or prompt for date if needed
+          }
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+      setBookingStatus(response.data.status);
+    } catch (err) {
+      setBookingError(
+        err.response?.data?.errors?.[0] || "Failed to submit booking request."
+      );
+    } finally {
+      setBookingLoading(false);
+    }
+  };
+
   if (loading) return <div className="text-center p-8">Loading...</div>;
   if (error) return <div className="text-center p-8 text-red-500">{error}</div>;
   if (!hostel) return <div className="text-center p-8">Hostel not found</div>;
@@ -207,9 +242,23 @@ const HostelDetails = () => {
           </div>
 
           <div className="book-now">
-            <NavLink to="/book-now" className="book-now-button">
-              Reserve
-            </NavLink>
+            <button
+              className="book-now-button"
+              onClick={handleReserve}
+              disabled={bookingLoading || bookingStatus === 'pending'}
+            >
+              {bookingLoading ? 'Submitting...' : bookingStatus === 'pending' ? 'Awaiting Approval' : 'Reserve'}
+            </button>
+            {bookingStatus === 'pending' && (
+              <div className="booking-status-message" style={{ color: 'var(--orange-color)', marginTop: '0.5rem' }}>
+                Your booking request has been submitted and is awaiting landlord approval.
+              </div>
+            )}
+            {bookingError && (
+              <div className="booking-error-message" style={{ color: 'red', marginTop: '0.5rem' }}>
+                {bookingError}
+              </div>
+            )}
           </div>
         </div>
 

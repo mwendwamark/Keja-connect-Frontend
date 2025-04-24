@@ -1,0 +1,86 @@
+.pending-bookings-section {
+  margin-bottom: 2.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+}
+
+.pending-bookings-section h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.pending-bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.pending-bookings-table th,
+.pending-bookings-table td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+}
+
+.pending-bookings-table th {
+  background: #f4f6fa;
+  color: #222;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.pending-bookings-table tr {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.pending-bookings-table tr:last-child {
+  border-bottom: none;
+}
+
+.pending-bookings-table td {
+  color: #444;
+  font-size: 1rem;
+}
+
+.pending-bookings-table button {
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.4rem 1.1rem;
+  border-radius: 6px;
+  border: none;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pending-bookings-table button:last-child {
+  margin-right: 0;
+}
+
+.pending-bookings-table button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.pending-bookings-table button {
+  background: #4caf50;
+  color: #fff;
+}
+
+.pending-bookings-table button:last-child {
+  background: #f44336;
+}
+
+@media (max-width: 800px) {
+  .pending-bookings-section {
+    padding: 1rem 0.3rem;
+  }
+  .pending-bookings-table th,
+  .pending-bookings-table td {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.95rem;
+  }
+}
