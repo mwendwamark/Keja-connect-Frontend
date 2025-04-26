@@ -22,6 +22,7 @@ import ReviewForm from "./Students/Components/ReviewsManager/ReviewsForm";
 import ReviewsList from "./Students/Components/ReviewsList/ReviewsList";
 import PasswordResetRequest from "./Components/PasswordReset/PasswordResetRequest";
 import PasswordResetConfirm from "./Components/PasswordReset/PasswordResetConfirm";
+import Wishlist from "./Students/Pages/Wishlist";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path="/write-review" element={<ReviewForm />} />
         {/* <Route path="/hostels/:hostelId/reviews" element={<ReviewsList/>} /> */}
         <Route path="/hostels/:hostelId/reviews" element={<ReviewsList/>}/>
+        <Route path="/wishlist" element={<Wishlist/>}/>
       </Routes>
     </>
   );
