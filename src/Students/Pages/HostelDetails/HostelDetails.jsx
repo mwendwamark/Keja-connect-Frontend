@@ -33,6 +33,8 @@ import RatingDisplay from "../../Components/Rating/RatingDisplay";
 import "./HostelDetails.css";
 import { API_ENDPOINTS } from "../../../config/api";
 import { GoHeart } from "react-icons/go";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HostelDetails = () => {
   const { id } = useParams();
@@ -43,6 +45,7 @@ const HostelDetails = () => {
   const [bookingStatus, setBookingStatus] = useState(null);
   const [bookingLoading, setBookingLoading] = useState(false);
   const [bookingError, setBookingError] = useState(null);
+  const [wishlistSaved, setWishlistSaved] = useState(false);
 
   // Get auth data from localStorage
   const token = localStorage.getItem("token");
@@ -77,6 +80,13 @@ const HostelDetails = () => {
 
     fetchHostelDetails();
   }, [id, token]);
+
+  useEffect(() => {
+    // Check if already saved
+    const stored = localStorage.getItem("student_wishlist");
+    let wishlist = stored ? JSON.parse(stored) : [];
+    setWishlistSaved(wishlist.some(item => item.id === id));
+  }, [id]);
 
   const handleDeleteReview = async (reviewId, event) => {
     event.preventDefault();
@@ -128,6 +138,28 @@ const HostelDetails = () => {
       );
     }
     return null;
+  };
+
+  const toggleWishlist = () => {
+    if (!hostel) return;
+    const stored = localStorage.getItem("student_wishlist");
+    let wishlist = stored ? JSON.parse(stored) : [];
+    const index = wishlist.findIndex(item => item.id === hostel.id);
+    if (index > -1) {
+      wishlist.splice(index, 1);
+      setWishlistSaved(false);
+      toast.error("Removed hostel from wishlist");
+    } else {
+      wishlist.push({
+        id: hostel.id,
+        name: hostel.name,
+        location: hostel.location,
+        image: hostel.image_urls?.[0] || "",
+      });
+      setWishlistSaved(true);
+      toast.success("Added hostel to wishlist");
+    }
+    localStorage.setItem("student_wishlist", JSON.stringify(wishlist));
   };
 
   // Reserve/Booking Handler
@@ -190,9 +222,9 @@ const HostelDetails = () => {
         <div className="hostel-header-container">
           <div className="hostel-header">
             <h1 className="hostel-name">{hostel.name}</h1>
-            <p className="save-hostel">
-              <GoHeart />
-              <span>Save</span>
+            <p className="save-hostel" onClick={toggleWishlist} style={{cursor: 'pointer', color: wishlistSaved ? '#e53935' : 'var(--text-color)'}}>
+              <GoHeart style={{marginRight: '0.3em', fill: wishlistSaved ? '#e53935' : '#232323', stroke: wishlistSaved ? '#e53935' : '#fff', strokeWidth: 1.5, filter: wishlistSaved ? 'drop-shadow(0 2px 4px rgba(229,57,53,0.1))' : 'none', transition: 'fill 0.2s, stroke 0.2s'}} />
+              <span>{wishlistSaved ? 'Saved' : 'Save'}</span>
             </p>
           </div>
         </div>
@@ -444,6 +476,7 @@ const HostelDetails = () => {
           )}
         </div>
       </div>
+      <ToastContainer position="bottom-center" autoClose={2000} />
     </>
   );
 };

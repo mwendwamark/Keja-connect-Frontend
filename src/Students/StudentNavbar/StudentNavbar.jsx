@@ -34,6 +34,9 @@ const StudentNavbar = () => {
           </NavLink>
         </div>
         <ul className="student-navbar-links">
+          <li className="student-navbar-center">
+            <NavLink to="/wishlist" className="wishlist-center-link">Wishlist</NavLink>
+          </li>
           {user ? (
             <>
               <li className="student-navbar-username">
