@@ -1,7 +1,6 @@
 .hostel-details-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
   font-family: "Outfit", sans-serif;
   margin-top: 1rem;
 }
@@ -500,10 +499,6 @@
   .hostel-details-container {
     padding: 1.2rem;
   }
-
-  /* .amenities-grid {
-    grid-template-columns: 1fr;
-  } */
 
   .overview-grid {
     grid-template-columns: 1fr;

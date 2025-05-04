@@ -85,7 +85,7 @@ const HostelDetails = () => {
     // Check if already saved
     const stored = localStorage.getItem("student_wishlist");
     let wishlist = stored ? JSON.parse(stored) : [];
-    setWishlistSaved(wishlist.some(item => item.id === id));
+    setWishlistSaved(wishlist.some((item) => item.id === id));
   }, [id]);
 
   const handleDeleteReview = async (reviewId, event) => {
@@ -124,7 +124,9 @@ const HostelDetails = () => {
     if (!name) return "A"; // Default for Anonymous
     const names = name.split(" ");
     if (names.length === 1) return names[0].charAt(0).toUpperCase();
-    return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
+    return (
+      names[0].charAt(0) + names[names.length - 1].charAt(0)
+    ).toUpperCase();
   };
 
   // Helper function to render amenities
@@ -144,7 +146,7 @@ const HostelDetails = () => {
     if (!hostel) return;
     const stored = localStorage.getItem("student_wishlist");
     let wishlist = stored ? JSON.parse(stored) : [];
-    const index = wishlist.findIndex(item => item.id === hostel.id);
+    const index = wishlist.findIndex((item) => item.id === hostel.id);
     if (index > -1) {
       wishlist.splice(index, 1);
       setWishlistSaved(false);
@@ -165,7 +167,9 @@ const HostelDetails = () => {
   // Reserve/Booking Handler
   const handleReserve = async () => {
     if (!studentId || !token) {
-      setBookingError("You must be logged in as a student to reserve a hostel.");
+      setBookingError(
+        "You must be logged in as a student to reserve a hostel."
+      );
       return;
     }
     setBookingLoading(true);
@@ -177,11 +181,11 @@ const HostelDetails = () => {
           booking: {
             hostel_id: hostel.id,
             start_date: new Date().toISOString().slice(0, 10), // today, or prompt for date
-            end_date: null // or prompt for date if needed
-          }
+            end_date: null, // or prompt for date if needed
+          },
         },
         {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       setBookingStatus(response.data.status);
@@ -217,263 +221,296 @@ const HostelDetails = () => {
         />
       </Helmet>
       <StudentNavbar />
-      <div className="hostel-details-container container section">
-        {/* Header Section */}
-        <div className="hostel-header-container">
-          <div className="hostel-header">
-            <h1 className="hostel-name">{hostel.name}</h1>
-            <p className="save-hostel" onClick={toggleWishlist} style={{cursor: 'pointer', color: wishlistSaved ? '#e53935' : 'var(--text-color)'}}>
-              <GoHeart style={{marginRight: '0.3em', fill: wishlistSaved ? '#e53935' : '#232323', stroke: wishlistSaved ? '#e53935' : '#fff', strokeWidth: 1.5, filter: wishlistSaved ? 'drop-shadow(0 2px 4px rgba(229,57,53,0.1))' : 'none', transition: 'fill 0.2s, stroke 0.2s'}} />
-              <span>{wishlistSaved ? 'Saved' : 'Save'}</span>
-            </p>
-          </div>
-        </div>
-
-        {/* Image Gallery */}
-        <div className="hostel-image-gallery">
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={10}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-          >
-            {hostel.image_urls?.map((url, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={url}
-                  alt={`${hostel.name} view ${index + 1}`}
-                  className="hostel-image"
-                  loading="lazy"
+      <div className="hostel-details-page section">
+        <div className="hostel-details-container container">
+          <div className="hostel-header-container">
+            <div className="hostel-header">
+              <h1 className="hostel-name">{hostel.name}</h1>
+              <p
+                className="save-hostel"
+                onClick={toggleWishlist}
+                style={{
+                  cursor: "pointer",
+                  color: wishlistSaved ? "#e53935" : "var(--text-color)",
+                }}
+              >
+                <GoHeart
+                  style={{
+                    marginRight: "0.3em",
+                    fill: wishlistSaved ? "#e53935" : "#232323",
+                    stroke: wishlistSaved ? "#e53935" : "#fff",
+                    strokeWidth: 1.5,
+                    filter: wishlistSaved
+                      ? "drop-shadow(0 2px 4px rgba(229,57,53,0.1))"
+                      : "none",
+                    transition: "fill 0.2s, stroke 0.2s",
+                  }}
                 />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-        <div className="hostel-brief-info">
-          <div className="hostel-brief-info-contents">
-            <p className="hostel-type">{hostel.room_type}</p>
-
-            {/* Updated location section with distance integration */}
-            <div className="hostel-location-with-distance">
-              <div className="hostel-location">
-                <IoLocationOutline className="location-icon" />
-                <p>{hostel.location}</p>
-              </div>
-              <span className="location-divider"></span>
-              <p>
-                <span className="university-name">{hostel.university_name}</span>
-                <span> · </span>
-                <span className="distance-badge">{hostel.distance_to_university} km</span>
+                <span>{wishlistSaved ? "Saved" : "Save"}</span>
               </p>
             </div>
-            <RatingDisplay
-              rating={hostel.average_rating}
-              reviewsCount={hostel.reviews_count}
-            />
           </div>
 
-          <div className="book-now">
-            <button
-              className="book-now-button"
-              onClick={handleReserve}
-              disabled={bookingLoading || bookingStatus === 'pending'}
+          <div className="hostel-image-gallery">
+            <Swiper
+              modules={[Navigation, Pagination]}
+              spaceBetween={10}
+              slidesPerView={1}
+              navigation
+              pagination={{ clickable: true }}
             >
-              {bookingLoading ? 'Submitting...' : bookingStatus === 'pending' ? 'Awaiting Approval' : 'Reserve'}
-            </button>
-            {bookingStatus === 'pending' && (
-              <div className="booking-status-message" style={{ color: 'var(--orange-color)', marginTop: '0.5rem' }}>
-                Your booking request has been submitted and is awaiting landlord approval.
-              </div>
-            )}
-            {bookingError && (
-              <div className="booking-error-message" style={{ color: 'red', marginTop: '0.5rem' }}>
-                {bookingError}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Details Section */}
-        <div className="hostel-details-grid section">
-          {/* Overview Section */}
-          <div className="hostel-overview">
-            <h2>Overview</h2>
-            <div className="overview-grid">
-              <div className="overview-item">
-                <p className="overview-label">Room Type</p>
-                <p className="overview-value">{hostel.room_type}</p>
-              </div>
-              <div className="overview-item">
-                <p className="overview-label">Price per Month</p>
-                <p className="overview-value">KES {hostel.price_per_month}</p>
-              </div>
-              <div className="overview-item">
-                <p className="overview-label">Available Units</p>
-                <p className="overview-value">{hostel.available_units}</p>
-              </div>
-              <div className="overview-item">
-                <p className="overview-label">Bedrooms</p>
-                <p className="overview-value">{hostel.bedrooms}</p>
-              </div>
-              <div className="overview-item">
-                <p className="overview-label">Deposit Amount</p>
-                <p className="overview-value">KES {hostel.deposit_amount}</p>
-              </div>
-              <div className="overview-item">
-                <p className="overview-label">Electricity Billing</p>
-                <p className="overview-value">{hostel.electricity_billing}</p>
-              </div>
-              <div className="overview-item">
-                <p className="overview-label">Max Occupancy</p>
-                <p className="overview-value">{hostel.max_occupancy}</p>
-              </div>
-              <div className="overview-item">
-                <p className="overview-label">Furnishing</p>
-                <p className="overview-value">{hostel.furnishing}</p>
-              </div>
-            </div>
-          </div>
-          {/* Amenities Section */}
-          <div className="hostel-amenities">
-            <h2>Available Amenities</h2>
-            <div className="amenities-grid">
-              {renderAmenity(<IoWifiOutline />, "Wi-Fi", hostel.wifi)}
-              {renderAmenity(<FaParking />, "Parking", hostel.parking)}
-              {renderAmenity(
-                <IoShieldCheckmarkOutline />,
-                "Security",
-                hostel.security
-              )}
-              {renderAmenity(<MdKitchen />, "Kitchen", hostel.kitchen)}
-              {renderAmenity(
-                <IoWaterOutline />,
-                "Good Water Supply",
-                hostel.water_supply
-              )}
-              {renderAmenity(
-                <FaSwimmingPool />,
-                "Swimming Pool",
-                hostel.swimming_pool
-              )}
-              {renderAmenity(<CgGym />, "Gym", hostel.gym)}
-              {renderAmenity(<FaBath />, "Bathroom", hostel.bathroom)}
-              {renderAmenity(<FaDoorOpen />, "Wardrobe", hostel.wardrobe)}
-              {renderAmenity(<PiPottedPlant />, "Garden", hostel.garden)}
-              {renderAmenity(
-                <MdSmokeFree />,
-                "Smoke Alarm",
-                hostel.smoke_alarm
-              )}
-              {renderAmenity(
-                <RiFirstAidKitLine />,
-                "First Aid Kit",
-                hostel.first_aid_kit
-              )}
-              {renderAmenity(<MdShower />, "Hot Shower", hostel.hot_shower)}
-              {renderAmenity(<BiCctv />, "CCTV Cameras", hostel.cctv_cameras)}
-              {renderAmenity(
-                <RiHotelBedFill />,
-                "Laundry Services",
-                hostel.laundry_services
-              )}
-              {renderAmenity(<FaDog />, "Pet Friendly", hostel.pet_friendly)}
-              {renderAmenity(
-                <TbAirConditioning />,
-                "Air Conditioner",
-                hostel.air_conditioner
-              )}
-              {renderAmenity(<PiToiletDuotone />, "Toilet", hostel.toilet)}
-              {renderAmenity(<GiDesk />, "Study Room", hostel.study_room)}
-              {renderAmenity(<PiPottedPlant />, "Balcony", hostel.balcony)}
-            </div>
-          </div>
-          
-          {/* Nearby Facilities Section */}
-          <div className="hostel-nearby-facilities">
-            <h2>Nearby Facilities</h2>
-            <p>{hostel.nearby_facilities}</p>
-          </div>
-          
-          {/* Rules Section */}
-          <div className="hostel-rules">
-            <h2>Rules</h2>
-            <p>{hostel.rules}</p>
-          </div>
-          
-          {/* Description Section */}
-          <div className="hostel-description">
-            <h2>Description</h2>
-            <p>{hostel.description}</p>
-          </div>
-        </div>
-
-        {/* Reviews Section - Airbnb Style with Avatars */}
-        <div className="hostel-reviews">
-          <div className="reviews-header">
-            <h2>Reviews</h2>
-            {studentId && (
-              <NavLink
-                to={`/write-review?hostelId=${id}`}
-                className="add-review-button"
-              >
-                Write a Review
-              </NavLink>
-            )}
-          </div>
-
-          {reviews.length === 0 ? (
-            <p className="no-reviews">
-              No reviews yet.{" "}
-              {studentId
-                ? "Be the first to leave a review!"
-                : "Log in to leave a review."}
-            </p>
-          ) : (
-            <div className="reviews-list">
-              {reviews.map((review) => (
-                <div key={review.id} className="review-card">
-                  <div className="review-header">
-                    <div className="user-avatar">
-                      {getInitials(review.student?.name)}
-                    </div>
-                    <div className="review-author-info">
-                      <div className="review-author">
-                        {review.student?.name || "Anonymous"}
-                      </div>
-                      <div className="review-date">
-                        {new Date(review.created_at).toLocaleDateString()}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="review-rating">
-                    {renderStars(review.rating)}
-                  </div>
-
-                  <div className="review-comment">{review.comment}</div>
-
-                  {studentId === review.student?.id && (
-                    <div className="review-actions">
-                      <NavLink
-                        to={`/reviews/${review.id}/edit`}
-                        className="review-action-link"
-                      >
-                        <FaEdit /> Edit
-                      </NavLink>
-                      <a
-                        href="#"
-                        onClick={(e) => handleDeleteReview(review.id, e)}
-                        className="review-action-link delete"
-                      >
-                        <FaTrash /> Delete
-                      </a>
-                    </div>
-                  )}
-                </div>
+              {hostel.image_urls?.map((url, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={url}
+                    alt={`${hostel.name} view ${index + 1}`}
+                    className="hostel-image"
+                    loading="lazy"
+                  />
+                </SwiperSlide>
               ))}
+            </Swiper>
+          </div>
+          <div className="hostel-brief-info">
+            <div className="hostel-brief-info-contents">
+              <p className="hostel-type">{hostel.room_type}</p>
+
+              {/* Updated location section with distance integration */}
+              <div className="hostel-location-with-distance">
+                <div className="hostel-location">
+                  <IoLocationOutline className="location-icon" />
+                  <p>{hostel.location}</p>
+                </div>
+                <span className="location-divider"></span>
+                <p>
+                  <span className="university-name">
+                    {hostel.university_name}
+                  </span>
+                  <span> · </span>
+                  <span className="distance-badge">
+                    {hostel.distance_to_university} km
+                  </span>
+                </p>
+              </div>
+              <RatingDisplay
+                rating={hostel.average_rating}
+                reviewsCount={hostel.reviews_count}
+              />
             </div>
-          )}
+
+            <div className="book-now">
+              <button
+                className="book-now-button"
+                onClick={handleReserve}
+                disabled={bookingLoading || bookingStatus === "pending"}
+              >
+                {bookingLoading
+                  ? "Submitting..."
+                  : bookingStatus === "pending"
+                  ? "Awaiting Approval"
+                  : "Reserve"}
+              </button>
+              {bookingStatus === "pending" && (
+                <div
+                  className="booking-status-message"
+                  style={{ color: "var(--orange-color)", marginTop: "0.5rem" }}
+                >
+                  Your booking request has been submitted and is awaiting
+                  landlord approval.
+                </div>
+              )}
+              {bookingError && (
+                <div
+                  className="booking-error-message"
+                  style={{ color: "red", marginTop: "0.5rem" }}
+                >
+                  {bookingError}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Details Section */}
+          <div className="hostel-details-grid section">
+            {/* Overview Section */}
+            <div className="hostel-overview">
+              <h2>Overview</h2>
+              <div className="overview-grid">
+                <div className="overview-item">
+                  <p className="overview-label">Room Type</p>
+                  <p className="overview-value">{hostel.room_type}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Price per Month</p>
+                  <p className="overview-value">KES {hostel.price_per_month}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Available Units</p>
+                  <p className="overview-value">{hostel.available_units}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Bedrooms</p>
+                  <p className="overview-value">{hostel.bedrooms}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Deposit Amount</p>
+                  <p className="overview-value">KES {hostel.deposit_amount}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Electricity Billing</p>
+                  <p className="overview-value">{hostel.electricity_billing}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Max Occupancy</p>
+                  <p className="overview-value">{hostel.max_occupancy}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Furnishing</p>
+                  <p className="overview-value">{hostel.furnishing}</p>
+                </div>
+              </div>
+            </div>
+            {/* Amenities Section */}
+            <div className="hostel-amenities">
+              <h2>Available Amenities</h2>
+              <div className="amenities-grid">
+                {renderAmenity(<IoWifiOutline />, "Wi-Fi", hostel.wifi)}
+                {renderAmenity(<FaParking />, "Parking", hostel.parking)}
+                {renderAmenity(
+                  <IoShieldCheckmarkOutline />,
+                  "Security",
+                  hostel.security
+                )}
+                {renderAmenity(<MdKitchen />, "Kitchen", hostel.kitchen)}
+                {renderAmenity(
+                  <IoWaterOutline />,
+                  "Good Water Supply",
+                  hostel.water_supply
+                )}
+                {renderAmenity(
+                  <FaSwimmingPool />,
+                  "Swimming Pool",
+                  hostel.swimming_pool
+                )}
+                {renderAmenity(<CgGym />, "Gym", hostel.gym)}
+                {renderAmenity(<FaBath />, "Bathroom", hostel.bathroom)}
+                {renderAmenity(<FaDoorOpen />, "Wardrobe", hostel.wardrobe)}
+                {renderAmenity(<PiPottedPlant />, "Garden", hostel.garden)}
+                {renderAmenity(
+                  <MdSmokeFree />,
+                  "Smoke Alarm",
+                  hostel.smoke_alarm
+                )}
+                {renderAmenity(
+                  <RiFirstAidKitLine />,
+                  "First Aid Kit",
+                  hostel.first_aid_kit
+                )}
+                {renderAmenity(<MdShower />, "Hot Shower", hostel.hot_shower)}
+                {renderAmenity(<BiCctv />, "CCTV Cameras", hostel.cctv_cameras)}
+                {renderAmenity(
+                  <RiHotelBedFill />,
+                  "Laundry Services",
+                  hostel.laundry_services
+                )}
+                {renderAmenity(<FaDog />, "Pet Friendly", hostel.pet_friendly)}
+                {renderAmenity(
+                  <TbAirConditioning />,
+                  "Air Conditioner",
+                  hostel.air_conditioner
+                )}
+                {renderAmenity(<PiToiletDuotone />, "Toilet", hostel.toilet)}
+                {renderAmenity(<GiDesk />, "Study Room", hostel.study_room)}
+                {renderAmenity(<PiPottedPlant />, "Balcony", hostel.balcony)}
+              </div>
+            </div>
+
+            {/* Nearby Facilities Section */}
+            <div className="hostel-nearby-facilities">
+              <h2>Nearby Facilities</h2>
+              <p>{hostel.nearby_facilities}</p>
+            </div>
+
+            {/* Rules Section */}
+            <div className="hostel-rules">
+              <h2>Rules</h2>
+              <p>{hostel.rules}</p>
+            </div>
+
+            {/* Description Section */}
+            <div className="hostel-description">
+              <h2>Description</h2>
+              <p>{hostel.description}</p>
+            </div>
+          </div>
+
+          {/* Reviews Section - Airbnb Style with Avatars */}
+          <div className="hostel-reviews">
+            <div className="reviews-header">
+              <h2>Reviews</h2>
+              {studentId && (
+                <NavLink
+                  to={`/write-review?hostelId=${id}`}
+                  className="add-review-button"
+                >
+                  Write a Review
+                </NavLink>
+              )}
+            </div>
+
+            {reviews.length === 0 ? (
+              <p className="no-reviews">
+                No reviews yet.{" "}
+                {studentId
+                  ? "Be the first to leave a review!"
+                  : "Log in to leave a review."}
+              </p>
+            ) : (
+              <div className="reviews-list">
+                {reviews.map((review) => (
+                  <div key={review.id} className="review-card">
+                    <div className="review-header">
+                      <div className="user-avatar">
+                        {getInitials(review.student?.name)}
+                      </div>
+                      <div className="review-author-info">
+                        <div className="review-author">
+                          {review.student?.name || "Anonymous"}
+                        </div>
+                        <div className="review-date">
+                          {new Date(review.created_at).toLocaleDateString()}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="review-rating">
+                      {renderStars(review.rating)}
+                    </div>
+
+                    <div className="review-comment">{review.comment}</div>
+
+                    {studentId === review.student?.id && (
+                      <div className="review-actions">
+                        <NavLink
+                          to={`/reviews/${review.id}/edit`}
+                          className="review-action-link"
+                        >
+                          <FaEdit /> Edit
+                        </NavLink>
+                        <a
+                          href="#"
+                          onClick={(e) => handleDeleteReview(review.id, e)}
+                          className="review-action-link delete"
+                        >
+                          <FaTrash /> Delete
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <ToastContainer position="bottom-center" autoClose={2000} />

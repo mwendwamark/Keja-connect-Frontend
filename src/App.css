@@ -23,7 +23,7 @@
   --text-size: 16px;
 
   /* Font families */
-  --h1-ff: 'Source Serif 4', 'Outfit', serif;
+  --h1-ff: 'Recoleta', 'Outfit', serif;
   --text-ff: 'Outfit', serif;
 
   /* Font weights */
@@ -79,7 +79,7 @@ input {
 }
 
 .section {
-  padding-top: 6.5rem;
+  padding-top: 7.5rem;
 }
 
 .section-bottom{

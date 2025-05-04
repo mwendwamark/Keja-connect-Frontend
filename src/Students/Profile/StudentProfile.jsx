@@ -20,21 +20,23 @@ const StudentProfile = () => {
   return (
     <>
       <StudentNavbar />
-      <div className="student-profile-page container">
-        <h1>Student Profile</h1>
-        <p>
-          <strong>First Name:</strong> {user.first_name}
-        </p>
-        <p>
-          <strong>Last Name:</strong> {user.last_name}
-        </p>
-        <p>
-          <strong>Email:</strong> {user.email}
-        </p>
-        <p>
-          <strong>Phone Number:</strong> {user.phone_number}
-        </p>
-        <button onClick={handleLogout}>Logout</button>
+      <div className="student-profile-page container section">
+        <div className="student-profile-container">
+          <h1>Student Profile</h1>
+          <p>
+            <strong>First Name:</strong> {user.first_name}
+          </p>
+          <p>
+            <strong>Last Name:</strong> {user.last_name}
+          </p>
+          <p>
+            <strong>Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Phone Number:</strong> {user.phone_number}
+          </p>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       </div>
     </>
   );

@@ -104,7 +104,8 @@
 
 @media screen and (max-width: 950px) {
     .navbar {
-        border-bottom: 0.5px solid var(--faint-text-color, #cccccc);
+        /* border-bottom: 0.5px solid var(--faint-text-color, #cccccc); */
+        border-bottom: 1px solid #ebebeb;
     }
 
     .navbar-links {
