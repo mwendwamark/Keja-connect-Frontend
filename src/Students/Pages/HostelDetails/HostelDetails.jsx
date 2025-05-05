@@ -221,8 +221,8 @@ const HostelDetails = () => {
         />
       </Helmet>
       <StudentNavbar />
-      <div className="hostel-details-page section">
-        <div className="hostel-details-container container">
+      <div className="hostel-details-page section container">
+        <div className="hostel-details-container ">
           <div className="hostel-header-container">
             <div className="hostel-header">
               <h1 className="hostel-name">{hostel.name}</h1>

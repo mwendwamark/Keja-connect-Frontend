@@ -21,7 +21,11 @@ const StudentProfile = () => {
     <>
       <StudentNavbar />
       <div className="student-profile-page container section">
-        <div className="student-profile-container">
+        <div className="student-profile-container section">
+          <div className="user-avatar">
+            {user.first_name.charAt(0).toUpperCase()}
+            {user.last_name ? user.last_name.charAt(0).toUpperCase() : ""}
+          </div>
           <h1>Student Profile</h1>
           <p>
             <strong>First Name:</strong> {user.first_name}

@@ -1,192 +1,190 @@
 :root {
-    --background-color: #f4f4f4;
-    --pink-color: #F2DDE3;
-    --green-color: #063231;
-    --text-color: #0d0c22;
-    --faint-text-color: #666666;
-    --dark-pink: #F1BFCD;
-    --light-green: #96D5D3;
-    --blue-link-color: #3328FE;
-    --orange-color: #EA5024;
-    --dashboard-color: #ddddddda;
+  --background-color: #f4f4f4;
+  --pink-color: #f2dde3;
+  --green-color: #063231;
+  --text-color: #0d0c22;
+  --faint-text-color: #666666;
+  --dark-pink: #f1bfcd;
+  --light-green: #96d5d3;
+  --blue-link-color: #3328fe;
+  --orange-color: #ea5024;
+  --dashboard-color: #ddddddda;
 }
 
 .navbar {
-    background-color: var(--background-color);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+  background-color: var(--background-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
 .scroll-navbar {
-    box-shadow: 0 -1px 4px rgba(2, 2, 2, 0.15);
+  box-shadow: 0 -1px 4px rgba(2, 2, 2, 0.15);
 }
 
 .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* padding: 5px 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-logo {
-    height: 90px;
-    width: auto;
+  height: 90px;
+  width: auto;
 }
 
 .navbar-logo img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .navbar-links {
-    display: flex;
-    gap: 25px;
-    align-items: center;
+  display: flex;
+  gap: 25px;
+  align-items: center;
 }
 
 .navbar-links a {
-    color: var(--text-color);
-    text-decoration: none;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 .navbar-links a.active {
-    color: var(--light-green);
+  color: var(--light-green);
 }
 
 .nav-item {
-    font-size: 16px;
-    color: var(--text-color);
-    transition: color 0.3s ease;
+  font-size: 16px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 .nav-item.active {
-    color: var(--light-green);
+  color: var(--light-green);
 }
 
 .nav-item:hover {
-    color: var(--green-color);
+  color: var(--green-color);
 }
 
 .nav-right-side {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .contact-button {
-    background-color: var(--light-green);
-    color: var(--green-color);
-    padding: 0.8rem 2.5rem;
-    border-radius: 30px;
-    text-align: center;
-    transition: all 0.3s ease;
-    font-weight: 500;
+  background-color: var(--light-green);
+  color: var(--green-color);
+  padding: 0.8rem 2.5rem;
+  border-radius: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .contact-button:hover,
 .contact-button.active {
-    background-color: var(--green-color);
-    color: var(--background-color) !important;
+  background-color: var(--green-color);
+  color: var(--background-color) !important;
 }
 
 .navbar-menu-icon {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--text-color);
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-color);
 }
 
 .hide-on-large {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 950px) {
-    .navbar {
-        /* border-bottom: 0.5px solid var(--faint-text-color, #cccccc); */
-        border-bottom: 1px solid #ebebeb;
-    }
+  .navbar {
+    border-bottom: 1px solid #ebebeb;
+  }
 
-    .navbar-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100%;
-        width: 50%;
-        background-color: var(--green-color, #063231);
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 20px;
-        transition: right 0.7s ease;
-        box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
-        gap: 20px;
-    }
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 50%;
+    background-color: var(--green-color, #063231);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    transition: right 0.7s ease;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+  }
 
-    .navbar-links a {
-        color: var(--dashboard-color);
-    }
+  .navbar-links a {
+    color: var(--dashboard-color);
+  }
 
-    .contact-button {
-        background-color: var(--background-color);
-        color: var(--green-color) !important;
-    }
+  .contact-button {
+    background-color: var(--background-color);
+    color: var(--green-color) !important;
+  }
 
-    .contact-button:hover,
-    .contact-button.active {
-        background-color: var(--light-green);
-        color: var(--green-color) !important;
-    }
+  .contact-button:hover,
+  .contact-button.active {
+    background-color: var(--light-green);
+    color: var(--green-color) !important;
+  }
 
-    .navbar-links.active {
-        right: 0;
-    }
+  .navbar-links.active {
+    right: 0;
+  }
 
-    .navbar-menu-icon {
-        display: inline-block;
-        color: var(--text-color);
-        z-index: 1101;
-    }
+  .navbar-menu-icon {
+    display: inline-block;
+    color: var(--text-color);
+    z-index: 1101;
+  }
 
-    .large-screen-only {
-        display: none;
-    }
+  .large-screen-only {
+    display: none;
+  }
 
-    .hide-on-small {
-        display: none !important;
-    }
+  .hide-on-small {
+    display: none !important;
+  }
 
-    .hide-on-large {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-    }
+  .hide-on-large {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
 }
 
 @media screen and (max-width: 450px) {
-    .navbar-logo {
-        height: 70px;
-    }
+  .navbar-logo {
+    height: 70px;
+  }
 
-    .navbar-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100%;
-        width: 70%;
-        background-color: var(--green-color, #063231);
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 20px;
-        transition: right 0.3s ease;
-        box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
-        gap: 20px;
-    }
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 70%;
+    background-color: var(--green-color, #063231);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+  }
 
-    .navbar-menu-icon {
-        font-size: 18px;
-    }
+  .navbar-menu-icon {
+    font-size: 18px;
+  }
 }
