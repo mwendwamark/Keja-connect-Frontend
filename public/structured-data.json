@@ -1,0 +1,51 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Keja Connect",
+  "url": "https://kejaconnect.vercel.app",
+  "logo": "https://kejaconnect.vercel.app/assets/logo4.png",
+  "description": "Keja Connect connects students with affordable accommodation near Kenyan universities. Find and reserve perfect student hostels across Kenya.",
+  "sameAs": [
+    "https://facebook.com/kejaconnect",
+    "https://twitter.com/kejaconnect",
+    "https://instagram.com/kejaconnect"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "Kenya"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+254-XXX-XXX-XXX",
+    "contactType": "customer service"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://kejaconnect.vercel.app/hostels?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kejaconnect.vercel.app"
+  },
+  "subOrganization": [
+    {
+      "@type": "Service",
+      "name": "Student Accommodation",
+      "description": "Find affordable student accommodation near Kenyan universities",
+      "serviceType": "Hostel Booking"
+    },
+    {
+      "@type": "Service",
+      "name": "Kenyan Hostels",
+      "description": "Browse and book quality hostels across Kenya",
+      "serviceType": "Hostel Listing"
+    },
+    {
+      "@type": "Service",
+      "name": "Hostels Around Universities",
+      "description": "Discover convenient hostels located near major Kenyan universities",
+      "serviceType": "Location-based Hostel Search"
+    }
+  ]
+}

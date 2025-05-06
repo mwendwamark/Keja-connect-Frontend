@@ -1,4 +1,24 @@
 User-agent: *
 Allow: /
 
+# Allow all search engines to access all content
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Sitemap declaration for all search engines
 Sitemap: https://kejaconnect.vercel.app/sitemap.xml

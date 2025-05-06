@@ -4,19 +4,36 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Keja Connect - Student Accommodation</title>
+    <title>Keja Connect - Student Accommodation in Kenya | University Hostels</title>
     <meta
       name="google-site-verification"
       content="hvtvgLUAEEBi-hqFdayn1BtW7uQOORA74u-rJ_xKVu4"
     />
     <meta
       name="description"
-      content="Keja Connect - Find and reserve perfect student hostels near Kenyan universities. The ultimate platform connecting students with affordable accommodation and landlords with reliable tenants."
+      content="Keja Connect - Find and reserve perfect student accommodation near Kenyan universities. The ultimate platform connecting students with affordable Kenyan hostels and landlords with reliable tenants."
     />
     <meta
       name="keywords"
-      content="Keja Connect, Kenyan Hostels, University Hostels, Hostels near Kenyan Universities"
+      content="Keja Connect, Students Accommodation, Kenyan Hostels, Hostels around universities, University Hostels, Hostels near Kenyan Universities"
     />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kejaconnect.vercel.app/" />
+    <meta property="og:title" content="Keja Connect - Student Accommodation in Kenya" />
+    <meta property="og:description" content="Find and reserve perfect student accommodation near Kenyan universities. Browse affordable hostels around universities in Kenya." />
+    <meta property="og:image" content="https://kejaconnect.vercel.app/assets/logo4.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kejaconnect.vercel.app/" />
+    <meta property="twitter:title" content="Keja Connect - Student Accommodation in Kenya" />
+    <meta property="twitter:description" content="Find and reserve perfect student accommodation near Kenyan universities. Browse affordable hostels around universities in Kenya." />
+    <meta property="twitter:image" content="https://kejaconnect.vercel.app/assets/logo4.png" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kejaconnect.vercel.app/" />
 
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -64,5 +81,27 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Structured Data for Search Engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Keja Connect",
+        "url": "https://kejaconnect.vercel.app",
+        "logo": "https://kejaconnect.vercel.app/assets/logo4.png",
+        "description": "Keja Connect connects students with affordable accommodation near Kenyan universities. Find and reserve perfect student hostels across Kenya.",
+        "sameAs": [
+          "https://facebook.com/kejaconnect",
+          "https://twitter.com/kejaconnect",
+          "https://instagram.com/kejaconnect"
+        ],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://kejaconnect.vercel.app/hostels?search={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
   </body>
 </html>
