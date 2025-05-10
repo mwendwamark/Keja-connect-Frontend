@@ -13,7 +13,8 @@ const PasswordResetRequest = ({ userType }) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`http://localhost:3000/${userType}/password`, {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+      const response = await axios.post(`${apiUrl}/${userType}/password`, {
         [userType]: { email }
       });
 

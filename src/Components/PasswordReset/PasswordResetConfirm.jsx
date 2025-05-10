@@ -29,7 +29,8 @@ const PasswordResetConfirm = ({ userType }) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.put(`http://localhost:3000/${userType}/password`, {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+      const response = await axios.put(`${apiUrl}/${userType}/password`, {
         [userType]: {
           reset_password_token: searchParams.get('reset_password_token'),
           password: formData.password,
