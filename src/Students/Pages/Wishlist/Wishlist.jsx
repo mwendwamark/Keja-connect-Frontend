@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import StudentNavbar from "../StudentNavbar/StudentNavbar";
+import StudentNavbar from "../../Components/StudentNavbar/StudentNavbar";
 import "./Wishlist.css";
 import { FaStar } from "react-icons/fa";
-import { API_ENDPOINTS } from "../../config/api";
+import { API_ENDPOINTS } from "../../../config/api";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);

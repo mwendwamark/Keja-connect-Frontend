@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import LandlordNavbar from "../../LandlordNavbar/LandlordNavbar";
+import LandlordNavbar from "../../Components/LandlordNavbar/LandlordNavbar";
 import { NavLink } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
 import "./GetStarted.css";
@@ -39,7 +39,7 @@ const GetStarted = () => {
   return (
     <>
       <LandlordNavbar />
-      <div className="get-started container section">
+      <div className="get-started container">
         <div className="get-started-top">
           <div className="left-side">
             <h1>It is easy to get started with Keja Connect</h1>

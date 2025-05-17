@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./StudentProfile.css";
-import StudentNavbar from "../StudentNavbar/StudentNavbar";
+import StudentNavbar from "../../Components/StudentNavbar/StudentNavbar";
 
 const StudentProfile = () => {
   const user = JSON.parse(localStorage.getItem("user"));

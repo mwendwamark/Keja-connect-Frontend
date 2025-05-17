@@ -4,17 +4,15 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
 import About from "./Pages/About/About";
-// import Navbar from "./Components/Navbar/Navbar";
 import RoleSelection from "./Pages/RoleSelection/RoleSelection";
-import StudentSignup from "./Students/Signup/StudentSignup";
-import StudentLogin from "./Students/Login/StudentLogin";
-import LandlordLogin from "./Landlords/Login/LandlordLogin";
-import LandlordSignup from "./Landlords/Signup/LandlordSignup";
+import StudentSignup from "./Students/Pages/Signup/StudentSignup";
+import StudentLogin from "./Students/Pages/Login/StudentLogin";
+import LandlordLogin from "./Landlords/Pages/Login/LandlordLogin";
+import LandlordSignup from "./Landlords/Pages/Signup/LandlordSignup";
 import LandlordDashboard from "./Landlords/Dashboard/LandlordDashboard";
-import StudentProfile from "./Students/Profile/StudentProfile";
-import LandlordProfile from "./Landlords/Profile/LandlordProfle";
-import GetStarted from "./Landlords/Pages/GetStarted/GetStarted";
-// import CreateHostel from "./Landlords/Components/CreateHostel/CreateHostel";
+import StudentProfile from "./Students/Pages/Profile/StudentProfile";
+import LandlordProfile from "./Landlords/Pages/Profile/LandlordProfle";
+import GetStarted from "./Landlords/Pages/GetStarted/GetStarted"
 import HostelDetails from "./Students/Pages/HostelDetails/HostelDetails";
 import HostelsPage from "./Students/Pages/HostelsPage/HostelsPage";
 import CreateHostel from "./Landlords/Components/CreateHostel/CreateHostel";
@@ -22,7 +20,7 @@ import ReviewForm from "./Students/Components/ReviewsManager/ReviewsForm";
 import ReviewsList from "./Students/Components/ReviewsList/ReviewsList";
 import PasswordResetRequest from "./Components/PasswordReset/PasswordResetRequest";
 import PasswordResetConfirm from "./Components/PasswordReset/PasswordResetConfirm";
-import Wishlist from "./Students/Pages/Wishlist";
+import Wishlist from "./Students/Pages/Wishlist/Wishlist";
 import UpdateHostel from "./Landlords/Components/UpdateHostel/UpdateHostel";
 
 function App() {
@@ -52,7 +50,6 @@ function App() {
         <Route path="/create-hostel" element={<CreateHostel />} />
         <Route path="/hostels/:id" element={<HostelDetails />} />
         <Route path="/write-review" element={<ReviewForm />} />
-        {/* <Route path="/hostels/:hostelId/reviews" element={<ReviewsList/>} /> */}
         <Route path="/hostels/:hostelId/reviews" element={<ReviewsList/>}/>
         <Route path="/wishlist" element={<Wishlist/>}/>
         <Route path="/landlord/hostels/:id/update" element={<UpdateHostel />} />

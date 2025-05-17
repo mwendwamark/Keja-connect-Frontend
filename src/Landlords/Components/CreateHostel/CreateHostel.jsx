@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import LandlordNavbar from "../../LandlordNavbar/LandlordNavbar";
+import LandlordNavbar from "../LandlordNavbar/LandlordNavbar";
 import "./CreateHostel.css";
 import Step1Intro from "./StepsIntro/Step1Intro";
 import Step2Intro from "./StepsIntro/Step2Intro";

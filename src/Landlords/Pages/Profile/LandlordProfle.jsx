@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import LandlordNavbar from "../LandlordNavbar/LandlordNavbar";
+import LandlordNavbar from "../../Components/LandlordNavbar/LandlordNavbar";
 import './LandlordProfile.css'
 
 const LandlordProfile = () => {

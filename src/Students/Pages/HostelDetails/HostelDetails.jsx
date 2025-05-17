@@ -31,7 +31,7 @@ import { BiCctv } from "react-icons/bi";
 import { PiPottedPlant, PiToiletDuotone } from "react-icons/pi";
 import { TbAirConditioning } from "react-icons/tb";
 import { GiDesk } from "react-icons/gi";
-import StudentNavbar from "../../StudentNavbar/StudentNavbar";
+import StudentNavbar from "../../Components/StudentNavbar/StudentNavbar";
 import RatingDisplay from "../../Components/Rating/RatingDisplay";
 import "./HostelDetails.css";
 import { API_ENDPOINTS } from "../../../config/api";

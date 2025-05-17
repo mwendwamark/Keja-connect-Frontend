@@ -1,7 +1,20 @@
-/* @import "tailwindcss"; */
 @font-face {
     font-family: 'Recoleta';
-    src: url('../public/Recoleta.otf') format('opentype');
+    src: url('/Recoleta.otf') format('opentype');
     font-weight: 900;
     font-style: normal;
+    font-display: swap;
+}
+
+/* Ensure Recoleta is properly loaded across all browsers and screen sizes */
+@media screen and (max-width: 768px) {
+    :root {
+        --h1-ff: 'Outfit', serif !important;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    :root {
+        --h1-ff: 'Recoleta', 'Outfit', serif !important;
+    }
 }

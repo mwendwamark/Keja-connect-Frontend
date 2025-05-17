@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import StudentNavbar from "../../StudentNavbar/StudentNavbar";
+import StudentNavbar from "../StudentNavbar/StudentNavbar";
 import "./ReviewsForm.css"; // Create this CSS file for styling
 
 const ReviewForm = () => {

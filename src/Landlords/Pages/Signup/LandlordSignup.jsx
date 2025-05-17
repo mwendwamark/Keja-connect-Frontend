@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./LandlordSignup.css";
-import Navbar from "../../Components/Navbar/Navbar";
-import img from "../../assets/LandlordSignup.jpg";
+import Navbar from "../../../Components/Navbar/Navbar";
+import img from "../../../assets/LandlordSignup.jpg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
-import { API_ENDPOINTS } from "../../config/api";
+import { API_ENDPOINTS } from "../../../config/api";
 
 const LandlordSignup = () => {
   const [firstName, setFirstName] = useState("");

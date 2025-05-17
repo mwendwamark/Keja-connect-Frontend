@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./StudentSignup.css"; // Reusing the same CSS as LandlordSignup
-import Navbar from "../../Components/Navbar/Navbar";
-import img from "../../assets/StudentSignup.jpg"; // You can replace this with an appropriate image
+import Navbar from "../../../Components/Navbar/Navbar";
+import img from "../../../assets/StudentSignup.jpg"; // You can replace this with an appropriate image
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
-import { API_ENDPOINTS } from "../../config/api";
+import { API_ENDPOINTS } from "../../../config/api";
 
 const StudentSignup = () => {
   const [firstName, setFirstName] = useState("");
