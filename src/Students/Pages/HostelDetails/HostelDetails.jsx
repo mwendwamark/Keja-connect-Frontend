@@ -10,6 +10,9 @@ import {
   IoWaterOutline,
   IoShieldCheckmarkOutline,
 } from "react-icons/io5";
+import { MdCurtains, MdElevator, MdWaterDrop } from "react-icons/md";
+import { BsLightningChargeFill } from "react-icons/bs";
+import { FaHouseFloodWater } from "react-icons/fa6";
 import {
   FaParking,
   FaSwimmingPool,
@@ -368,6 +371,32 @@ const HostelDetails = () => {
                   <p className="overview-label">Furnishing</p>
                   <p className="overview-value">{hostel.furnishing}</p>
                 </div>
+                <div className="overview-item">
+                  <p className="overview-label">Floor Level</p>
+                  <p className="overview-value">{hostel.floor_level}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Road Condition</p>
+                  <p className="overview-value">{hostel.road_condition}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Crime Rate Level</p>
+                  <p className="overview-value">{hostel.crime_rate_level}</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Distance to Stage</p>
+                  <p className="overview-value">{hostel.distance_to_stage} Meters</p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Garbage Collection</p>
+                  <p className="overview-value">
+                    {hostel.garbage_collection_included ? "Included in Rent" : `KES ${hostel.garbage_collection_cost}/Month`}
+                  </p>
+                </div>
+                <div className="overview-item">
+                  <p className="overview-label">Garbage Collection Frequency</p>
+                  <p className="overview-value">{hostel.garbage_collection_frequency}</p>
+                </div>
               </div>
             </div>
             {/* Amenities Section */}
@@ -422,6 +451,31 @@ const HostelDetails = () => {
                 {renderAmenity(<PiToiletDuotone />, "Toilet", hostel.toilet)}
                 {renderAmenity(<GiDesk />, "Study Room", hostel.study_room)}
                 {renderAmenity(<PiPottedPlant />, "Balcony", hostel.balcony)}
+                {renderAmenity(
+                  <MdCurtains />,
+                  "Curtain Rods",
+                  hostel.curtain_rods
+                )}
+                {renderAmenity(
+                  <BsLightningChargeFill />,
+                  "Electricity Backup",
+                  hostel.electricity_backup
+                )}
+                {renderAmenity(
+                  <MdWaterDrop />,
+                  "Water Backup",
+                  hostel.water_backup
+                )}
+                {renderAmenity(
+                  <MdElevator />,
+                  "Elevator",
+                  hostel.elevator
+                )}
+                {renderAmenity(
+                  <FaHouseFloodWater />,
+                  "Flooding Prone Area",
+                  hostel.flooding_prone_area
+                )}
               </div>
             </div>
 

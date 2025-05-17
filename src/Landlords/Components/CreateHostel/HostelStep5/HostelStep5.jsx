@@ -26,6 +26,7 @@ const HostelStep5 = ({ hostelData, handleChange }) => {
           <option value="Solar Pannel">Solar Panel</option>
         </select>
       </div>
+
       <div className="hostel-form__fields">
         {/* water supply */}
         <div className="hostel-form__field">
@@ -38,6 +39,48 @@ const HostelStep5 = ({ hostelData, handleChange }) => {
             required
             placeholder="Describe water supply of your house"
           />
+        </div>
+
+        {/* Garbage collection */}
+        <div className="hostel-form__field checkbox-field">
+          <label>
+            <input
+              type="checkbox"
+              name="garbage_collection_included"
+              checked={hostelData.garbage_collection_included}
+              onChange={handleChange}
+            />
+            Garbage Collection Included in Rent
+          </label>
+        </div>
+        
+        {!hostelData.garbage_collection_included && (
+          <div className="hostel-form__field">
+            <label>Garbage Collection Cost (KES)</label>
+            <input
+              type="number"
+              name="garbage_collection_cost"
+              value={hostelData.garbage_collection_cost}
+              onChange={handleChange}
+              min="0"
+              placeholder="Cost in KES"
+            />
+          </div>
+        )}
+        
+        <div className="hostel-form__field">
+          <label>Garbage Collection Frequency</label>
+          <select
+            name="garbage_collection_frequency"
+            value={hostelData.garbage_collection_frequency}
+            onChange={handleChange}
+          >
+            <option value="">Select Frequency</option>
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Bi-weekly">Bi-weekly</option>
+            <option value="Monthly">Monthly</option>
+          </select>
         </div>
         {/* security */}
         <div className="hostel-form__field">

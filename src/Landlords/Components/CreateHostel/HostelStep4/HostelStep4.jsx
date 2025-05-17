@@ -1,12 +1,14 @@
 import React from "react";
 import "./HostelStep4.css";
 import { IoWifiOutline } from "react-icons/io5";
-import {  FaDog, FaSwimmingPool } from "react-icons/fa";
+import { FaDog, FaSwimmingPool } from "react-icons/fa";
+import { FaHouseFloodWater } from "react-icons/fa6";
 import { CgGym } from "react-icons/cg";
-import {  MdSmokeFree, MdShower } from "react-icons/md";
+import { MdSmokeFree, MdShower, MdElevator, MdWaterDrop } from "react-icons/md";
 import { RiFirstAidKitLine, RiHotelBedFill } from "react-icons/ri";
 import { BiCctv } from "react-icons/bi";
 import { TbAirConditioning } from "react-icons/tb";
+import { BsLightningChargeFill } from "react-icons/bs";
 
 const HostelStep4 = ({ hostelData, handleChange }) => {
   const amenities = [
@@ -33,6 +35,10 @@ const HostelStep4 = ({ hostelData, handleChange }) => {
       icon: <TbAirConditioning />,
       label: "Air Conditioner",
     },
+    { name: "electricity_backup", icon: <BsLightningChargeFill />, label: "Electricity Backup" },
+    { name: "water_backup", icon: <MdWaterDrop />, label: "Water Backup" },
+    { name: "elevator", icon: <MdElevator />, label: "Elevator" },
+    { name: "flooding_prone_area", icon: <FaHouseFloodWater />, label: "Flooding Prone Area" },
   ];
 
   return (

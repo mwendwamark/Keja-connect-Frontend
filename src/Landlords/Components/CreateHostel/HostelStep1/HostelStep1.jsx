@@ -103,6 +103,19 @@ const HostelStep1 = ({ hostelData, handleChange }) => {
             </select>
           </div>
 
+          <div className="hostel-form__field">
+            <label htmlFor="hostel-floor-level">Floor Level</label>
+            <input
+              id="hostel-floor-level"
+              type="number"
+              name="floor_level"
+              value={hostelData.floor_level}
+              onChange={handleChange}
+              min="0"
+              placeholder="Enter floor level (0 for ground floor)"
+            />
+          </div>
+
           {/* Number of Bedrooms */}
           <div className="hostel-form__field">
             <label htmlFor="hostel-bedrooms">Number of Bedrooms</label>

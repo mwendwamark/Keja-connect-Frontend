@@ -9,47 +9,31 @@ import introImg from "../../assets/Home-intro-img.png";
 import chooseUs1 from "../../assets/choose1.png";
 import chooseUs2 from "../../assets/choose2.png";
 import Navbar from "../../Components/Navbar/Navbar";
-import ScrollReveal from "scrollreveal";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Footer from "../../Components/Footer/Footer"
 
 const HomePage = () => {
   useEffect(() => {
-    const sr = ScrollReveal({
-      reset: false,
-      distance: "60px",
-      duration: 2500,
-      delay: 400,
+    // Initialize AOS with custom settings
+    AOS.init({
+      duration: 1200,
+      easing: 'ease-out-cubic',
+      once: true,
+      mirror: false,
+      disable: 'mobile'
     });
 
-    // Apply reveal effect to each section with specific settings
+    // Add resize event listener to refresh AOS on window resize
+    window.addEventListener('resize', () => {
+      AOS.refresh();
+    });
 
-   const applyScrollReveal = () => {
-     if (window.innerWidth <= 1024) {
-       // For medium and smaller screens
-       sr.reveal(".hero-title", { origin: "bottom", duration: 2000 });
-       sr.reveal(".hero-images", { origin: "bottom", delay: 300 });
-       sr.reveal(".intro-image", { origin: "bottom", delay: 300 });
-       sr.reveal(".intro-contents", { origin: "bottom", delay: 500 });
-       sr.reveal(".data-item", { interval: 200, origin: "bottom", delay: 600 });
-       sr.reveal(".why-choose-us-students", { origin: "bottom", delay: 400 });
-       sr.reveal(".why-choose-us-landlords", { origin: "bottom", delay: 400 });
-     } else {
-       // For large screens
-       sr.reveal(".hero-title", { origin: "left" });
-       sr.reveal(".hero-images", { origin: "right", delay: 500 });
-       sr.reveal(".intro-image", { origin: "left", delay: 300 });
-       sr.reveal(".intro-contents", { origin: "right", delay: 500 });
-       sr.reveal(".data-item", {
-         interval: 200,
-         origin: "bottom",
-         delay: 600,
-       });
-       sr.reveal(".why-choose-us-students", { origin: "left", delay: 400 });
-       sr.reveal(".why-choose-us-landlords", { origin: "right", delay: 400 });
-     }
-   };
-
-    applyScrollReveal();
+    return () => {
+      window.removeEventListener('resize', () => {
+        AOS.refresh();
+      });
+    };
   }, []);
 
   return (
@@ -57,8 +41,8 @@ const HomePage = () => {
       <Navbar />
       <div className="home-page">
         <div className="home-hero-section container">
-          <div className="hero-title">
-            <h3>Keja Connect</h3>
+          <div className="hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+            <h3>Jamii Hostels</h3>
             <h1>Streamline your hostel hunting experience</h1>{" "}
             <p>
               Students can find and reserve the perfect hostels, while landlords
@@ -67,8 +51,8 @@ const HomePage = () => {
             <NavLink to="/role-selection" aria-label="Get started with Keja Connect">Get started </NavLink>
           </div>
 
-          <div className="hero-images">
-            <div className="hero-image-student">
+          <div className="hero-images" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1200" data-aos-easing="linear">
+            <div className="hero-image-student" data-aos="flip-left" data-aos-delay="500" data-aos-duration="800" data-aos-easing="linear">
               <div className="hero-student-contents">
                 <p className="hero-welcome">Welcome!</p>
                 <p className="hero-role">I am a student</p>
@@ -88,7 +72,7 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="hero-image-landlord">
+            <div className="hero-image-landlord" data-aos="flip-right" data-aos-delay="900" data-aos-duration="1000" data-aos-easing="linear">
               <div className="hero-landlord-contents">
                 {" "}
                 <p className="hero-welcome">Welcome!</p>
@@ -112,7 +96,7 @@ const HomePage = () => {
 
         <div className="home-introduction-section">
           <div className="intro-image-contents container">
-            <div className="intro-image">
+            <div className="intro-image" data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="linear">
               <img 
                 src={introImg} 
                 alt="Students finding accommodation through Keja Connect" 
@@ -121,7 +105,7 @@ const HomePage = () => {
                 loading="lazy"
               />
             </div>
-            <div className="intro-contents">
+            <div className="intro-contents" data-aos="fade-up-left" data-aos-delay="400" data-aos-duration="1000" data-aos-easing="linear">
               <h3>Introduction</h3>
               <h2 className="h2-heading">
                 Find your perfect home away from home
@@ -134,16 +118,16 @@ const HomePage = () => {
               </p>
             </div>{" "}
           </div>{" "}
-          <div className="intro-section-data">
-            <div className="data-item">
+          <div className="intro-section-data" data-aos="fade-up" data-aos-delay="100">
+            <div className="data-item" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800" data-aos-easing="linear">
               <h2 className="data-number">8475+</h2>
               <p className="data-label">Students</p>
             </div>
-            <div className="data-item">
+            <div className="data-item" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800" data-aos-easing="linear">
               <h2 className="data-number">594+</h2>
               <p className="data-label">Landlords</p>
             </div>
-            <div className="data-item">
+            <div className="data-item" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800" data-aos-easing="linear">
               <h2 className="data-number">12065+</h2>
               <p className="data-label">Hostels</p>
             </div>
@@ -151,12 +135,12 @@ const HomePage = () => {
         </div>
 
         <div className="why-choose-us-section container section">
-          <div className="why-choose-us-title">
+          <div className="why-choose-us-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-easing="linear">
             <h3>DISCOVER & GROW</h3>
             <h2 className="h2-heading">Why choose us?</h2>
           </div>
-          <div className="why-choose-us-students container">
-            <div className="why-choose-us-student-contents">
+          <div className="why-choose-us-students container" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="linear">
+            <div className="why-choose-us-student-contents" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800" data-aos-easing="linear">
               <h3>FOR STUDENTS</h3>
               <h2>Reduce the hassle for hostel hunting</h2>
               <p>
@@ -168,7 +152,7 @@ const HomePage = () => {
               </p>
               <NavLink to="/student/signup" aria-label="Create a student account to find hostels"> Student account</NavLink>
             </div>
-            <div className="why-choose-us-student-image">
+            <div className="why-choose-us-student-image" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800" data-aos-easing="linear">
               <img 
                 src={chooseUs1} 
                 alt="Students benefiting from Keja Connect services" 
@@ -179,8 +163,8 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className="why-choose-us-landlords container">
-            <div className="why-choose-us-landlord-image">
+          <div className="why-choose-us-landlords container" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
+            <div className="why-choose-us-landlord-image" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800">
               <img 
                 src={chooseUs2} 
                 alt="Landlords managing properties on Keja Connect" 
@@ -189,7 +173,7 @@ const HomePage = () => {
                 loading="lazy"
               />
             </div>
-            <div className="why-choose-us-landlord-contents">
+            <div className="why-choose-us-landlord-contents" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
               <h3>FOR LANDLORDS</h3>
               <h2>Scale up your rental business effortlessly</h2>
               <p>
@@ -208,21 +192,21 @@ const HomePage = () => {
 
         <div className="featured-hostels-section"></div>
 
-        <div className="testimonial-section">
-          <div className="testimonial-items">
+        <div className="testimonial-section" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+          <div className="testimonial-items" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800">
             <Suspense fallback={<div>Loading testimonials...</div>}>
               <Testimonials />
             </Suspense>
           </div>
         </div> 
 
-        <div className="home-cta-section container section section-bottom">
-          <div className="home-cta-container">
+        <div className="home-cta-section container section section-bottom" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+          <div className="home-cta-container" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800">
             <h2>Ready to find your perfect student accommodation?</h2>
             <p>Join thousands of students who have found their ideal hostel through Keja Connect.</p>
-            <div className="cta-buttons">
-              <NavLink to="/hostels" className="cta-button" aria-label="View available hostels">Browse Hostels</NavLink>
-              <NavLink to="/about" className="cta-button cta-secondary" aria-label="Learn more about Keja Connect">Learn More</NavLink>
+            <div className="cta-buttons" data-aos="fade-up" data-aos-delay="500" data-aos-duration="800">
+              <NavLink to="/hostels" className="cta-button" aria-label="View available hostels" data-aos="fade-right" data-aos-delay="600" data-aos-duration="800">Browse Hostels</NavLink>
+              <NavLink to="/about" className="cta-button cta-secondary" aria-label="Learn more about Jamii Hostels" data-aos="fade-left" data-aos-delay="700" data-aos-duration="800">Learn More</NavLink>
             </div>
           </div>
         </div>      

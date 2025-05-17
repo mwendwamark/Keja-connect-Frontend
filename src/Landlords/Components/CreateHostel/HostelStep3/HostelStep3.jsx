@@ -1,7 +1,7 @@
 import React from "react";
 import "./HostelStep3.css";
 import { FaParking, FaBath, FaDoorOpen } from "react-icons/fa";
-import { MdKitchen, MdBalcony } from "react-icons/md";
+import { MdKitchen, MdBalcony, MdCurtains } from "react-icons/md";
 import { PiPottedPlant, PiToiletDuotone } from "react-icons/pi";
 import { GiDesk } from "react-icons/gi";
 
@@ -15,6 +15,7 @@ const HostelStep3 = ({ hostelData, handleChange }) => {
     { name: "toilet", icon: <PiToiletDuotone />, label: "Toilet" },
     { name: "study_room", icon: <GiDesk />, label: "Study Room" },
     { name: "balcony", icon: <MdBalcony />, label: "Balcony" },
+{ name: "curtain_rods", icon: <MdCurtains />, label: "Curtain Rods" },
   ];
 
   return (

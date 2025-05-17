@@ -34,6 +34,7 @@ const HostelStep2 = ({ hostelData, handleChange }) => {
           required
         />
       </div>
+    
       {/* nearby facilities */}
       <div className="hostel-form__field">
         <label>Nearby Facilities</label>
@@ -44,6 +45,64 @@ const HostelStep2 = ({ hostelData, handleChange }) => {
           onChange={handleChange}
           required
         />
+      </div>
+
+      {/* Road Condition */}
+      <div className="hostel-form__field">
+        <label>Road Condition</label>
+        <select
+          name="road_condition"
+          value={hostelData.road_condition || ""}
+          onChange={handleChange}
+        >
+          <option value="">Select Road Condition</option>
+          <option value="All Weather">All Weather</option>
+          <option value="Murram">Murram</option>
+          <option value="Tarmac">Tarmac</option>
+          <option value="Cabros">Cabros</option>
+        </select>
+      </div>
+
+      {/* Crime Rate Level */}
+      <div className="hostel-form__field">
+        <label>Crime Rate Level</label>
+        <select
+          name="crime_rate_level"
+          value={hostelData.crime_rate_level || ""}
+          onChange={handleChange}
+        >
+          <option value="">Select Crime Rate Level</option>
+          <option value="Very Low">Very Low</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Very High">Very High</option>
+        </select>
+      </div>
+
+      {/* Distance to Stage */}
+      <div className="hostel-form__field">
+        <label>Distance to Stage (meters)</label>
+        <input
+          type="number"
+          name="distance_to_stage"
+          value={hostelData.distance_to_stage || ""}
+          onChange={handleChange}
+          min="0"
+          placeholder="Distance to nearest stage/bus stop in meters"
+        />
+      </div>
+      
+      {/* Flooding prone area  */}<div className="hostel-form__field checkbox-field">
+        <label>
+          <input
+            type="checkbox"
+            name="flooding_prone_area"
+            checked={hostelData.flooding_prone_area}
+            onChange={handleChange}
+          />
+          Flooding Prone Area
+        </label>
       </div>
     </div>
   );
