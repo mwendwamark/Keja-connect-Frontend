@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./LandlordDashboard.css";
 import Sidebar from "./components/Sidebar/Sidebar";
-import { FaHome, FaUsers, FaMoneyBillWave, FaBed } from "react-icons/fa";
+import { FaHome, FaUsers, FaMoneyBillWave, FaBed, FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { API_BASE_URL } from "../../config/api";
+import { API_BASE_URL, API_ENDPOINTS } from "../../config/api";
 import PendingBookings from "./components/PendingBookings";
+import { useNavigate } from "react-router-dom";
 
 const LandlordDashboard = () => {
+  const navigate = useNavigate();
   const [dashboardData, setDashboardData] = useState({
     totalHostels: 0,
     totalTenants: 0,
@@ -22,9 +25,20 @@ const LandlordDashboard = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [hostels, setHostels] = useState([]);
+  const [deleteConfirmation, setDeleteConfirmation] = useState({ show: false, hostelId: null });
 
   useEffect(() => {
-    const fetchDashboardData = async () => {
+    // Fetch both dashboard data and hostels data
+    const fetchData = async () => {
+      await fetchDashboardData();
+      await fetchLandlordHostels();
+    };
+    
+    fetchData();
+  }, []);
+
+  const fetchDashboardData = async () => {
       try {
         setLoading(true);
         // Get the correct token from localStorage
@@ -69,8 +83,89 @@ const LandlordDashboard = () => {
       }
     };
 
-    fetchDashboardData();
-  }, []);
+  // Fetch landlord's hostels
+  const fetchLandlordHostels = async () => {
+    try {
+      const token = localStorage.getItem("landlordToken");
+      const landlordId = localStorage.getItem("landlord_id");
+      
+      if (!token) {
+        toast.error("You are not logged in");
+        return;
+      }
+
+      // Fetch all hostels
+      const response = await axios.get(
+        `${API_BASE_URL}/hostels`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      // Filter hostels to only show those belonging to the current landlord
+      const landlordHostels = response.data.filter(hostel => 
+        hostel.landlord_id === parseInt(landlordId) || 
+        hostel.landlord_id === landlordId
+      );
+      
+      console.log('Landlord ID:', landlordId);
+      console.log('All hostels:', response.data);
+      console.log('Filtered hostels:', landlordHostels);
+
+      setHostels(landlordHostels);
+    } catch (err) {
+      console.error("Error fetching landlord hostels:", err);
+      toast.error("Failed to load hostels");
+    }
+  };
+
+  // Handle view, update and delete actions
+  const handleViewHostel = (hostelId) => {
+    navigate(`/hostels/${hostelId}`);
+  };
+
+  const handleUpdateHostel = (hostelId) => {
+    navigate(`/landlord/hostels/${hostelId}/update`);
+  };
+
+  const showDeleteConfirmation = (hostelId) => {
+    setDeleteConfirmation({ show: true, hostelId });
+  };
+
+  const hideDeleteConfirmation = () => {
+    setDeleteConfirmation({ show: false, hostelId: null });
+  };
+
+  const handleDeleteHostel = async () => {
+    try {
+      const token = localStorage.getItem("landlordToken");
+      
+      if (!token) {
+        toast.error("You are not logged in");
+        return;
+      }
+
+      await axios.delete(
+        `${API_BASE_URL}/hostels/${deleteConfirmation.hostelId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      // Remove the deleted hostel from the state
+      setHostels(hostels.filter(hostel => hostel.id !== deleteConfirmation.hostelId));
+      toast.success("Hostel deleted successfully");
+      hideDeleteConfirmation();
+    } catch (err) {
+      console.error("Error deleting hostel:", err);
+      toast.error("Failed to delete hostel");
+      hideDeleteConfirmation();
+    }
+  };
 
   if (loading) {
     return (
@@ -190,11 +285,108 @@ const LandlordDashboard = () => {
                 </div>
               </div>
               <PendingBookings />
+              
+              {/* My Hostels Section */}
+              <div id="hostels" className="my-hostels-section">
+                <div className="section-header">
+                  <h2>My Hostels</h2>
+                  <button 
+                    className="add-hostel-btn"
+                    onClick={() => navigate("/get-started")}
+                  >
+                    Add New Hostel
+                  </button>
+                </div>
 
+                {hostels.length === 0 ? (
+                  <div className="no-hostels">
+                    <p>You haven't added any hostels yet.</p>
+                    <button 
+                      className="add-hostel-btn"
+                      onClick={() => navigate("/get-started")}
+                    >
+                      Add Your First Hostel
+                    </button>
+                  </div>
+                ) : (
+                  <div className="landlord-hostels-grid">
+                    {hostels.map((hostel) => (
+                      <div className="landlord-hostel-card" key={hostel.id}>
+                        <div className="landlord-hostel-image">
+                          <img 
+                            src={hostel.images && hostel.images.length > 0 
+                              ? hostel.images[0] 
+                              : "https://via.placeholder.com/300x200?text=No+Image"} 
+                            alt={hostel.name} 
+                          />
+                        </div>
+                        <div className="landlord-hostel-details">
+                          <h3>{hostel.name}</h3>
+                          <p className="location">{hostel.location}</p>
+                          <p className="price">KES {hostel.price_per_month} / month</p>
+                          <div className="availability">
+                            <span className={`status ${hostel.available_units > 0 ? 'available' : 'unavailable'}`}>
+                              {hostel.available_units > 0 ? `${hostel.available_units} units available` : 'No units available'}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="landlord-hostel-actions">
+                          <button 
+                            className="landlord-action-btn view-btn"
+                            onClick={() => handleViewHostel(hostel.id)}
+                            title="View Hostel"
+                          >
+                            <FaEye />
+                          </button>
+                          <button 
+                            className="landlord-action-btn edit-btn"
+                            onClick={() => handleUpdateHostel(hostel.id)}
+                            title="Edit Hostel"
+                          >
+                            <FaEdit />
+                          </button>
+                          <button 
+                            className="landlord-action-btn delete-btn"
+                            onClick={() => showDeleteConfirmation(hostel.id)}
+                            title="Delete Hostel"
+                          >
+                            <FaTrash />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {deleteConfirmation.show && (
+        <div className="delete-modal-overlay">
+          <div className="delete-modal">
+            <h3>Confirm Deletion</h3>
+            <p>Are you sure you want to delete this hostel? This action cannot be undone.</p>
+            <div className="delete-modal-actions">
+              <button 
+                className="cancel-btn"
+                onClick={hideDeleteConfirmation}
+              >
+                Cancel
+              </button>
+              <button 
+                className="delete-btn"
+                onClick={handleDeleteHostel}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <ToastContainer/>
     </>
   );

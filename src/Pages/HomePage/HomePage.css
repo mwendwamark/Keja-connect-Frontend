@@ -20,7 +20,7 @@
     padding: 5px;
 }
 
-.hero-title h3 {
+.hero-title span {
     font-weight: 500;
     font-family: var(--text-ff);
     letter-spacing: -0.5px;
@@ -31,7 +31,7 @@
     margin-bottom: -10px;
 }
 
-.hero-title h3::after {
+.hero-title span::after {
     content: "";
     display: inline-block;
     width: 30px;

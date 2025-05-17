@@ -23,7 +23,7 @@
   --text-size: 16px;
 
   /* Font families */
-  --h1-ff: 'Recoleta', 'Outfit', serif;
+  --h1-ff: 'Recoleta', 'Outfit', serif !important;
   --text-ff: 'Outfit', serif;
 
   /* Font weights */
@@ -90,17 +90,10 @@ input {
   /* display: none; */
   width: 0.8rem;
 }
-::-webkit-scrollbar-track {
-  background: var(--dashboard-color);
-  
-}
+
 
 /* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--light-green);
-  border-radius: 8px;
 
-}
 
 
 .flex {

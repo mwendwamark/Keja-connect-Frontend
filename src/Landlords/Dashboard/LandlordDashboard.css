@@ -142,6 +142,257 @@
   margin: 0;
 }
 
+.my-hostels-section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: var(--primaryColor);
+  font-size: 1.5rem;
+}
+
+.add-hostel-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.add-hostel-btn:hover {
+  background-color: #45a049;
+}
+
+.no-hostels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 3rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.no-hostels p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.landlord-hostels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.landlord-hostel-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.landlord-hostel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.landlord-hostel-image {
+  height: 180px;
+  overflow: hidden;
+}
+
+.landlord-hostel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.landlord-hostel-card:hover .landlord-hostel-image img {
+  transform: scale(1.05);
+}
+
+.landlord-hostel-details {
+  padding: 1rem;
+}
+
+.landlord-hostel-details h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.location {
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.price {
+  font-weight: bold;
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.availability {
+  margin-top: 0.5rem;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.available {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+}
+
+.unavailable {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #F44336;
+}
+
+.landlord-hostel-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.view-btn {
+  color: #2196F3;
+}
+
+.view-btn:hover {
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.edit-btn {
+  color: #FF9800;
+}
+
+.edit-btn:hover {
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.delete-btn {
+  color: #F44336;
+}
+
+.delete-btn:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.delete-modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.delete-modal h3 {
+  margin-top: 0;
+  color: #F44336;
+}
+
+.delete-modal p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.delete-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.cancel-btn {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.delete-btn {
+  background-color: #F44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
 @media (max-width: 1024px) {
   .dashboard-sections {
     grid-template-columns: 1fr;

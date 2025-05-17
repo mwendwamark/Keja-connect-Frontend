@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Sidebar from "../../Dashboard/components/Sidebar/Sidebar";
+import "./UpdateHostel.css";
 
-const UpdateHostel = ({ match }) => {
+const UpdateHostel = () => {
   const [hostel, setHostel] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Retrieve landlord ID from local storage
   const landlordId = localStorage.getItem("landlord_id");
 
   // Hostel ID from the URL params
-  const hostelId = match.params.id;
+  const { id: hostelId } = useParams();
 
   // Handle form input changes
   const [formData, setFormData] = useState({
@@ -49,64 +57,105 @@ const UpdateHostel = ({ match }) => {
     nearby_facilities: "",
     rules: "",
     images: [],
+    floor_level: "",
+    road_condition: "",
+    crime_rate_level: "",
+    distance_to_stage: "",
+    curtain_rods: false,
+    electricity_backup: false,
+    water_backup: false,
+    elevator: false,
+    flooding_prone_area: false,
+    garbage_collection_included: false,
+    garbage_collection_cost: "",
+    garbage_collection_frequency: ""
   });
 
   // Fetch hostel details on component mount
   useEffect(() => {
     const fetchHostel = async () => {
       try {
-        const response = await fetch(`/api/hostels/${hostelId}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch hostel details");
+        const token = localStorage.getItem("landlordToken");
+        if (!token) {
+          setError("You are not logged in. Please log in to update your hostel.");
+          setLoading(false);
+          return;
         }
-        const data = await response.json();
+
+        console.log('Fetching hostel with ID:', hostelId);
+        const response = await axios.get(
+          `${API_BASE_URL}/hostels/${hostelId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+        console.log('Hostel data received:', response.data);
+        
+        const data = response.data;
         setHostel(data);
         setFormData({
-          name: data.name,
-          location: data.location,
-          price_per_month: data.price_per_month,
-          description: data.description,
-          room_type: data.room_type,
-          bedrooms: data.bedrooms,
-          toilet: data.toilet,
-          kitchen: data.kitchen,
-          study_room: data.study_room,
-          wifi: data.wifi,
-          bathroom: data.bathroom,
-          wardrobe: data.wardrobe,
-          laundry_services: data.laundry_services,
-          balcony: data.balcony,
-          garden: data.garden,
-          swimming_pool: data.swimming_pool,
-          gym: data.gym,
-          available_units: data.available_units,
-          parking: data.parking,
-          cctv_cameras: data.cctv_cameras,
-          hot_shower: data.hot_shower,
-          air_conditioner: data.air_conditioner,
-          smoke_alarm: data.smoke_alarm,
-          first_aid_kit: data.first_aid_kit,
-          water_supply: data.water_supply,
-          security: data.security,
-          latitude: data.latitude,
-          longitude: data.longitude,
-          deposit_amount: data.deposit_amount,
-          pet_friendly: data.pet_friendly,
-          electricity_billing: data.electricity_billing,
-          max_occupancy: data.max_occupancy,
-          furnishing: data.furnishing,
-          nearby_facilities: data.nearby_facilities,
-          rules: data.rules,
+          name: data.name || "",
+          location: data.location || "",
+          price_per_month: data.price_per_month || "",
+          description: data.description || "",
+          room_type: data.room_type || "",
+          bedrooms: data.bedrooms || "",
+          toilet: data.toilet || "",
+          kitchen: data.kitchen || "",
+          study_room: data.study_room || "",
+          wifi: data.wifi || "",
+          bathroom: data.bathroom || "",
+          wardrobe: data.wardrobe || "",
+          laundry_services: data.laundry_services || "",
+          balcony: data.balcony || "",
+          garden: data.garden || "",
+          swimming_pool: data.swimming_pool || "",
+          gym: data.gym || "",
+          available_units: data.available_units || "",
+          parking: data.parking || "",
+          cctv_cameras: data.cctv_cameras || "",
+          hot_shower: data.hot_shower || "",
+          air_conditioner: data.air_conditioner || "",
+          smoke_alarm: data.smoke_alarm || "",
+          first_aid_kit: data.first_aid_kit || "",
+          water_supply: data.water_supply || "",
+          security: data.security || "",
+          latitude: data.latitude || "",
+          longitude: data.longitude || "",
+          deposit_amount: data.deposit_amount || "",
+          pet_friendly: data.pet_friendly || "",
+          electricity_billing: data.electricity_billing || "",
+          max_occupancy: data.max_occupancy || "",
+          furnishing: data.furnishing || "",
+          nearby_facilities: data.nearby_facilities || "",
+          rules: data.rules || "",
           images: data.images || [],
+          floor_level: data.floor_level || "",
+          road_condition: data.road_condition || "",
+          crime_rate_level: data.crime_rate_level || "",
+          distance_to_stage: data.distance_to_stage || "",
+          curtain_rods: data.curtain_rods || false,
+          electricity_backup: data.electricity_backup || false,
+          water_backup: data.water_backup || false,
+          elevator: data.elevator || false,
+          flooding_prone_area: data.flooding_prone_area || false,
+          garbage_collection_included: data.garbage_collection_included || false,
+          garbage_collection_cost: data.garbage_collection_cost || "",
+          garbage_collection_frequency: data.garbage_collection_frequency || ""
         });
       } catch (err) {
-        setError(err.message);
+        console.error("Error fetching hostel:", err);
+        setError("Failed to fetch hostel details. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchHostel();
+    if (hostelId) {
+      fetchHostel();
+    }
   }, [hostelId]);
 
   // Handle form input changes
@@ -125,46 +174,91 @@ const UpdateHostel = ({ match }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`/api/hostels/${hostelId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const token = localStorage.getItem("landlordToken");
+      if (!token) {
+        toast.error("You are not logged in");
+        return;
+      }
+
+      const response = await axios.put(
+        `${API_BASE_URL}/hostels/${hostelId}`,
+        {
           hostel: {
             ...formData,
             landlord_id: landlordId, // Include landlord_id in the request
           },
-        }),
-      });
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+        }
+      );
 
-      if (!response.ok) {
-        throw new Error("Failed to update hostel details");
-      }
-
-      const updatedHostel = await response.json();
-      alert("Hostel updated successfully!");
-      console.log("Updated Hostel:", updatedHostel);
+      toast.success("Hostel updated successfully!");
+      console.log("Updated Hostel:", response.data);
+      
+      // Redirect back to the landlord hostels page after successful update
+      setTimeout(() => {
+        navigate("/landlord/dashboard");
+      }, 2000);
     } catch (err) {
-      alert(`Error updating hostel: ${err.message}`);
+      console.error("Error updating hostel:", err);
+      toast.error(`Error updating hostel: ${err.response?.data?.message || err.message}`);
     }
   };
 
   // Render loading state
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="content-wrapper">
+        <div className="landlord-container">
+          <Sidebar />
+          <div className="dashboard-body">
+            <div className="dashboard-main">
+              <div className="loading-spinner">Loading hostel details...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   // Render error state
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="content-wrapper">
+        <div className="landlord-container">
+          <Sidebar />
+          <div className="dashboard-body">
+            <div className="dashboard-main">
+              <div className="error-message">{error}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h2>Update Hostel Details</h2>
-      {hostel && (
-        <form onSubmit={handleSubmit}>
+    <>
+      <div className="content-wrapper">
+        <div className="landlord-container">
+          <Sidebar />
+          <div className="dashboard-body">
+            <div className="dashboard-main">
+              <div className="update-hostel-header">
+                <h2>Update Hostel Details</h2>
+                <button 
+                  className="back-btn"
+                  onClick={() => navigate("/landlord/hostels")}
+                >
+                  Back to My Hostels
+                </button>
+              </div>
+              {hostel && (
+                <form className="update-hostel-form" onSubmit={handleSubmit}>
           <label>
             Name:
             <input
@@ -516,13 +610,163 @@ const UpdateHostel = ({ match }) => {
               name="rules"
               value={formData.rules}
               onChange={handleChange}
+              required
             />
           </label>
           <br />
+          <h3>Additional Information</h3>
+          <label>
+            Floor Level:
+            <input
+              type="number"
+              name="floor_level"
+              value={formData.floor_level}
+              onChange={handleChange}
+              min="0"
+            />
+          </label>
+          <br />
+          <label>
+            Road Condition:
+            <select
+              name="road_condition"
+              value={formData.road_condition}
+              onChange={handleChange}
+            >
+              <option value="">Select Road Condition</option>
+              <option value="All Weather">All Weather</option>
+              <option value="Murram">Murram</option>
+              <option value="Tarmac">Tarmac</option>
+              <option value="Cabros">Cabros</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Crime Rate Level:
+            <select
+              name="crime_rate_level"
+              value={formData.crime_rate_level}
+              onChange={handleChange}
+            >
+              <option value="">Select Crime Rate Level</option>
+              <option value="Very Low">Very Low</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+              <option value="Very High">Very High</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Distance to Stage (Meters):
+            <input
+              type="number"
+              name="distance_to_stage"
+              value={formData.distance_to_stage}
+              onChange={handleChange}
+              min="0"
+            />
+          </label>
+          <br />
+          <h3>Additional Amenities</h3>
+          <label>
+            <input
+              type="checkbox"
+              name="curtain_rods"
+              checked={formData.curtain_rods}
+              onChange={handleChange}
+            />
+            Curtain Rods
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="electricity_backup"
+              checked={formData.electricity_backup}
+              onChange={handleChange}
+            />
+            Electricity Backup
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="water_backup"
+              checked={formData.water_backup}
+              onChange={handleChange}
+            />
+            Water Backup
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="elevator"
+              checked={formData.elevator}
+              onChange={handleChange}
+            />
+            Elevator
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="flooding_prone_area"
+              checked={formData.flooding_prone_area}
+              onChange={handleChange}
+            />
+            Flooding Prone Area
+          </label>
+          <br />
+          <h3>Garbage Collection</h3>
+          <label>
+            <input
+              type="checkbox"
+              name="garbage_collection_included"
+              checked={formData.garbage_collection_included}
+              onChange={handleChange}
+            />
+            Included in Rent
+          </label>
+          <br />
+          <div style={{ display: formData.garbage_collection_included ? 'none' : 'block' }}>
+            <label>
+              Garbage Collection Cost (KES/Month):
+              <input
+                type="number"
+                name="garbage_collection_cost"
+                value={formData.garbage_collection_cost}
+                onChange={handleChange}
+                min="0"
+              />
+            </label>
+            <br />
+            <label>
+              Garbage Collection Frequency:
+              <select
+                name="garbage_collection_frequency"
+                value={formData.garbage_collection_frequency}
+                onChange={handleChange}
+              >
+                <option value="">Select Frequency</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Bi-weekly">Bi-weekly</option>
+                <option value="Monthly">Monthly</option>
+              </select>
+            </label>
+          </div>
+          <br />
           <button type="submit">Update Hostel</button>
         </form>
-      )}
-    </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      <ToastContainer />
+    </>
   );
 };
 

@@ -23,6 +23,7 @@ import ReviewsList from "./Students/Components/ReviewsList/ReviewsList";
 import PasswordResetRequest from "./Components/PasswordReset/PasswordResetRequest";
 import PasswordResetConfirm from "./Components/PasswordReset/PasswordResetConfirm";
 import Wishlist from "./Students/Pages/Wishlist";
+import UpdateHostel from "./Landlords/Components/UpdateHostel/UpdateHostel";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         {/* <Route path="/hostels/:hostelId/reviews" element={<ReviewsList/>} /> */}
         <Route path="/hostels/:hostelId/reviews" element={<ReviewsList/>}/>
         <Route path="/wishlist" element={<Wishlist/>}/>
+        <Route path="/landlord/hostels/:id/update" element={<UpdateHostel />} />
       </Routes>
     </>
   );

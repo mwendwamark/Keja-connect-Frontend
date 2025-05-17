@@ -34,9 +34,9 @@ const Sidebar = () => {
               </NavLink>
             </li>{" "}
             <li className="listItem">
-              <NavLink to="/" className="menuLink flex">
+              <NavLink to="/landlord/dashboard#hostels" className="menuLink flex">
                 <HiOutlineClipboardDocumentList className="dash-icon" />{" "}
-                <span className="smallText">Current Listing</span>
+                <span className="smallText">My Hostels</span>
               </NavLink>
             </li>{" "}
             <li className="listItem">

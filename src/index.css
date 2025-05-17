@@ -1,7 +1,7 @@
 /* @import "tailwindcss"; */
 @font-face {
     font-family: 'Recoleta';
-    src: url('../public/Recoleta.otf') format('truetype');
-    font-weight: 900 !important; /* Black weight is typically 900 */
+    src: url('../public/Recoleta.otf') format('opentype');
+    font-weight: 900;
     font-style: normal;
 }

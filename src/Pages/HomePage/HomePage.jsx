@@ -42,7 +42,7 @@ const HomePage = () => {
       <div className="home-page">
         <div className="home-hero-section container">
           <div className="hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-            <h3>Jamii Hostels</h3>
+            <span>Keja Connect</span>
             <h1>Streamline your hostel hunting experience</h1>{" "}
             <p>
               Students can find and reserve the perfect hostels, while landlords
