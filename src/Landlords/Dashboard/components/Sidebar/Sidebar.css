@@ -2,9 +2,16 @@
     background: var(--background-color);
     box-shadow: 1px 0px 4px var(--faint-text-color);
     width: 18%;
-    height: 100%;
+    min-width: 220px;
+    max-width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     gap: 2rem;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar a.active {
@@ -147,4 +154,53 @@
     width: 150px;
     bottom: -80px;
     right: -50px;
+}
+
+/* Add padding to the main dashboard body to prevent overlap */
+.dashboard-body {
+    margin-left: 18%;
+    padding-left: 1rem;
+    transition: margin-left 0.3s;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 60px;
+        min-width: 60px;
+        padding: 0.5rem 0.2rem;
+    }
+    .dashboard-body {
+        margin-left: 60px;
+        padding-left: 0.5rem;
+    }
+    .sidebar .logoDiv img {
+        height: 40px;
+    }
+    .sidebar .menuLists .smallText,
+    .sidebar .settingsDiv .menuLists .smallText,
+    .sidebar .sideBarCard .cardContent h3,
+    .sidebar .sideBarCard .cardContent p,
+    .sidebar .sideBarCard .cardContent .btn {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        position: fixed;
+        width: 100vw;
+        height: auto;
+        min-width: unset;
+        max-width: unset;
+        left: 0;
+        top: 0;
+        flex-direction: row;
+        z-index: 2000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .dashboard-body {
+        margin-left: 0;
+        padding-left: 0;
+        margin-top: 80px;
+    }
 }

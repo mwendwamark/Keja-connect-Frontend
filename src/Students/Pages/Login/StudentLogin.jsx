@@ -49,8 +49,9 @@ const StudentLogin = () => {
 
       if (response.ok) {
         // Store token and user data
+        const userData = { ...result.data.student, role: result.data.student.role || "student" };
         localStorage.setItem("token", result.token);
-        localStorage.setItem("user", JSON.stringify(result.data.student)); // Save user data in localStorage
+        localStorage.setItem("user", JSON.stringify(userData)); // Save user data in localStorage
         toast.success("Logged in successfully!");
         // Redirect to Hostels page
         navigate("/hostels");

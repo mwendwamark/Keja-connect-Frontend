@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo4.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,18 +18,41 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, []);
+
+  useEffect(() => {
+    // Listen for changes to localStorage (login/logout in other tabs)
+    const syncUser = () => {
+      const storedUser = localStorage.getItem("user");
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+    };
+    syncUser();
+    window.addEventListener("storage", syncUser);
+    return () => window.removeEventListener("storage", syncUser);
+  }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
+
+  // Get initials for avatar
+  const getInitials = (user) => {
+    if (!user) return "";
+    const first = user.first_name ? user.first_name.charAt(0).toUpperCase() : "";
+    const last = user.last_name ? user.last_name.charAt(0).toUpperCase() : "";
+    return first + last;
+  };
+
+  // Determine profile link based on user role
+  const getProfileLink = () => {
+    if (!user) return "/role-selection";
+    if (user.role === "student") return "/student-profile";
+    if (user.role === "landlord") return "/landlord-profile";
+    return "/role-selection";
+  };
 
   return (
     <header>
@@ -56,24 +81,54 @@ const Navbar = () => {
               Contacts
             </NavLink>
             <div className="nav-right-side hide-on-large">
-              <NavLink
-                to="/role-selection"
-                onClick={closeMenu}
-                className="nav-item contact-button"
-              >
-                Login
-              </NavLink>
+              {user ? (
+                <NavLink
+                  to={getProfileLink()}
+                  onClick={closeMenu}
+                  className="nav-item user-avatar-container"
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <div className="user-avatar">
+                    {getInitials(user)}
+                  </div>
+                  <span className="avatar-username">
+                    {user.first_name} {user.last_name}
+                  </span>
+                </NavLink>
+              ) : (
+                <NavLink
+                  to="/role-selection"
+                  onClick={closeMenu}
+                  className="nav-item contact-button"
+                >
+                  Login
+                </NavLink>
+              )}
             </div>
           </div>
 
           <div className="nav-right-side hide-on-small">
-            <NavLink
-              to="/role-selection"
-              onClick={closeMenu}
-              className="nav-item contact-button"
-            >
-              Login
-            </NavLink>
+            {user ? (
+              <NavLink
+                to={getProfileLink()}
+                className="nav-item user-avatar-container"
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
+                <div className="user-avatar">
+                  {getInitials(user)}
+                </div>
+                <span className="avatar-username">
+                  {user.first_name} {user.last_name}
+                </span>
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/role-selection"
+                className="nav-item contact-button"
+              >
+                Login
+              </NavLink>
+            )}
           </div>
 
           <div className="navbar-menu-icon" onClick={toggleMenu}>

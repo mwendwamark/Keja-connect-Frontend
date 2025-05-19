@@ -49,9 +49,10 @@ const LandlordLogin = () => {
 
       if (response.ok) {
         // Store token and user data
+        const userData = { ...result.data.landlord, role: result.data.landlord.role || "landlord" };
         localStorage.setItem("landlordToken", result.token);
         localStorage.setItem("token", result.token); // Keep this for backward compatibility
-        localStorage.setItem("user", JSON.stringify(result.data.landlord)); // Save user data in localStorage
+        localStorage.setItem("user", JSON.stringify(userData)); // Save user data in localStorage
         localStorage.setItem("landlord_id", result.data.landlord.id); // Store the landlord id
 
         toast.success("Logged in successfully!");
