@@ -101,45 +101,74 @@
   object-fit: cover;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  margin-top: -20px;
+.swiper-pagination-bullet {
+  background-color: var(--green-color) !important;
+  opacity: 0.6;
+  width: 10px !important;
+  height: 10px !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--orange-color);
+  opacity: 1;
+  width: 16px;
+  height: 16px;
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background-color: #ffffff;
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+.swiper-button-next,
+.swiper-button-prev {
+  background: var(--green-color, #27ae60);
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
+  cursor: pointer;
+  outline: none;
+  z-index: 2;
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 1rem;
-  color: #222222;
+  font-size: 1rem !important;
+  color: #fff;
   font-weight: bold;
+  transition: color 0.2s;
 }
 
-.swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 1;
-  transition: all 0.3s ease;
+.swiper-button-next:hover,
+.swiper-button-prev:hover,
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.18);
+  border-color: var(--green-color, #27ae60);
+  transform: scale(1.08);
 }
 
-.swiper-pagination-bullet-active {
-  background: #ffffff;
-  width: 15px;
-  border-radius: 10px;
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after,
+.swiper-button-next:focus::after,
+.swiper-button-prev:focus::after {
+  color: var(--green-color, #27ae60);
 }
 
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  transform: scale(0.98);
+}
+
+.swiper-button-next:focus-visible,
+.swiper-button-prev:focus-visible {
+  outline: 3px solid var(--orange-color, #ff9800);
+  outline-offset: 2px;
+}
 .hostel-brief-info {
   display: flex;
   align-items: center;

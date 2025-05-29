@@ -81,8 +81,8 @@
 .hero-image-student {
     height: 70vh;
     background-color: var(--green-color);
-    border-top-left-radius: 170px;
-    border-top-right-radius: 170px;
+    border-top-left-radius: 200px;
+    border-top-right-radius: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -122,8 +122,8 @@
 .hero-image-landlord {
     height: 80vh;
     background-color: var(--pink-color);
-    border-top-left-radius: 170px;
-    border-top-right-radius: 170px;
+    border-top-left-radius: 200px;
+    border-top-right-radius: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -541,6 +541,8 @@
     .hero-image-landlord,
     .hero-image-student {
         width: 43%;
+        justify-content: space-evenly;
+
     }
 }
 
@@ -548,11 +550,12 @@
 
     .hero-image-landlord,
     .hero-image-student {
-        width: 48%;
+        width: 48%;        justify-content: space-evenly;
+
     }
 
     .hero-title h1 {
-        letter-spacing: -2.2px;
+        letter-spacing: 1px;
         word-spacing: -1px;
     }
 
@@ -663,6 +666,9 @@
 }
 
 @media screen and (max-width: 450px) {
+    .hero-images {
+        width: 100%;
+    }
     .intro-section-data {
         width: 100%;
     }
@@ -673,9 +679,11 @@
 
     .hero-title h1 {
         line-height: 45px;
-        letter-spacing: 0.2px;
+        letter-spacing: -1.5px;
         margin-bottom: 10px;
         font-weight: 500;
+        /* font-family: var(--h1-ff) !important; */
+        font-family: 'Domine', 'Lato', serif;
 
     }
 
