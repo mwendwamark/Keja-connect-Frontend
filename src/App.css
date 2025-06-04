@@ -1,33 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 :root {
-  /* Colors */
   --background-color: #ffffff !important;
-  --pink-color: #F2DDE3;
+  --pink-color: #f2dde3;
   --green-color: #063231;
   --text-color: #0d0c22;
   --faint-text-color: #666666;
-  --dark-pink: #F1BFCD;
-  --light-green: #96D5D3;
-  --blue-link-color: #3328FE;
-  --orange-color: #EA5024;
+  --dark-pink: #f1bfcd;
+  --light-green: #96d5d3;
+  --blue-link-color: #3328fe;
+  --orange-color: #ea5024;
   --dashboard-color: #f4f4f4 !important;
 
-  /* RGB Values for opacity/gradients */
   --light-green-rgb: 150, 213, 211;
   --orange-rgb: 234, 80, 36;
 
-  /* Font sizes */
   --h1-fs: 48px;
   --h2-fs: 30px;
   --text-size: 16px;
 
-  /* Font families */
-  --h1-ff: 'Domine', 'Outfit', serif !important;
-  --text-ff: 'Outfit', serif;
+  --h1-ff: "Domine", "Outfit", serif !important;
+  --text-ff: "Outfit", serif;
 
-  /* Font weights */
   --h1-fw: 700;
   --text-fw: 400;
   --text-bold: 500;
@@ -64,8 +59,14 @@ button {
 input {
   outline: none;
 }
-h1, h2, h3, h4, h5, h6, .h2-heading {
-  font-family: 'Domine', 'Outfit', serif !important;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h2-heading {
+  font-family: "Domine", "Outfit", serif !important;
 }
 .h2-heading {
   font-size: 36px;
@@ -85,19 +86,13 @@ h1, h2, h3, h4, h5, h6, .h2-heading {
   padding-top: 7.5rem;
 }
 
-.section-bottom{
+.section-bottom {
   padding-bottom: 4rem;
 }
 
 ::-webkit-scrollbar {
-  /* display: none; */
   width: 0.8rem;
 }
-
-
-/* Handle */
-
-
 
 .flex {
   display: flex;
@@ -120,12 +115,12 @@ h1, h2, h3, h4, h5, h6, .h2-heading {
   cursor: pointer;
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--inputColor);
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
   color: var(--textColor);
 }
 
 .btn .icon {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .btn:hover {

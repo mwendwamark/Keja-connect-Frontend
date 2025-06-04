@@ -39,7 +39,7 @@ const CreateHostel = () => {
     garden: false,
     swimming_pool: false,
     gym: false,
-    available_units: "",
+    // available_units: "",
     parking: false,
     cctv_cameras: false,
     hot_shower: false,

@@ -132,7 +132,7 @@ const HostelStep1 = ({ hostelData, handleChange }) => {
           </div>
 
           {/* Available Units */}
-          <div className="hostel-form__field">
+          {/* <div className="hostel-form__field">
             <label htmlFor="hostel-available-units">Available Units</label>
             <input
               id="hostel-available-units"
@@ -144,7 +144,7 @@ const HostelStep1 = ({ hostelData, handleChange }) => {
               min="0"
               placeholder="Enter available units"
             />
-          </div>
+          </div> */}
 
           {/* Max Occupancy */}
           <div className="hostel-form__field">

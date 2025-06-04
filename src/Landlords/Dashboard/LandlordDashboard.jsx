@@ -17,11 +17,9 @@ const LandlordDashboard = () => {
     occupancyRate: "0%",
     monthlyRevenue: "KES 0",
     recentActivities: [],
-    occupancySummary: {
-      availableRooms: 0,
-      occupiedRooms: 0,
-      pendingMaintenance: 0
-    }
+    recentReviews: [],
+    availableHostels: 0,
+    occupiedHostels: 0
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -64,15 +62,13 @@ const LandlordDashboard = () => {
         // console.log("Dashboard data response:", response.data); // Debug log
         setDashboardData({
           totalHostels: response.data.total_hostels,
-          totalTenants: response.data.total_tenants,
+          totalTenants: response.data.occupied_hostels, // Now using occupied_hostels instead of total_tenants
           occupancyRate: response.data.occupancy_rate,
           monthlyRevenue: response.data.monthly_revenue,
           recentActivities: response.data.recent_activities || [],
-          occupancySummary: {
-            availableRooms: response.data.occupancy_summary.available_rooms,
-            occupiedRooms: response.data.occupancy_summary.occupied_rooms,
-            pendingMaintenance: response.data.occupancy_summary.pending_maintenance
-          }
+          recentReviews: response.data.recent_reviews || [],
+          availableHostels: response.data.available_hostels,
+          occupiedHostels: response.data.occupied_hostels
         });
         setLoading(false);
       } catch (err) {
@@ -270,16 +266,16 @@ const LandlordDashboard = () => {
                   <h2>Occupancy Summary</h2>
                   <div className="occupancy-stats">
                     <div className="occupancy-item">
-                      <h4>Available Rooms</h4>
-                      <p>{dashboardData.occupancySummary.availableRooms}</p>
+                      <h4>Available Hostels</h4>
+                      <p>{dashboardData.availableHostels}</p>
                     </div>
                     <div className="occupancy-item">
-                      <h4>Occupied Rooms</h4>
-                      <p>{dashboardData.occupancySummary.occupiedRooms}</p>
+                      <h4>Occupied Hostels</h4>
+                      <p>{dashboardData.occupiedHostels}</p>
                     </div>
                     <div className="occupancy-item">
-                      <h4>Pending Maintenance</h4>
-                      <p>{dashboardData.occupancySummary.pendingMaintenance}</p>
+                      <h4>Occupancy Rate</h4>
+                      <p>{dashboardData.occupancyRate}</p>
                     </div>
                   </div>
                 </div>
@@ -314,8 +310,8 @@ const LandlordDashboard = () => {
                       <div className="landlord-hostel-card" key={hostel.id}>
                         <div className="landlord-hostel-image">
                           <img 
-                            src={hostel.images && hostel.images.length > 0 
-                              ? hostel.images[0] 
+                            src={hostel.image_urls && hostel.image_urls.length > 0 
+                              ? hostel.image_urls[0] 
                               : "https://via.placeholder.com/300x200?text=No+Image"} 
                             alt={hostel.name} 
                           />
@@ -324,11 +320,11 @@ const LandlordDashboard = () => {
                           <h3>{hostel.name}</h3>
                           <p className="location">{hostel.location}</p>
                           <p className="price">KES {hostel.price_per_month} / month</p>
-                          <div className="availability">
+                          {/* <div className="availability">
                             <span className={`status ${hostel.available_units > 0 ? 'available' : 'unavailable'}`}>
                               {hostel.available_units > 0 ? `${hostel.available_units} units available` : 'No units available'}
                             </span>
-                          </div>
+                          </div> */}
                         </div>
                         <div className="landlord-hostel-actions">
                           <button 

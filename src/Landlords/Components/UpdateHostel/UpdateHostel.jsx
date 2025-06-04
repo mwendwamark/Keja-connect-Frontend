@@ -38,7 +38,7 @@ const UpdateHostel = () => {
     garden: false,
     swimming_pool: false,
     gym: false,
-    available_units: "",
+    // available_units: "",
     parking: false,
     cctv_cameras: false,
     hot_shower: false,
@@ -113,7 +113,7 @@ const UpdateHostel = () => {
           garden: !!data.garden,
           swimming_pool: !!data.swimming_pool,
           gym: !!data.gym,
-          available_units: data.available_units || "",
+          // available_units: data.available_units || "",
           parking: !!data.parking,
           cctv_cameras: !!data.cctv_cameras,
           hot_shower: !!data.hot_shower,
@@ -476,7 +476,7 @@ const UpdateHostel = () => {
                     />
                   </label>
                   <br />
-                  <label>
+                  {/* <label>
                     Available Units:
                     <input
                       type="number"
@@ -485,7 +485,7 @@ const UpdateHostel = () => {
                       onChange={handleChange}
                       required
                     />
-                  </label>
+                  </label> */}
                   <br />
                   <label>
                     Parking:

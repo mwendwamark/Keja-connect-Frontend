@@ -347,10 +347,10 @@ const HostelDetails = () => {
                   <p className="overview-label">Price per Month</p>
                   <p className="overview-value">KES {hostel.price_per_month}</p>
                 </div>
-                <div className="overview-item">
+                {/* <div className="overview-item">
                   <p className="overview-label">Available Units</p>
                   <p className="overview-value">{hostel.available_units}</p>
-                </div>
+                </div> */}
                 <div className="overview-item">
                   <p className="overview-label">Bedrooms</p>
                   <p className="overview-value">{hostel.bedrooms}</p>
