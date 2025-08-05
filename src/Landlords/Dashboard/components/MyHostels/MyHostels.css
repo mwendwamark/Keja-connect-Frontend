@@ -1,0 +1,287 @@
+/* src/components/MyHostels/MyHostels.css */
+
+.my-hostels-section {
+  background-color: var(--background-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 0; /* Remove top margin since we're using DashboardLayout */
+  transition: all 0.3s ease;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.8rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.add-hostel-btn {
+  background-color: var(--green-color);
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: var(--text-bold);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-hostel-btn:hover {
+  background-color: #042423; /* Slightly darker green */
+}
+
+.no-hostels {
+  text-align: center;
+  padding: 2rem;
+  color: var(--faint-text-color);
+  font-size: 1.1rem;
+}
+
+.no-hostels .add-hostel-btn {
+  margin-top: 1.5rem;
+}
+
+.landlord-hostels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.landlord-hostel-card {
+  background-color: var(--dashboard-color); /* Lighter background for individual cards */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.landlord-hostel-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.landlord-hostel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.landlord-hostel-card:hover .landlord-hostel-image img {
+  transform: scale(1.05);
+}
+
+.landlord-hostel-details {
+  padding: 1rem;
+  flex-grow: 1; /* Allow details to take available space */
+}
+
+.landlord-hostel-details h3 {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.landlord-hostel-details .location {
+  font-size: 0.95rem;
+  color: var(--faint-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.landlord-hostel-details .price {
+  font-size: 1.1rem;
+  font-weight: var(--text-bold);
+  color: var(--green-color);
+  margin-bottom: 1rem;
+}
+
+.landlord-hostel-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-top: 1px solid #eee;
+  background-color: var(--background-color);
+}
+
+.landlord-action-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.landlord-action-btn.view-btn {
+  color: var(--blue-link-color);
+  border-color: var(--blue-link-color);
+}
+.landlord-action-btn.view-btn:hover {
+  background-color: var(--blue-link-color);
+  color: white;
+}
+
+.landlord-action-btn.edit-btn {
+  color: #007bff;
+  border-color: #007bff;
+}
+.landlord-action-btn.edit-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.landlord-action-btn.delete-btn {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+.landlord-action-btn.delete-btn:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* --- Loading and Error States (specific to MyHostels) --- */
+.my-hostels-section .loading-spinner,
+.my-hostels-section .error-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: var(--faint-text-color);
+}
+
+.my-hostels-section .error-message {
+  color: #dc3545;
+}
+
+/* --- Delete Confirmation Modal --- */
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.delete-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+}
+
+.delete-modal h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.delete-modal p {
+  font-size: 1rem;
+  color: var(--faint-text-color);
+  margin-bottom: 1.5rem;
+}
+
+.delete-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.delete-modal-actions .cancel-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-modal-actions .cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.delete-modal-actions .delete-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-modal-actions .delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments for the new layout */
+@media (max-width: 1200px) {
+  .landlord-hostels-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-hostels-section {
+    padding: 1rem;
+    margin: 0;
+    border-radius: 8px;
+  }
+  
+  .landlord-hostels-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Media Queries for My Hostels */
+@media (max-width: 576px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .add-hostel-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .landlord-hostel-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .landlord-action-btn {
+    width: 100%; /* Make buttons full width */
+  }
+}
