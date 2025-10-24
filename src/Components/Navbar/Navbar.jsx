@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo4.png";
+import { BsArrow90DegRight, BsArrowUpRight } from "react-icons/bs";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -59,25 +60,25 @@ const Navbar = () => {
       <nav className={`navbar ${scrolled ? "scroll-navbar" : ""}`}>
         <div className="navbar-container container">
           {/* Logo */}
-          <NavLink to="/" className="navbar-logo">
+          <NavLink to="/" className="navbar-logo" aria-label="Keja Connect Home">
             <img src={logo} alt="Logo" loading="lazy" />
           </NavLink>
 
           {/* Navigation Links */}
           <div className={`navbar-links ${menuOpen ? "active" : ""}`}>
-            <NavLink to="/" onClick={closeMenu} className="nav-item">
+            <NavLink to="/" onClick={closeMenu} className="nav-item" aria-label="Navigate to Home page">
               Home
             </NavLink>
-            <NavLink to="/about" onClick={closeMenu} className="nav-item">
+            <NavLink to="/about" onClick={closeMenu} className="nav-item" aria-label="Navigate to About Us page">
               About Us
             </NavLink>
-            <NavLink to="/faqs" onClick={closeMenu} className="nav-item">
+            <NavLink to="/faqs" onClick={closeMenu} className="nav-item" aria-label="Navigate to FAQs page">
               FAQs
             </NavLink>
-            <NavLink to="/hostels" onClick={closeMenu} className="nav-item">
+            <NavLink to="/hostels" onClick={closeMenu} className="nav-item" aria-label="Navigate to Hostels page">
               Hostels
             </NavLink>
-            <NavLink to="/contacts" onClick={closeMenu} className="nav-item">
+            <NavLink to="/contacts" onClick={closeMenu} className="nav-item" aria-label="Navigate to Contacts page">
               Contacts
             </NavLink>
             <div className="nav-right-side hide-on-large">
@@ -87,6 +88,7 @@ const Navbar = () => {
                   onClick={closeMenu}
                   className="nav-item user-avatar-container"
                   style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                  aria-label={`Navigate to ${user.role === "student" ? "student" : "landlord"} profile`}
                 >
                   <div className="user-avatar">
                     {getInitials(user)}
@@ -99,7 +101,8 @@ const Navbar = () => {
                 <NavLink
                   to="/role-selection"
                   onClick={closeMenu}
-                  className="nav-item contact-button"
+                  className="navbar-login-button btn"
+                  aria-label="Navigate to login page"
                 >
                   Login
                 </NavLink>
@@ -113,6 +116,7 @@ const Navbar = () => {
                 to={getProfileLink()}
                 className="nav-item user-avatar-container"
                 style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                aria-label={`Navigate to ${user.role === "student" ? "student" : "landlord"} profile`}
               >
                 <div className="user-avatar">
                   {getInitials(user)}
@@ -124,9 +128,10 @@ const Navbar = () => {
             ) : (
               <NavLink
                 to="/role-selection"
-                className="nav-item contact-button"
+                className="navbar-login-button btn"
+                aria-label="Navigate to login page"
               >
-                Login
+                Login <BsArrowUpRight/>
               </NavLink>
             )}
           </div>

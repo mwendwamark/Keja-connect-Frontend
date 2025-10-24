@@ -26,9 +26,9 @@ const Intro = () => {
           data-aos-duration="1000"
           data-aos-easing="linear"
         >
-          <h3 className="intro-label title-top title-top-green">
+          <strong className="intro-label title-top title-top-green">
             Introduction
-          </h3>
+          </strong>
           <h2 className="h2-heading intro-heading">
             Find your perfect home away from home
           </h2>

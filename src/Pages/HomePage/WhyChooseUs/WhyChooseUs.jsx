@@ -10,13 +10,23 @@ const WhyChooseUs = () => {
   useEffect(() => {
     const pink = document.querySelector("#chooseus_landlords_badge");
     const annotation = annotate(pink, { type: "box" });
-    annotation.show()
-    annotation.color = "var(--dark-pink)"
+    annotation.show();
+    annotation.color = "var(--dark-pink)";
 
-     const blue = document.querySelector("#chooseus_students_badge");
+    const blue = document.querySelector("#chooseus_students_badge");
     const blueAnnotation = annotate(blue, { type: "box" });
-    blueAnnotation.show()
-    blueAnnotation.color = "var(--green-color)"
+    blueAnnotation.show();
+    blueAnnotation.color = "var(--green-color)";
+
+    const landlordBg = document.querySelector("#chooseus_landlords_background");
+    const annotateLandlordBg = annotate(landlordBg, { type: "highlight" });
+    annotateLandlordBg.show();
+    annotateLandlordBg.color = "var(--dark-pink)";
+
+    const studentBg = document.querySelector("#chooseus_students_background");
+    const annotateStudentBg = annotate(studentBg, { type: "highlight" });
+    annotateStudentBg.show();
+    annotateStudentBg.color = "var(--green-color)";
   });
   return (
     <div className="chooseus-wrapper container body-section">
@@ -60,7 +70,7 @@ const WhyChooseUs = () => {
           <NavLink
             to="/student/signup"
             className="chooseus-student-btn btn"
-            aria-label="Create a student account to find hostels"
+            aria-label="Create a student account to find and book hostels"
           >
             Student account <BsArrowRight />
           </NavLink>
@@ -76,6 +86,7 @@ const WhyChooseUs = () => {
             src={chooseUs1}
             alt="Students benefiting from Keja Connect services"
             loading="lazy"
+            id="chooseus_students_background"
           />
         </div>
       </div>
@@ -96,6 +107,7 @@ const WhyChooseUs = () => {
             src={chooseUs2}
             alt="Landlords managing properties on Keja Connect"
             loading="lazy"
+            id="chooseus_landlords_background"
           />
         </div>
         <div
@@ -104,7 +116,9 @@ const WhyChooseUs = () => {
           data-aos-delay="300"
           data-aos-duration="800"
         >
-          <strong className="chooseus-category" id="chooseus_landlords_badge">for landlords</strong>
+          <strong className="chooseus-category" id="chooseus_landlords_badge">
+            for landlords
+          </strong>
           <h3 className="chooseus-section-heading">
             Scale up your rental business effortlessly
           </h3>
@@ -117,7 +131,7 @@ const WhyChooseUs = () => {
           <NavLink
             to="/landlord/signup"
             className="chooseus-landlord-btn btn"
-            aria-label="Create a landlord account to list properties"
+            aria-label="Create a landlord account to list and manage properties"
           >
             Landlord account <BsArrowRight />
           </NavLink>

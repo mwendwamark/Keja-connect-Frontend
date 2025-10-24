@@ -13,7 +13,6 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-
 }
 
 .cta-content-box {
@@ -50,11 +49,23 @@
   text-transform: capitalize;
 }
 
+.cta-primary-button:hover {
+  background-color: transparent;
+  border: 2px solid var(--background-color);
+  color: var(--background-color);
+}
+
 .cta-secondary-button {
   background-color: transparent;
-  color: var(--pink-color);
-  border: 1px solid var(--pink-color);
+  color: var(--background-color);
+  border: 1px solid var(--background-color);
   text-transform: capitalize;
+}
+
+.cta-secondary-button:hover {
+  border: 2px solid var(--dark-pink);
+  background-color: var(--dark-pink);
+  color: var(--text-color);
 }
 
 /* Decorative Circles Container */
@@ -217,12 +228,11 @@
 }
 
 @media screen and (max-width: 360px) {
-  .cta-content-box{
+  .cta-content-box {
     padding: 4rem 1.5rem;
   }
 
-  .cta-heading{
+  .cta-heading {
     font-size: 2rem;
   }
 }
-

@@ -34,7 +34,7 @@ const Hero = () => {
           <NavLink
             to="/role-selection"
             className="btn hero-cta-link"
-            aria-label="Get started with Keja Connect"
+            aria-label="Get started with Keja Connect by selecting your role"
           >
             Get started  <BsArrowUpRight/>
           </NavLink>
@@ -59,7 +59,7 @@ const Hero = () => {
               <NavLink
                 className="hero-card-register-student btn"
                 to="/student/signup"
-                aria-label="Register as a student"
+                aria-label="Register as a student on Keja Connect"
               >
                 Register <BsArrowUpRight className="hero_card_icon"/>
               </NavLink>
@@ -88,7 +88,7 @@ const Hero = () => {
               <NavLink
                 className="hero-card-register-landlord btn"
                 to="/landlord/signup"
-                aria-label="Register as a landlord"
+                aria-label="Register as a landlord on Keja Connect"
               >
                 Register <BsArrowUpRight className="hero_card_icon"/>
               </NavLink>

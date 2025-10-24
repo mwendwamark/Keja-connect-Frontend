@@ -34,7 +34,7 @@ const CTA = () => {
             <NavLink
               to="/hostels"
               className="cta-primary-button btn"
-              aria-label="View available hostels"
+              aria-label="Browse available hostels"
               data-aos="fade-right"
               data-aos-delay="600"
               data-aos-duration="800"
@@ -44,7 +44,7 @@ const CTA = () => {
             <NavLink
               to="/about"
               className="cta-secondary-button btn"
-              aria-label="Learn more about Jamii Hostels"
+              aria-label="Learn more about Keja Connect"
               data-aos="fade-left"
               data-aos-delay="700"
               data-aos-duration="800"
