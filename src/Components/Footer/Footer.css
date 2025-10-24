@@ -176,6 +176,69 @@
 }
 
 @media screen and (max-width: 480px) {
+  /* Green background for mobile */
+  .footer {
+    background-color: var(--green-color);
+  }
+
+  /* Update brand heading to light color for contrast */
+  .footer-brand h3 {
+    color: var(--background-color);
+  }
+
+  /* Update brand paragraph to light color */
+  .footer-brand p {
+    color: var(--background-color);
+  }
+
+  /* Update social links for green background */
+  .footer-social-links a {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--background-color);
+    color: var(--background-color);
+  }
+
+  .footer-social-links a:hover {
+    background-color: var(--light-green);
+    color: var(--green-color);
+    border: 2px solid var(--light-green);
+  }
+
+  /* Update link group headings */
+  .footer-link-group strong {
+    color: var(--background-color);
+  }
+
+  .footer-link-group strong::after {
+    background-color: var(--light-green);
+  }
+
+  /* Update link colors */
+  .footer-link-group ul li a {
+    color: var(--white-alt);
+  }
+
+  .footer-link-group ul li a:hover {
+    color: var(--light-green);
+  }
+
+  /* Update footer bottom section */
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .footer-bottom p {
+    color: var(--background-color);
+  }
+
+  .footer-bottom-links a {
+    color: var(--background-color);
+  }
+
+  .footer-bottom-links a:hover {
+    color: var(--light-green);
+  }
+
   .footer-links {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
