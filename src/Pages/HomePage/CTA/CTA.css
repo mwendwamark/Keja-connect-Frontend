@@ -1,0 +1,228 @@
+.cta-section {
+  width: 100%;
+  background: radial-gradient(
+    circle at 0%,
+    var(--green-color) 17%,
+    var(--light-green) 95%,
+    var(--light-green) 75%
+  );
+  border-radius: 2rem;
+  min-height: 50vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.cta-content-box {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 5rem;
+}
+
+.cta-heading {
+  font-size: 2.5rem;
+  color: var(--background-color);
+  letter-spacing: -2px;
+  margin-bottom: 1rem;
+}
+
+.cta-text {
+  color: var(--white-alt);
+}
+
+.cta-action-buttons {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cta-primary-button {
+  background-color: var(--background-color);
+  color: var(--green-color);
+  text-transform: capitalize;
+}
+
+.cta-secondary-button {
+  background-color: transparent;
+  color: var(--pink-color);
+  border: 1px solid var(--pink-color);
+  text-transform: capitalize;
+}
+
+/* Decorative Circles Container */
+.cta-circles {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Base Circle Styles */
+.cta-circle {
+  position: absolute;
+  border-radius: 50%;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Circle 1 - Largest, outermost */
+.cta-circle-1 {
+  width: 800px;
+  height: 800px;
+  right: -150px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background: rgba(255, 255, 255, 0.08); */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(6, 50, 49, 0.1);
+}
+
+/* Circle 2 - Second layer */
+.cta-circle-2 {
+  width: 680px;
+  height: 680px;
+  right: -95px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background: rgba(255, 255, 255, 0.12); */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(6, 50, 49, 0.15);
+}
+
+/* Circle 3 - Third layer */
+.cta-circle-3 {
+  width: 540px;
+  height: 540px;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background: rgba(255, 255, 255, 0.16); */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(6, 50, 49, 0.2);
+}
+
+/* Circle 4 - Innermost, smallest */
+.cta-circle-4 {
+  width: 400px;
+  height: 400px;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background: rgba(255, 255, 255, 0.2); */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(6, 50, 49, 0.25);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1200px) {
+  .cta-circles {
+    width: 40%;
+  }
+
+  .cta-circle-1 {
+    width: 700px;
+    height: 700px;
+    right: -130px;
+  }
+
+  .cta-circle-2 {
+    width: 580px;
+    height: 580px;
+    right: -80px;
+  }
+
+  .cta-circle-3 {
+    width: 440px;
+    height: 440px;
+    right: -35px;
+  }
+
+  .cta-circle-4 {
+    width: 300px;
+    height: 300px;
+    right: -15px;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .cta-circles {
+    width: 35%;
+    opacity: 0.7;
+  }
+
+  .cta-circle-1 {
+    width: 600px;
+    height: 600px;
+    right: -120px;
+  }
+
+  .cta-circle-2 {
+    width: 480px;
+    height: 480px;
+    right: -70px;
+  }
+
+  .cta-circle-3 {
+    width: 340px;
+    height: 340px;
+    right: -30px;
+  }
+
+  .cta-circle-4 {
+    width: 250px;
+    height: 250px;
+    right: -15px;
+  }
+  .cta-content-box {
+    max-width: 100%;
+    padding-left: 2rem;
+  }
+  .cta-action-buttons {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .cta-section {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-content-box {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cta-content-box {
+    padding: 4rem 1.5rem;
+  }
+
+  .cta-action-buttons {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .cta-content-box{
+    padding: 4rem 1.5rem;
+  }
+
+  .cta-heading{
+    font-size: 2rem;
+  }
+}
+

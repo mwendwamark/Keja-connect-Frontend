@@ -1,11 +1,11 @@
-import img1 from "./tesimonialimg1.jpg";
-import img2 from "./testimonialimg2.jpg";
-import img3 from "./testimonialimg3.jpg";
-import img4 from "./testimonialimg4.jpg";
-import img5 from "./testimonialimg5.jpg";
-import img6 from "./testimonialimg6.jpg";
-import img7 from "./testimonialimg7.jpg";
-import img8 from "./testimonialimg8.jpg";
+import img1 from "./user1.webp";
+import img2 from "./user2.webp";
+import img3 from "./user3.webp";
+import img4 from "./user4.webp";
+import img5 from "./user5.webp";
+import img6 from "./user6.webp";
+import img7 from "./user7.webp";
+import img8 from "./user8.webp";
 
 export const Data2 = [
   {

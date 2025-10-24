@@ -1,27 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=League+Spartan:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap");
 :root {
   --background-color: #ffffff !important;
   --pink-color: #f2dde3;
   --green-color: #063231;
-  --text-color: #0d0c22;
+  --text-color: #091a23;
   --faint-text-color: #666666;
   --dark-pink: #f1bfcd;
   --light-green: #96d5d3;
   --blue-link-color: #3328fe;
   --orange-color: #ea5024;
   --dashboard-color: #f4f4f4 !important;
+  --white-alt:rgb(206, 204, 200);
 
   --light-green-rgb: 150, 213, 211;
   --orange-rgb: 234, 80, 36;
 
-  --h1-fs: 48px;
-  --h2-fs: 30px;
-  --text-size: 16px;
+  --h1-fs: 3.5rem;
+  --h2-fs: 1.5rem;
+  --text-size: 1rem;
 
-  --h1-ff: "Domine", "Outfit", serif !important;
-  --text-ff: "Outfit", serif;
+  --h1-ff: "Space Grotesk", serif !important;
+  --text-ff: "Space Grotesk", serif;
 
   --h1-fw: 700;
   --text-fw: 400;
@@ -66,7 +65,7 @@ h4,
 h5,
 h6,
 .h2-heading {
-  font-family: "Domine", "Outfit", serif !important;
+  font-family: "Space Grotesk", "Outfit", serif !important;
 }
 .h2-heading {
   font-size: 36px;
@@ -90,8 +89,13 @@ h6,
   padding-bottom: 4rem;
 }
 
+.body-section {
+  padding: 7rem 0;
+}
+
 ::-webkit-scrollbar {
   width: 0.8rem;
+  background-color: var(--faint-text-color);
 }
 
 .flex {
@@ -110,24 +114,74 @@ h6,
 }
 
 .btn {
-  border: none;
   outline: none;
+  padding: 0.6rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--h1-ff);
+  font-size: var(--text-size);
+  font-weight: var(--text-fw);
+  text-decoration: none;
   cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px var(--inputColor);
-  padding: 0.8rem 1rem;
-  color: var(--textColor);
+  border: 2px solid transparent;
+  border-radius: 3rem;
+  gap: 1rem;
+  transition: all 0.3s;
 }
 
-.btn .icon {
-  margin-left: 0.5rem;
+/* Base subtitle styles - shared properties */
+.title-top {
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
-.btn:hover {
-  background: var(--pink-color);
+.title-top::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Color variant: Faint text color */
+.title-top-faint {
+  color: var(--faint-text-color);
+}
+
+.title-top-faint::before {
+  background-color: var(--faint-text-color);
+}
+
+/* Color variant: Background color (light/white) */
+.title-top-light {
   color: var(--background-color);
 }
 
+.title-top-light::before {
+  background-color: var(--background-color);
+}
+
+/* Color variant: Text color (dark) */
+.title-top-dark {
+  color: var(--text-color);
+}
+
+.title-top-dark::before {
+  background-color: var(--text-color);
+}
+
+/* Color variant: Green */
+.title-top-green {
+  color: var(--light-green);
+}
+
+.title-top-green::before {
+  background-color: var(--light-green);
+}
 @media screen and (max-width: 900px) {
   .h2-heading {
     letter-spacing: -2px;

@@ -1,0 +1,214 @@
+.hero-section-container {
+  min-height: 100dvh;
+  background-color: var(--background-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-content-area {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.hero-main-heading {
+  font-size: var(--h1-fs);
+  color: var(--text-color);
+  letter-spacing: -2px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.hero-main-heading strong {
+  color: var(--green-color);
+  letter-spacing: -2px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: var(--text-size);
+  color: var(--faint-text-color);
+}
+
+.hero-cta-link {
+  border: 1px solid var(--green-color);
+  background-color: var(--background-color);
+  color: var(--green-color);
+}
+
+.hero-cta-link:hover {
+  background-color: var(--green-color);
+  color: var(--background-color);
+}
+
+.hero-cards-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  border-top-right-radius: 30rem;
+  border-top-left-radius: 30rem;
+  padding: 2rem 1.5rem;
+  height: 100%;
+}
+
+.hero-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-student-card {
+  background-color: var(--green-color);
+  height: 70%;
+}
+
+.hero-landlord-card {
+  background-color: var(--dark-pink);
+  height: 100%;
+}
+
+.hero-card-role {
+  font-size: 1rem;
+}
+
+#student_role {
+  color: var(--background-color);
+}
+
+#landlord_role {
+  color: var(--text-color);
+}
+
+.hero-card-register-student,
+.hero-card-register-landlord {
+  background-color: var(--faint-text-color);
+  color: var(--background-color);
+}
+
+.hero-card-register-student:hover,
+.hero-card-register-landlord:hover {
+  border: 2px solid var(--faint-text-color);
+  background-color: transparent;
+  color: var(--faint-text-color);
+}
+
+.hero-card-image {
+  width: 60%;
+  overflow: hidden;
+}
+
+.hero-card-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1265px) {
+  .hero-content-area {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .hero-section-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: normal;
+  }
+
+  .hero-content-area {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-main-heading {
+    font-size: 2.5rem;
+  }
+
+  .hero-cards-wrapper {
+    max-width: 100%;
+    width: 100%;
+    gap: 1rem;
+    height: auto;
+    max-height: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-cards-wrapper {
+    gap: 0.75rem;
+  }
+
+  .hero-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-student-card {
+    height: 55vh;
+    min-height: 320px;
+    max-height: 400px;
+  }
+
+  .hero-landlord-card {
+    height: 65vh;
+    min-height: 380px;
+    max-height: 500px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-cards-wrapper {
+    gap: 0.5rem;
+  }
+
+  .hero-card {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+
+  .hero-student-card {
+    height: 50vh;
+    min-height: 280px;
+    max-height: 350px;
+  }
+
+  .hero-landlord-card {
+    height: 60vh;
+    min-height: 330px;
+    max-height: 450px;
+  }
+
+  .hero-card-image {
+    width: 70%;
+  }
+  .hero-card-register-student,
+  .hero-card-register-landlord {
+    padding: 0.5rem;
+  }
+  .hero_card_icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .hero-card {
+    padding: 0;
+  }
+}

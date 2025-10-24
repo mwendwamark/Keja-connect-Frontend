@@ -23,11 +23,9 @@ import Wishlist from "./Students/Pages/Wishlist/Wishlist";
 import UpdateHostel from "./Landlords/Components/UpdateHostel/UpdateHostel";
 import MyHostels from "./Landlords/Dashboard/components/MyHostels/MyHostels";
 import LandlordDashboard from "./Landlords/Dashboard/HomeDashboard/LandlordDashboard";
-
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
