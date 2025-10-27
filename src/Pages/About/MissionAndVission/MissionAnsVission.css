@@ -1,0 +1,65 @@
+.mission_vission-section {
+  background-color: var(--dashboard-color);
+}
+
+.mission_vission-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.mission_vission-right {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mission_vission-right h2 {
+  color: var(--faint-text-color);
+}
+
+.mission_vission-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1rem 2rem;
+}
+
+.mission_content,
+.vission_content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mission_content {
+  position: relative;
+}
+
+.mission_content h3,
+.vission_content h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -2px;
+  color: var(--green-color);
+}
+
+.mission_content::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -30px;
+  height: 1px;
+  width: 100%;
+  background-color: var(--faint-text-color);
+}
+
+@media screen and (max-width: 768px) {
+  .mission_vission-container {
+    grid-template-columns: 1fr;
+  }
+  .mission_vission-left {
+    padding: 2rem 0;
+  }
+}
