@@ -6,6 +6,9 @@
     align-items: center;
     height: 100vh;  
     justify-content: center; 
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    padding: 2rem;
 }
 
 .get-started-top {

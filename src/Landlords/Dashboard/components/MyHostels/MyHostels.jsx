@@ -1,14 +1,12 @@
 // src/components/MyHostels/MyHostels.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { API_BASE_URL } from "../.././config/api"; // Adjust path as needed
 import { API_BASE_URL } from "../../../../config/api";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import "./MyHostels.css"; // We will create this CSS file
-import DashboardLayout from "../Layout/DashboardLayout";
 
 const MyHostels = () => {
   const navigate = useNavigate();
@@ -111,13 +109,13 @@ const MyHostels = () => {
   }
 
   return (
-    <DashboardLayout>
+    <>
       <div id="hostels" className="my-hostels-section">
         <div className="section-header">
           <h2>My Hostels</h2>
           <button
             className="add-hostel-btn"
-            onClick={() => navigate("/get-started")}
+            onClick={() => navigate("/landlord/dashboard/get_started")}
           >
             Add New Hostel
           </button>
@@ -202,8 +200,8 @@ const MyHostels = () => {
           </div>
         </div>
       )}
-      <ToastContainer /> {/* Ensure ToastContainer is here for toasts from MyHostels */}
-    </DashboardLayout>
+      <ToastContainer />
+    </>
   );
 };
 

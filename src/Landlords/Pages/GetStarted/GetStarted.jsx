@@ -38,8 +38,7 @@ const GetStarted = () => {
 
   return (
     <>
-      <LandlordNavbar />
-      <div className="get-started container">
+      <div className="get-started">
         <div className="get-started-top">
           <div className="left-side">
             <h1>It is easy to get started with Keja Connect</h1>
@@ -80,7 +79,7 @@ const GetStarted = () => {
           </div>
         </div>
         <div className="get-started-bottom">
-          <NavLink className="get-started-btn" to="/create-hostel">
+          <NavLink className="get-started-btn" to="/landlord/dashboard/add_hostels">
             Get Started
             <BsArrowRightShort className="arrow-icon" />
           </NavLink>

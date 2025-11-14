@@ -3,9 +3,10 @@
 .my-hostels-section {
   background-color: var(--background-color);
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin-top: 0; /* Remove top margin since we're using DashboardLayout */
+  min-height: 100vh;
+  border-radius: 0.5rem;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
+  margin-top: 2rem; /* Remove top margin since we're using DashboardLayout */
   transition: all 0.3s ease;
 }
 
@@ -13,8 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
+ 
   padding-bottom: 0.8rem;
 }
 

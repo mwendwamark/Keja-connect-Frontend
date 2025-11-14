@@ -1,116 +1,321 @@
-.sidebar {
+/* Main Sidebar Container */
+.landlordSidebar {
   position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
-  width: 80px;
+  width: 250px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
   overflow: hidden;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  /* border-radius: 2rem; */
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.sidebar.expanded {
-  width: 260px;
+.landlordSidebar.collapsed {
+  width: 80px;
 }
 
-.logo {
-  padding: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 20px;
+/* Logo Section */
+.sidebarLogoSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  min-height: 40px;
 }
 
-.logoText {
+.sidebarLogoText {
   color: white;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   white-space: nowrap;
-  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.sidebar.expanded .logoText {
-  opacity: 1;
+.landlordSidebar.collapsed .sidebarLogoText {
+  opacity: 0;
+  width: 0;
 }
 
-.nav {
-  padding: 0 10px;
-}
-
-.navLink {
+.sidebarToggleButton {
+  cursor: pointer;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
-  padding: 12px 15px;
-  margin-bottom: 8px;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  border-radius: 8px;
+  justify-content: center;
   transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.sidebarToggleButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Navigation Links Wrapper */
+.sidebarLinksWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebarLinksWrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebarLinksWrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sidebarLinksWrapper::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebarSectionLabel {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  padding-left: 0.5rem;
+}
+
+.landlordSidebar.collapsed .sidebarSectionLabel {
+  opacity: 0;
+}
+
+/* Navigation */
+.sidebarNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebarNavLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   position: relative;
+  white-space: nowrap;
+}
+
+.navLinkIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.navLinkText {
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.landlordSidebar.collapsed .sidebarNavLink {
+  justify-content: center;
+  padding: 0.9rem 1.2rem;
+}
+
+.landlordSidebar.collapsed .navLinkText {
+  opacity: 0;
+  width: 0;
   overflow: hidden;
 }
 
-.navLink:hover {
-  background: rgba(255, 255, 255, 0.1);
+/* Active and Hover States */
+.sidebarNavLink.activeNavLink {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+}
+
+.sidebarNavLink:not(.activeNavLink):hover {
+  background: rgba(255, 255, 255, 0.15);
   color: white;
   transform: translateX(5px);
 }
 
-.navLink.active {
-  background: rgba(255, 255, 255, 0.2);
+.sidebarNavLink:not(.activeNavLink):hover .navLinkIcon {
+  transform: scale(1.1);
+}
+
+.landlordSidebar.collapsed .sidebarNavLink:not(.activeNavLink):hover {
+  transform: translateX(0) scale(1.05);
+}
+
+/* Tooltip for Collapsed State */
+.sidebarNavLink::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 100%;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.icon {
-  min-width: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.linkText {
-  margin-left: 15px;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   white-space: nowrap;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
-  font-size: 14px;
-  font-weight: 500;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar.expanded .linkText {
+.landlordSidebar.collapsed .sidebarNavLink:hover::after {
   opacity: 1;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .sidebar {
+/* Tooltip Arrow */
+.landlordSidebar.collapsed .sidebarNavLink::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  margin-left: 0.5rem;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1001;
+}
+
+.landlordSidebar.collapsed .sidebarNavLink:hover::before {
+  opacity: 1;
+}
+
+/* Focus States for Accessibility */
+.sidebarNavLink:focus-visible,
+.sidebarToggleButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .landlordSidebar {
     transform: translateX(-100%);
     width: 250px;
   }
-  
-  .sidebar.expanded {
+
+  .landlordSidebar.collapsed {
+    width: 250px;
+  }
+
+  .landlordSidebar.mobileOpen {
     transform: translateX(0);
   }
-  
-  .logoText,
-  .linkText {
+
+  .sidebarLogoText,
+  .navLinkText {
     opacity: 1;
+  }
+
+  .sidebarNavLink::after,
+  .sidebarNavLink::before {
+    display: none;
+  }
+
+  .sidebarToggleButton {
+    display: none;
   }
 }
 
-/* Smooth animations */
-.sidebar * {
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .landlordSidebar {
+    width: 220px;
+  }
+
+  .landlordSidebar.collapsed {
+    width: 70px;
+  }
+}
+
+/* Animation for Smooth Transitions */
+.sidebarNavLink,
+.sidebarToggleButton,
+.navLinkIcon {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hover effects for icons */
-.navLink .icon {
-  transition: transform 0.2s ease;
+/* Gradient Animation on Hover */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.navLink:hover .icon {
-  transform: scale(1.1);
+.sidebarNavLink.activeNavLink {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.25)
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Enhanced Visual Effects */
+.landlordSidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Smooth Scroll Behavior */
+.sidebarLinksWrapper {
+  scroll-behavior: smooth;
+}
+
+/* Print Styles */
+@media print {
+  .landlordSidebar {
+    display: none;
+  }
 }

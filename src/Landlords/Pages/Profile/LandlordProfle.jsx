@@ -20,7 +20,6 @@ const LandlordProfile = () => {
   return (
     <>
       {" "}
-      <LandlordNavbar />
       <div className="landlord-profile-page container">
         <h1 className="">Landlord Profile</h1>
         <p>

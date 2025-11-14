@@ -1,0 +1,33 @@
+.topdash-container {
+  padding: 1.5rem;
+  background-color: var(--background-color);
+  border-radius: 0.5rem;
+}
+
+.topdash-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  font-family: var(--h1-ff);
+  margin: 0 0 0.5rem 0;
+}
+
+.topdash-description {
+  font-size: 0.95rem;
+  color: var(--faint-text-color);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .topdash-container {
+    padding: 1.5rem;
+  }
+
+  .topdash-title {
+    font-size: 1.5rem;
+  }
+
+  .topdash-description {
+    font-size: 0.875rem;
+  }
+}
